@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wireframe - Accueil Bill</title>
+    <style>
+        /* Définition stricte des variables de niveaux de gris */
+        :root {
+            --fond-blanc: #ffffff;
+            --fond-gris-clair: #f5f5f5;
+            --fond-gris-moyen: #e0e0e0;
+            --bordure-grise: #9e9e9e;
+            --bouton-gris-fonce: #424242;
+            --texte-blanc: #ffffff;
+            --texte-noir: #212121;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            color: var(--texte-noir);
+            margin: 0;
+            padding: 0;
+            background-color: var(--fond-blanc);
+        }
+
+        /* Classes utilitaires pour le vocabulaire imposé */
+        .fond-blanc {
+            background-color: var(--fond-blanc);
+        }
+
+        .fond-gris-clair {
+            background-color: var(--fond-gris-clair);
+        }
+
+        .fond-gris-moyen {
+            background-color: var(--fond-gris-moyen);
+        }
+
+        .bordure-grise {
+            border: 2px solid var(--bordure-grise);
+        }
+
+        .bouton-gris-fonce {
+            display: inline-block;
+            background-color: var(--bouton-gris-fonce);
+            color: var(--texte-blanc);
+            padding: 12px 24px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        .espace-image {
+            background-color: var(--fond-gris-clair);
+            border: 2px dashed var(--bordure-grise);
+            padding: 40px 20px;
+            text-align: center;
+            color: var(--bordure-grise);
+            font-weight: bold;
+            margin: 15px 0;
+        }
+
+        /* Layout général */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+            border-bottom: 2px solid var(--bordure-grise);
+        }
+
+        nav a {
+            color: var(--texte-noir);
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 500;
+        }
+
+        section {
+            padding: 60px 40px;
+            border-bottom: 2px solid var(--bordure-grise);
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .text-left {
+            text-align: left;
+        }
+
+        /* Grilles et Bento */
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .bento-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            padding: 30px;
+        }
+
+        .faq-item {
+            padding: 15px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        footer {
+            padding: 40px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            font-weight: normal;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION GLOBALE -->
+    <header class="fond-blanc">
+        <div class="logo">
+            [ 🖼️ Espace Image ] LOGO BILL
+        </div>
+        <nav>
+            <a href="#">Accueil</a>
+            <a href="#">Pourquoi Bill</a>
+            <a href="#">Solutions</a>
+            <a href="#">Expertises</a>
+            <a href="#">Ressources</a>
+        </nav>
+        <div>
+            <a href="#" class="bouton-gris-fonce">[ 🔲 BOUTON : "Contact / Démo" ]</a>
+        </div>
+    </header>
+
+    <!-- SECTION 1 : HERO -->
+    <section class="fond-blanc text-center">
+        <h1>Solution tout en un pour les restaurateurs</h1>
+        <h3>Testez notre suite d’outils et améliorer votre performance et l’expérience de vos clients[cite:
+            1].<br>Démarquez-vous dès maintenant[cite: 1].</h3>
+        <a href="#" class="bouton-gris-fonce">[ 🔲 BOUTON : "Découvrir nos solutions" ]</a>
+
+        <div class="espace-image">
+            [ 🖼️ Espace Image ]<br>
+            Mockup global de l'interface Bill (Caisse, Borne, Mobile)
+        </div>
+    </section>
+
+    <!-- SECTION 2 : LOGO CLIENT CARROUSEL -->
+    <section class="fond-gris-clair text-center">
+        <h2>Ils nous font confiance</h2>
+        <div class="grid-4">
+            <div class="espace-image">[ 🖼️ Espace Image ]<br>Logo Green2Green</div>
+            <div class="espace-image">[ 🖼️ Espace Image ]<br>Logo Supreme</div>
+            <div class="espace-image">[ 🖼️ Espace Image ]<br>Logo Client 3</div>
+            <div class="espace-image">[ 🖼️ Espace Image ]<br>Logo Client 4</div>
+        </div>
+        <p>[Bordure Grise] < Flèches de navigation du carrousel> [Bordure Grise]</p>
+    </section>
+
+    <!-- SECTION 3 : BENTO PRÉSENTATION DE SOLUTIONS -->
+    <section class="fond-blanc text-left">
+        <h2>Nos solutions pour chaque étape de votre service</h2>
+        <div class="bento-grid">
+            <div class="card bordure-grise fond-gris-clair">
+                <h3>Prise de commande</h3>
+                <p>Borne + meuble totem, Commande en ligne, App mobile, Audio drive.</p>
+                <div class="espace-image">[ 🖼️ Espace Image ]</div>
+                <a href="#" class="bouton-gris-fonce">[ 🔲 BOUTON : "Voir plus" ]</a>
+            </div>
+            <div class="card bordure-grise fond-gris-clair">
+                <h3>Encaissement</h3>
+                <p>Caisse NF (fixe + mobile), Monnayeur, BPay.</p>
+                <div class="espace-image">[ 🖼️ Espace Image ]</div>
+                <a href="#" class="bouton-gris-fonce">[ 🔲 BOUTON : "Voir plus" ]</a>
+            </div>
+            <div class="card bordure-grise fond-gris-clair">
+                <h3>Production & pilotage</h3>
+                <p>KDS, Imprimante production, Plateformes livraison, Remise de commande.</p>
+                <div class="espace-image">[ 🖼️ Espace Image ]</div>
+                <a href="#" class="bouton-gris-fonce">[ 🔲 BOUTON : "Voir plus" ]</a>
+            </div>
+            <div class="card bordure-grise fond-gris-clair">
+                <h3>Pilotage centralisé & Communication</h3>
+                <p>Backoffice unique, Stock, RH, Fidélité, Affichage dynamique.</p>
+                <div class="espace-image">[ 🖼️ Espace Image ]</div>
+                <a href="#" class="bouton-gris-fonce">[ 🔲 BOUTON : "Voir plus" ]</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4 : EXPERTISES -->
+    <section class="fond-gris-clair text-center">
+        <h2>Des écosystèmes adaptés à vos cibles</h2>
+        <div class="grid-3">
+            <div class="card bordure-grise fond-blanc">
+                <div class="espace-image">[ 🖼️ Espace Image ]</div>
+                <h3>Restauration rapide & QSR</h3>
+                <a href="#" class="bouton-gris-fonce">[ 🔲 BOUTON : "Explorer" ]</a>
+            </div>
+            <div class="card bordure-grise fond-blanc">
+                <div class="espace-image">[ 🖼️ Espace Image ]</div>
+                <h3>Franchise & chaînes</h3>
+                <a href="#" class="bouton-gris-fonce">[ 🔲 BOUTON : "Explorer" ]</a>
+            </div>
+            <div class="card bordure-grise fond-blanc">
+                <div class="espace-image">[ 🖼️ Espace Image ]</div>
+                <h3>Parcs de loisirs</h3>
+                <a href="#" class="bouton-gris-fonce">[ 🔲 BOUTON : "Explorer" ]</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5 : POULPE DES CATÉGORIES -->
+    <section class="fond-blanc text-center">
+        <h2>Une architecture interconnectée</h2>
+        <p>Un système global et complet pour centraliser votre gestion.</p>
+        <div class="espace-image" style="padding: 100px 20px;">
+            [ 🖼️ Espace Image ]<br><br>
+            <strong>[Diagramme Poulpe]</strong><br>
+            Nœud central : SITE BILL.APP<br>
+            Connexions vers : Prise de commande | Encaissement | Production & Pilotage | Communication | Pilotage
+            centralisé
+        </div>
+    </section>
+
+    <!-- SECTION 6 : SOCIAL PROOF -->
+    <section class="fond-gris-moyen text-left">
+        <h2>Témoignages</h2>
+        <h3>Découvrez l’expérience client Bill</h3>
+        <div class="grid-2">
+            <div class="card bordure-grise fond-blanc">
+                <p>"Bill nous offre un système informatique global et complet, avec un interlocuteur unique, et une
+                    grande flexibilité pour des solutions sur-mesure. Nous sommes ravis de travailler avec eux."</p>
+                <p><strong>Jérémy CRETIEN</strong><br>Co fondateur - Green2Green</p>
+            </div>
+            <div class="card bordure-grise fond-blanc">
+                <p>"Bill et ses modules intégrés simplifient et optimisent notre processus de production, offrant une
+                    efficacité exceptionnelle à chaque étape de la préparation culinaire."</p>
+                <p><strong>Léa HOBBES</strong><br>Responsable Communication - Supreme</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 7 : FAQ -->
+    <section class="fond-blanc text-left">
+        <h2>Questions fréquentes</h2>
+        <div class="faq-item bordure-grise">+ Comment le système centralisé simplifie-t-il la gestion multi-sites ?
+        </div>
+        <div class="faq-item bordure-grise">+ Les bornes de commande sont-elles adaptées à mon établissement ?</div>
+        <div class="faq-item bordure-grise">+ Comment fonctionne l'intégration avec les plateformes de livraison ?</div>
+        <div class="faq-item bordure-grise">+ Les équipements (Caisse NF, KDS) sont-ils inclus dans une offre unique ?
+        </div>
+
+        <div class="text-center">
+            <a href="#" class="bouton-gris-fonce">[ 🔲 BOUTON : "Visiter le Centre d'aide" ]</a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="fond-gris-moyen">
+        <div>
+            <div class="espace-image" style="padding: 20px;">[ 🖼️ Espace Image ] LOGO</div>
+            <p>Société BILL<br>5 rue Sala, 69002 Lyon<br>contact@bill-app.fr</p>
+        </div>
+        <div>
+            <h3>Solutions</h3>
+            <p>Prise de commande<br>Encaissement<br>Production & pilotage<br>Pilotage centralisé</p>
+        </div>
+        <div>
+            <h3>Ressources</h3>
+            <p>Blog<br>Centre d'aide<br>Intégrations</p>
+        </div>
+        <div>
+            <h3>Informations</h3>
+            <p>Mentions légales<br>Politique de confidentialité<br>Politique de cookies</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
