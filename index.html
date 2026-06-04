@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wireframe Low-Fi - Bill (Accueil)</title>
     <style>
-        /* --- BASES & SYSTEM DESIGN SYSTEM SYSTEM (LOW-FI) --- */
+        /* --- SYSTÈME DE DESIGN WIREFRAME (LOW-FI RESTRICTION) --- */
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
         }
 
         body {
@@ -52,28 +52,30 @@
         }
 
         section {
-            padding: 4rem 0;
+            padding: 5rem 0;
             border-bottom: 1px solid #D1D5DB;
         }
 
+        .section-header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
         .section-title {
-            font-size: 2rem;
-            margin-bottom: 1rem;
+            font-size: 2.25rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            text-align: center;
+            margin-bottom: 0.75rem;
         }
 
         .section-subtitle {
-            text-align: center;
             color: #9CA3AF;
-            margin-bottom: 3rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
         }
 
-        /* --- IMAGE PLACEHOLDER STANDARD --- */
+        /* --- BLOCS IMAGES WIREFRAME --- */
         .img-placeholder {
             background-color: #F3F4F6;
             border: 2px dashed #9CA3AF;
@@ -87,34 +89,34 @@
             font-weight: 500;
         }
 
-        /* --- 1. HEADER & NAVIGATION --- */
+        /* --- 1. HEADER & NAVIGATION GLOBALE --- */
         header {
             background-color: #FFFFFF;
             border-bottom: 1px solid #D1D5DB;
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 1000;
         }
 
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 1.5rem;
+            padding: 1.25rem 1.5rem;
             max-width: 1400px;
             margin: 0 auto;
         }
 
         .logo {
-            font-size: 1.5rem;
-            font-weight: 800;
-            letter-spacing: 2px;
+            font-size: 1.75rem;
+            font-weight: 900;
+            letter-spacing: 1.5px;
         }
 
         .nav-menu {
             display: flex;
             list-style: none;
-            gap: 1.5rem;
+            gap: 1.75rem;
         }
 
         .nav-item {
@@ -123,22 +125,25 @@
 
         .nav-item > a {
             font-size: 0.85rem;
-            font-weight: 600;
+            font-weight: 700;
             text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 0.5rem 0;
         }
 
-        /* Simulator Dropdown pour le Wireframe */
+        /* Menu déroulant pour le Wireframe */
         .dropdown {
             display: none;
             position: absolute;
             top: 100%;
-            left: 0;
+            left: 50%;
+            transform: translateX(-50%);
             background-color: #FFFFFF;
             border: 1px solid #D1D5DB;
             padding: 0.5rem 0;
-            min-width: 220px;
+            min-width: 240px;
             list-style: none;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
         }
 
         .nav-item:hover .dropdown {
@@ -147,74 +152,97 @@
 
         .dropdown a {
             display: block;
-            padding: 0.5rem 1rem;
-            font-size: 0.8rem;
+            padding: 0.6rem 1.25rem;
+            font-size: 0.85rem;
             text-transform: none;
+            font-weight: 500;
         }
 
         .dropdown a:hover {
             background-color: #F3F4F6;
+            text-decoration: none;
         }
 
-        /* --- 2. HERO SECTION --- */
+        /* --- 2. SECTION HERO --- */
         #hero {
             background-color: #FFFFFF;
-            padding: 5rem 0;
+            padding: 6rem 0;
         }
 
         .hero-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 3rem;
+            gap: 4rem;
             align-items: center;
         }
 
         .hero-content h1 {
-            font-size: 3rem;
-            line-height: 1.1;
+            font-size: 3.25rem;
+            line-height: 1.15;
             margin-bottom: 1.5rem;
-            font-weight: 800;
+            font-weight: 900;
+            text-transform: uppercase;
         }
 
         .hero-content p {
-            font-size: 1.125rem;
+            font-size: 1.2rem;
             color: #1F2937;
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
         }
 
         .hero-actions {
             display: flex;
-            gap: 1rem;
+            gap: 1.25rem;
         }
 
         .hero-img {
-            min-height: 350px;
+            min-height: 400px;
             height: 100%;
         }
 
-        /* --- 3. LOGOS SECTION (REASSURANCE) --- */
+        /* --- 3. SECTION CARROUSEL LOGOS --- */
         #logos {
             background-color: #F3F4F6;
-            padding: 2rem 0;
+            padding: 2.5rem 0;
             text-align: center;
         }
 
-        .logo-track {
+        .logo-carousel-container {
             display: flex;
-            justify-content: space-around;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .logo-carousel-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 700;
+            color: #9CA3AF;
+        }
+
+        .logo-track-simulation {
+            display: flex;
+            justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
             gap: 2rem;
-            margin-top: 1rem;
+            margin: 0.5rem 0;
         }
 
-        .logo-box {
-            width: 140px;
-            height: 50px;
+        .logo-mock {
+            width: 160px;
+            height: 55px;
             font-size: 0.8rem;
         }
 
-        /* --- 4. BENTO SOLUTIONS SECTION --- */
+        .carousel-indicator {
+            font-size: 0.75rem;
+            color: #9CA3AF;
+            margin-top: 0.5rem;
+        }
+
+        /* --- 4. SECTION BENTO PRESENTATION DE SOLUTIONS --- */
         #bento-solutions {
             background-color: #FFFFFF;
         }
@@ -222,55 +250,58 @@
         .bento-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            grid-auto-rows: minmax(180px, auto);
+            grid-auto-rows: minmax(200px, auto);
             gap: 1.5rem;
         }
 
-        .bento-card {
+        .bento-cell {
             border: 1px solid #D1D5DB;
             background-color: #F3F4F6;
-            padding: 1.5rem;
+            padding: 2rem;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
         }
 
-        /* Bento Variantes de tailles */
+        /* Bento Grid Span Configurations */
         .bento-w2 { grid-column: span 2; }
         .bento-h2 { grid-row: span 2; }
 
-        .bento-card h3 {
-            font-size: 1.25rem;
-            margin-bottom: 0.5rem;
+        .bento-cell h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.75rem;
             text-transform: uppercase;
+            border-bottom: 2px solid #1F2937;
+            padding-bottom: 0.25rem;
+            display: inline-block;
         }
 
-        .bento-card p {
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
+        .bento-cell p {
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
         }
 
-        .bento-links {
+        .bento-tags {
             display: flex;
             flex-wrap: wrap;
             gap: 0.5rem;
             margin-top: auto;
         }
 
-        .bento-tag {
-            font-size: 0.75rem;
+        .bento-link-tag {
+            font-size: 0.8rem;
             background-color: #1F2937;
             color: #FFFFFF;
-            padding: 0.25rem 0.5rem;
+            padding: 0.35rem 0.75rem;
             font-weight: 600;
         }
-        
-        .bento-tag:hover {
-            text-decoration: none;
+
+        .bento-link-tag:hover {
             background-color: #9CA3AF;
+            text-decoration: none;
         }
 
-        /* --- 5. EXPERTISES SECTION --- */
+        /* --- 5. SECTION EXPERTISES --- */
         #expertises {
             background-color: #F3F4F6;
         }
@@ -281,167 +312,205 @@
             gap: 2rem;
         }
 
-        .expertise-card {
+        .expertise-node {
             background-color: #FFFFFF;
             border: 1px solid #D1D5DB;
-            padding: 2rem;
+            padding: 2.5rem 2rem;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        .expertise-card h3 {
-            margin: 1rem 0;
-            font-size: 1.25rem;
-        }
-
-        .expertise-card p {
-            font-size: 0.9rem;
+        .expertise-icon-wrapper {
+            height: 110px;
+            width: 100%;
             margin-bottom: 1.5rem;
         }
 
-        /* --- 6. NAVIGATION POULPE SECTION --- */
+        .expertise-node h3 {
+            font-size: 1.35rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .expertise-node p {
+            font-size: 0.95rem;
+            color: #1F2937;
+            margin-bottom: 2rem;
+            flex-grow: 1;
+        }
+
+        /* --- 6. SECTION POULPE DES CATEGORIES --- */
         #navigation-poulpe {
             background-color: #FFFFFF;
         }
 
-        .poulpe-tree {
+        .poulpe-map-wrapper {
+            background-color: #F3F4F6;
+            border: 1px solid #D1D5DB;
+            padding: 3rem 2rem;
             display: flex;
             flex-direction: column;
-            gap: 2rem;
-            background-color: #F3F4F6;
-            padding: 2rem;
-            border: 1px solid #D1D5DB;
+            gap: 2.5rem;
         }
 
-        .poulpe-core {
+        .poulpe-head {
             text-align: center;
             background-color: #1F2937;
             color: #FFFFFF;
-            padding: 1rem;
-            font-weight: bold;
+            padding: 1.25rem;
+            font-size: 1.15rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            max-width: 500px;
+            margin: 0 auto;
         }
 
-        .poulpe-branches {
+        .poulpe-tentacles {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 1.5rem;
         }
 
-        .poulpe-branch {
+        .tentacle {
             background-color: #FFFFFF;
             border: 1px solid #D1D5DB;
-            padding: 1rem;
+            padding: 1.25rem;
         }
 
-        .poulpe-branch h4 {
-            border-bottom: 2px solid #1F2937;
-            padding-bottom: 0.25rem;
-            margin-bottom: 0.75rem;
-            font-size: 0.9rem;
+        .tentacle h4 {
+            font-size: 0.95rem;
             text-transform: uppercase;
+            border-bottom: 2px solid #1F2937;
+            padding-bottom: 0.4rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
         }
 
-        .poulpe-leaves {
+        .suction-cups {
             list-style: none;
             display: flex;
             flex-direction: column;
-            gap: 0.4rem;
+            gap: 0.5rem;
         }
 
-        .poulpe-leaves a {
-            font-size: 0.8rem;
+        .suction-cups a {
+            font-size: 0.85rem;
             display: block;
+            padding: 0.15rem 0;
         }
 
-        /* --- 7. SOCIAL PROOF SECTION --- */
+        /* --- 7. SECTION SOCIAL PROOF --- */
         #social-proof {
             background-color: #F3F4F6;
         }
 
-        .stats-grid {
+        .proof-metrics-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
             text-align: center;
-            margin-bottom: 4rem;
+            margin-bottom: 4.5rem;
         }
 
-        .stat-item .number {
-            font-size: 3rem;
-            font-weight: 800;
+        .metric-unit h3 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: #1F2937;
+            line-height: 1;
+            margin-bottom: 0.5rem;
         }
 
-        .stat-item .label {
-            font-size: 0.9rem;
+        .metric-unit p {
+            font-size: 0.85rem;
             text-transform: uppercase;
             color: #9CA3AF;
+            font-weight: 700;
+            letter-spacing: 1px;
         }
 
         .testimonials-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 2rem;
+            gap: 2.5rem;
         }
 
-        .testimonial-card {
+        .testimonial-wire-card {
             background-color: #FFFFFF;
             border: 1px solid #D1D5DB;
-            padding: 2rem;
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
-        .testimonial-text {
+        .testimonial-wire-card blockquote {
             font-style: italic;
-            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: #1F2937;
         }
 
-        .testimonial-author {
-            font-weight: bold;
-            font-size: 0.9rem;
+        .testimonial-wire-card cite {
+            display: block;
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: #1F2937;
+            font-style: normal;
         }
 
-        /* --- 8. FAQ SECTION --- */
+        /* --- 8. SECTION FAQ --- */
         #faq {
             background-color: #FFFFFF;
         }
 
-        .faq-list {
-            max-width: 800px;
+        .faq-accordion-blueprint {
+            max-width: 850px;
             margin: 0 auto;
             display: flex;
             flex-direction: column;
-            gap: 1rem;
+            gap: 1.25rem;
         }
 
-        .faq-item {
+        .faq-node {
             border: 1px solid #D1D5DB;
-            padding: 1rem;
             background-color: #F3F4F6;
+            padding: 1.25rem;
         }
 
-        .faq-question {
-            font-weight: bold;
+        .faq-prompt {
+            font-weight: 700;
+            font-size: 1.05rem;
             cursor: pointer;
             position: relative;
-            padding-right: 2rem;
+            padding-right: 2.5rem;
         }
 
-        .faq-question::after {
+        .faq-prompt::after {
             content: "▼";
             position: absolute;
             right: 0;
-            top: 0;
+            top: 50%;
+            transform: translateY(-50%);
             font-size: 0.8rem;
+            color: #9CA3AF;
         }
 
-        .faq-answer {
-            margin-top: 0.5rem;
-            font-size: 0.9rem;
+        .faq-response {
+            margin-top: 0.75rem;
+            font-size: 0.95rem;
+            color: #374151;
+            border-top: 1px dashed #D1D5DB;
+            padding-top: 0.75rem;
         }
 
         /* --- 9. FOOTER --- */
         footer {
             background-color: #1F2937;
             color: #FFFFFF;
-            padding: 4rem 0 2rem 0;
+            padding: 5rem 0 2.5rem 0;
         }
 
         footer a {
@@ -455,38 +524,40 @@
         .footer-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-            margin-bottom: 3rem;
+            gap: 2.5rem;
+            margin-bottom: 4rem;
         }
 
         .footer-col h5 {
             color: #FFFFFF;
             font-size: 1rem;
-            margin-bottom: 1rem;
+            margin-bottom: 1.25rem;
             text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .footer-col ul {
             list-style: none;
             display: flex;
             flex-direction: column;
-            gap: 0.5rem;
-            font-size: 0.85rem;
+            gap: 0.6rem;
+            font-size: 0.9rem;
         }
 
-        .footer-bottom {
+        .footer-base {
             border-top: 1px solid #9CA3AF;
             padding-top: 2rem;
             display: flex;
             justify-content: space-between;
-            font-size: 0.8rem;
+            align-items: center;
+            font-size: 0.85rem;
             color: #9CA3AF;
         }
     </style>
 </head>
 <body>
 
-    <!-- 1. HEADER & GLOBAL NAVIGATION -->
+    <!-- 1. HEADER (NAVIGATION GLOBALE) -->
     <header>
         <div class="navbar">
             <a href="index.html" class="logo">BILL</a>
@@ -500,347 +571,378 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a href="#">Prise de commande</a>
+                        <a href="borne.html">Prise de commande</a>
                         <ul class="dropdown">
-                            <li><a href="borne.html">Borne + Totem</a></li>
-                            <li><a href="commande-en-ligne.html">Commande en ligne</a></li>
-                            <li><a href="app-mobile.html">Application Mobile</a></li>
-                            <li><a href="audio-drive.html">Audio Drive</a></li>
+                            <li><a href="borne.html">Borne + meuble totem</a></li>
+                            <li><a href="commande-en-ligne.html">Cmde en ligne</a></li>
+                            <li><a href="app-mobile.html">App mobile</a></li>
+                            <li><a href="audio-drive.html">Audio drive</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a href="#">Encaissement</a>
+                        <a href="caisse-nf.html">Encaissement</a>
                         <ul class="dropdown">
-                            <li><a href="caisse-nf.html">Caisse NF525</a></li>
-                            <li><a href="monnayeur.html">Monnayeur automatique</a></li>
+                            <li><a href="caisse-nf.html">Caisse NF</a></li>
+                            <li><a href="monnayeur.html">Monnayeur</a></li>
                             <li><a href="bpay.html">BPay</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a href="#">Production & Pilotage</a>
+                        <a href="kds.html">Production & Pilotage</a>
                         <ul class="dropdown">
-                            <li><a href="kds.html">Écrans Cuisine (KDS)</a></li>
-                            <li><a href="imprimante.html">Imprimante de Production</a></li>
-                            <li><a href="plateformes-livraison.html">Plateformes de Livraison</a></li>
-                            <li><a href="remise-commande.html">Remise de Commande</a></li>
+                            <li><a href="kds.html">KDS</a></li>
+                            <li><a href="imprimante.html">Imprimante production</a></li>
+                            <li><a href="plateformes-livraison.html">Plateformes livraison</a></li>
+                            <li><a href="remise-commande.html">Remise de commande</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
                         <a href="qsr.html">Expertises</a>
                         <ul class="dropdown">
-                            <li><a href="qsr.html">Restauration Rapide & QSR</a></li>
-                            <li><a href="franchises.html">Franchises & Chaînes</a></li>
-                            <li><a href="parcs-loisirs.html">Parcs de Loisirs</a></li>
+                            <li><a href="qsr.html">Restauration rapide & QSR</a></li>
+                            <li><a href="franchises.html">Franchise & chaînes</a></li>
+                            <li><a href="parcs-loisirs.html">Parcs de loisirs</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
                         <a href="blog.html">Ressources</a>
                         <ul class="dropdown">
-                            <li><a href="blog.html">Blog & Actualités</a></li>
+                            <li><a href="blog.html">Blog</a></li>
                             <li><a href="centre-aide.html">Centre d'aide</a></li>
-                            <li><a href="integrations.html">Intégrations & API</a></li>
+                            <li><a href="integrations.html">Intégrations</a></li>
                         </ul>
                     </li>
                 </ul>
             </nav>
-            <a href="contact.html" class="btn" style="font-size: 0.8rem; padding: 0.5rem 1rem;">Démo / Contact</a>
+            <a href="contact.html" class="btn" style="font-size: 0.85rem; padding: 0.6rem 1.25rem;">Contact / Démo</a>
         </div>
     </header>
 
-    <!-- 2. SECTION HERO -->
-    <section id="hero">
-        <div class="container">
-            <div class="hero-grid">
-                <div class="hero-content">
-                    <h1>L'écosystème digital 360° pour votre restaurant.</h1>
-                    <p>Centralisez vos flux de commandes, optimisez votre production en cuisine et pilotez vos performances multi-sites depuis une interface unifiée unique.</p>
-                    <div class="hero-actions">
-                        <a href="contact.html" class="btn">Demander une démo</a>
-                        <a href="qui-est-bill.html" class="btn btn-secondary">Découvrir Bill</a>
-                    </div>
-                </div>
-                <div class="hero-img img-placeholder">
-                    🖼️ [Image Hero - Aperçu Dashboard Global & Matériels connectés]
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 3. SECTION LOGOS (RÉASSURANCE) -->
-    <section id="logos">
-        <div class="container">
-            <p style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600;">Ils pilotent leur performance avec Bill</p>
-            <div class="logo-track">
-                <div class="logo-box img-placeholder">🖼️ [Logo Client 1]</div>
-                <div class="logo-box img-placeholder">🖼️ [Logo Client 2]</div>
-                <div class="logo-box img-placeholder">🖼️ [Logo Client 3]</div>
-                <div class="logo-box img-placeholder">🖼️ [Logo Client 4]</div>
-                <div class="logo-box img-placeholder">🖼️ [Logo Client 5]</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 4. SECTION BENTO SOLUTIONS -->
-    <section id="bento-solutions">
-        <div class="container">
-            <h2 class="section-title">Une suite matérielle & logicielle unifiée</h2>
-            <p class="section-subtitle">Chaque brique s'intègre nativement pour supprimer les double-saisies et les pertes d'information.</p>
-            
-            <div class="bento-grid">
-                <!-- Case 1: Prise de commande (Grand format) -->
-                <div class="bento-card bento-w2">
-                    <div>
-                        <h3>Prise de commande omnicanale</h3>
-                        <p>Captez vos clients où qu'ils soient : sur place via bornes, en ligne via Click&Collect, ou directement au Drive.</p>
-                    </div>
-                    <div class="bento-links">
-                        <a href="borne.html" class="bento-tag">Borne tactile</a>
-                        <a href="commande-en-ligne.html" class="bento-tag">Commande en ligne</a>
-                        <a href="app-mobile.html" class="bento-tag">App Mobile</a>
-                        <a href="audio-drive.html" class="bento-tag">Audio Drive</a>
-                    </div>
-                </div>
-
-                <!-- Case 2: KDS (Hauteur) -->
-                <div class="bento-card bento-h2">
-                    <div>
-                        <h3>Cuisine Connectée</h3>
-                        <p>Fini les bons papiers perdus. Les écrans de production synchronisent vos équipes en temps réel pour accélérer la cadence des services.</p>
-                    </div>
-                    <div class="img-placeholder" style="margin: 1rem 0; min-height: 100px;">
-                        🖼️ [Interface Écran KDS]
-                    </div>
-                    <div class="bento-links">
-                        <a href="kds.html" class="bento-tag">Découvrir le KDS</a>
-                    </div>
-                </div>
-
-                <!-- Case 3: Encaissement -->
-                <div class="bento-card">
-                    <div>
-                        <h3>Encaissement Sécurisé</h3>
-                        <p>Logiciels certifiés NF525 pour terminaux fixes et mobiles.</p>
-                    </div>
-                    <div class="bento-links">
-                        <a href="caisse-nf.html" class="bento-tag">Caisse NF</a>
-                        <a href="monnayeur.html" class="bento-tag">Monnayeurs</a>
-                    </div>
-                </div>
-
-                <!-- Case 4: Communication Media -->
-                <div class="bento-card bento-w2">
-                    <div>
-                        <h3>Communication & Affichage</h3>
-                        <p>Mettez à jour vos menus instantanément sur vos écrans dynamiques de restaurant.</p>
-                    </div>
-                    <div class="bento-links">
-                        <a href="affichage-dynamique.html" class="bento-tag">Affichage</a>
-                        <a href="menuboard.html" class="bento-tag">Menuboard</a>
-                        <a href="ecran-confiance.html" class="bento-tag">Écran confiance</a>
-                        <a href="menu-interactif.html" class="bento-tag">Menu Interactif</a>
-                    </div>
-                </div>
-
-                <!-- Case 5: Pilotage Centralisé -->
-                <div class="bento-card bento-w3" style="grid-column: span 3;">
-                    <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-                        <div style="max-width: 60%;">
-                            <h3>Backoffice Unique de Gestion</h3>
-                            <p>Contrôlez l'ensemble de votre chaîne commerciale à distance : stocks, RH, et programmes de fidélisation centralisés.</p>
-                        </div>
-                        <div class="bento-links" style="gap: 1rem;">
-                            <a href="backoffice.html" class="btn">Accéder au Backoffice</a>
+    <main>
+        <!-- 2. SECTION HERO -->
+        <section id="hero">
+            <div class="container">
+                <div class="hero-grid">
+                    <div class="hero-content">
+                        <h1>Solution tout en un pour les restaurateurs[cite: 1].</h1>
+                        <p>Simplifiez et optimisez la gestion globale de vos établissements. Unifiez vos interfaces de vente, de production cuisine et de pilotage stratégique de vos stocks avec un interlocuteur unique[cite: 1].</p>
+                        <div class="hero-actions">
+                            <a href="contact.html" class="btn">Demander une démonstration</a>
+                            <a href="qui-est-bill.html" class="btn btn-secondary">Découvrir notre histoire</a>
                         </div>
                     </div>
-                    <div class="bento-links" style="margin-top: 1rem; gap: 0.5rem;">
-                        <a href="stock.html" class="bento-tag">Gestion des stocks</a>
-                        <a href="rh.html" class="bento-tag">Module RH</a>
-                        <a href="fidelite.html" class="bento-tag">Fidélité client</a>
+                    <div class="img-placeholder hero-img">
+                        🖼 [Image d'illustration Hero - Dashboard de pilotage multi-sites & Suite d'outils matériels connectés]
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- 5. SECTION EXPERTISES -->
-    <section id="expertises">
-        <div class="container">
-            <h2 class="section-title">Conçu pour votre secteur</h2>
-            <p class="section-subtitle">Chaque métier dispose de problématiques de flux spécifiques. Bill y répond précisément.</p>
-            
-            <div class="expertises-grid">
-                <div class="expertise-card">
-                    <div class="img-placeholder" style="height: 100px; margin-bottom: 1rem;">🖼️ [Icon QSR]</div>
-                    <h3>Restauration Rapide / QSR</h3>
-                    <p>Gérez des volumes élevés en période de rush sans failles logistiques ni erreurs de caisse.</p>
-                    <a href="qsr.html" class="btn btn-secondary" style="font-size: 0.8rem;">Voir la solution</a>
-                </div>
-                <div class="expertise-card">
-                    <div class="img-placeholder" style="height: 100px; margin-bottom: 1rem;">🖼️ [Icon Chaînes]</div>
-                    <h3>Franchises & Chaînes</h3>
-                    <p>Centralisez le catalogue produit, harmonisez les prix nationaux et comparez les performances inter-sites.</p>
-                    <a href="franchises.html" class="btn btn-secondary" style="font-size: 0.8rem;">Voir la solution</a>
-                </div>
-                <div class="expertise-card">
-                    <div class="img-placeholder" style="height: 100px; margin-bottom: 1rem;">🖼️ [Icon Parcs]</div>
-                    <h3>Parcs de loisirs</h3>
-                    <p>Fluidifiez les zones de forte affluence avec des points d'encaissement et des bornes nomades autonomes.</p>
-                    <a href="parcs-loisirs.html" class="btn btn-secondary" style="font-size: 0.8rem;">Voir la solution</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 6. SECTION NAVIGATION POULPE -->
-    <section id="navigation-poulpe">
-        <div class="container">
-            <h2 class="section-title">Architecture du réseau Bill</h2>
-            <p class="section-subtitle">Visualisez globalement le maillage interne et l'interconnexion de nos services.</p>
-            
-            <div class="poulpe-tree">
-                <div class="poulpe-core">SITE BILL MODULE INTERNE : ECOSYSTÈME CENTRAL</div>
-                <div class="poulpe-branches">
-                    <div class="poulpe-branch">
-                        <h4>1. Identité</h4>
-                        <ul class="poulpe-leaves">
-                            <li><a href="qui-est-bill.html">➔ Qui est Bill</a></li>
-                            <li><a href="nos-clients.html">➔ Nos clients</a></li>
-                        </ul>
+        <!-- 3. SECTION LOGO CLIENT CARROUSEL (RÉASSURANCE) -->
+        <section id="logos">
+            <div class="container">
+                <div class="logo-carousel-container">
+                    <span class="logo-carousel-label">Ils font confiance à l'écosystème Bill</span>
+                    <div class="logo-track-simulation">
+                        <div class="img-placeholder logo-mock">🖼 [Logo - Green2Green][cite: 1]</div>
+                        <div class="img-placeholder logo-mock">🖼 [Logo - Supreme][cite: 1]</div>
+                        <div class="img-placeholder logo-mock">🖼 [Logo Enseigne Restauration 3]</div>
+                        <div class="img-placeholder logo-mock">🖼 [Logo Enseigne Franchise 4]</div>
+                        <div class="img-placeholder logo-mock">🖼 [Logo Enseigne Multi-site 5]</div>
                     </div>
-                    <div class="poulpe-branch">
-                        <h4>2. Commandes & Caisse</h4>
-                        <ul class="poulpe-leaves">
-                            <li><a href="borne.html">➔ Bornes Totem</a></li>
-                            <li><a href="commande-en-ligne.html">➔ Cmde en Ligne</a></li>
-                            <li><a href="app-mobile.html">➔ App Mobile</a></li>
-                            <li><a href="audio-drive.html">➔ Audio Drive</a></li>
-                            <li><a href="caisse-nf.html">➔ Caisse NF</a></li>
-                            <li><a href="monnayeur.html">➔ Monnayeur</a></li>
-                            <li><a href="bpay.html">➔ BPay</a></li>
-                        </ul>
-                    </div>
-                    <div class="poulpe-branch">
-                        <h4>3. Production & Logistique</h4>
-                        <ul class="poulpe-leaves">
-                            <li><a href="kds.html">➔ KDS Cuisine</a></li>
-                            <li><a href="imprimante.html">➔ Imprimantes</a></li>
-                            <li><a href="plateformes-livraison.html">➔ Plateformes</a></li>
-                            <li><a href="remise-commande.html">➔ Remise Commande</a></li>
-                            <li><a href="backoffice.html">➔ Backoffice global</a></li>
-                            <li><a href="stock.html">➔ Gestion Stocks</a></li>
-                            <li><a href="rh.html">➔ Gestion RH</a></li>
-                        </ul>
-                    </div>
-                    <div class="poulpe-branch">
-                        <h4>4. Marketing & Display</h4>
-                        <ul class="poulpe-leaves">
-                            <li><a href="affichage-dynamique.html">➔ Affichage Dyn.</a></li>
-                            <li><a href="menuboard.html">➔ Menuboards</a></li>
-                            <li><a href="ecran-confiance.html">➔ Écran Confiance</a></li>
-                            <li><a href="menu-interactif.html">➔ Menu Interactif</a></li>
-                            <li><a href="fidelite.html">➔ Fidélisation</a></li>
-                        </ul>
-                    </div>
+                    <span class="carousel-indicator">•• Simulateur Carrousel de Réassurance ••</span>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- 7. SECTION SOCIAL PROOF -->
-    <section id="social-proof">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <div class="number">+25%</div>
-                    <div class="label">Augmentation du panier moyen</div>
+        <!-- 4. SECTION BENTO PRESENTATION DE SOLUTIONS -->
+        <section id="bento-solutions">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Une suite d'outils performante et interconnectée</h2>
+                    <p class="section-subtitle">Découvrez l'ensemble de nos briques matérielles et logicielles conçues pour automatiser vos processus métiers et d'encaissement.</p>
                 </div>
-                <div class="stat-item">
-                    <div class="number">-35%</div>
-                    <div class="label">D'erreurs de préparation en cuisine</div>
-                </div>
-                <div class="stat-item">
-                    <div class="number">&lt; 5 min</div>
-                    <div class="label">Temps de réactivité du support client</div>
-                </div>
-            </div>
+                
+                <div class="bento-grid">
+                    <!-- Prise de commande (Largeur 2) -->
+                    <div class="bento-cell bento-w2">
+                        <div>
+                            <h3>Prise de commande digitale</h3>
+                            <p>Multipliez vos canaux d'achat en salle, en ligne ou à distance tout en centralisant le flux complet des transactions dans votre backoffice.</p>
+                        </div>
+                        <div class="bento-tags">
+                            <a href="borne.html" class="bento-link-tag">Borne tactile</a>
+                            <a href="commande-en-ligne.html" class="bento-link-tag">Cmde en ligne</a>
+                            <a href="app-mobile.html" class="bento-link-tag">App mobile</a>
+                            <a href="audio-drive.html" class="bento-link-tag">Audio drive</a>
+                        </div>
+                    </div>
 
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"Bill nous offre un système informatique global et complet, avec un interlocuteur unique et une grande flexibilité."</p>
-                    <p class="testimonial-author">Jérémy CRETIEN — Co-fondateur, Green2Green</p>
-                </div>
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"Les modules intégrés simplifient et optimisent notre processus de production, offrant une efficacité exceptionnelle en cuisine."</p>
-                    <p class="testimonial-author">Léa HOBBES — Responsable Comm, Supreme</p>
-                </div>
-            </div>
-        </div>
-    </section>
+                    <!-- KDS Écran Cuisine (Hauteur 2) -->
+                    <div class="bento-cell bento-h2">
+                        <div>
+                            <h3>Cuisine Ordonnée (KDS)</h3>
+                            <p>Optimisez vos flux logistiques en cuisine. Remplacez définitivement les bons papier par des écrans de production synchronisés en temps réel[cite: 1].</p>
+                        </div>
+                        <div class="img-placeholder" style="height: 130px; margin: 1rem 0;">
+                            🖼 [Aperçu Écran de production KDS]
+                        </div>
+                        <div class="bento-tags">
+                            <a href="kds.html" class="bento-link-tag">Écrans KDS</a>
+                        </div>
+                    </div>
 
-    <!-- 8. SECTION FAQ -->
-    <section id="faq">
-        <div class="container">
-            <h2 class="section-title">Questions fréquentes</h2>
-            <p class="section-subtitle">Tout ce que vous devez savoir sur le déploiement de la solution.</p>
-            
-            <div class="faq-list">
-                <div class="faq-item">
-                    <div class="faq-question">Vos logiciels sont-ils certifiés conformes à la législation fiscale ?</div>
-                    <div class="faq-answer">Oui, l'intégralité de nos systèmes d'encaissement et de gestion logicielle respecte strictement la norme NF525 et les exigences de l'administration de lutte contre la fraude à la TVA.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">Peut-on conserver notre matériel de caisse actuel ?</div>
-                    <div class="faq-answer">Bill est une solution agnostique matériellement dans la plupart des cas. Nous analysons l'éligibilité technique de votre parc existant lors de la phase de diagnostic.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">Comment s'organise la gestion multi-sites ?</div>
-                    <div class="faq-answer">Notre Backoffice unique vous permet d'unifier vos cartes et d'avoir des remontées de rapports consolidées pour analyser l'ensemble de vos restaurants en temps réel.</div>
+                    <!-- Encaissement NF -->
+                    <div class="bento-cell">
+                        <div>
+                            <h3>Encaissement Certifié</h3>
+                            <p>Garantissez la conformité fiscale stricte de vos encaissements physiques et mobiles.</p>
+                        </div>
+                        <div class="bento-tags">
+                            <a href="caisse-nf.html" class="bento-tag bento-link-tag">Caisse NF</a>
+                            <a href="monnayeur.html" class="bento-tag bento-link-tag">Monnayeur</a>
+                            <a href="bpay.html" class="bento-tag bento-link-tag">BPay</a>
+                        </div>
+                    </div>
+
+                    <!-- Communication & Display (Largeur 2) -->
+                    <div class="bento-cell bento-w2">
+                        <div>
+                            <h3>Communication & Média</h3>
+                            <p>Diffusez et mettez à jour votre carte et vos suggestions commerciales en temps réel sur vos écrans dynamiques extérieurs et intérieurs.</p>
+                        </div>
+                        <div class="bento-tags">
+                            <a href="affichage-dynamique.html" class="bento-link-tag">Affichage dynamique</a>
+                            <a href="menuboard.html" class="bento-link-tag">Menuboard</a>
+                            <a href="ecran-confiance.html" class="bento-link-tag">Ecran confiance</a>
+                            <a href="menu-interactif.html" class="bento-link-tag">Menu interactif</a>
+                        </div>
+                    </div>
+
+                    <!-- Pilotage Centralisé (Largeur 3) -->
+                    <div class="bento-cell" style="grid-column: span 3; display: flex; flex-direction: row; align-items: center; justify-content: space-between; gap: 2rem;">
+                        <div style="max-width: 65%;">
+                            <h3>Backoffice Unique de Pilotage</h3>
+                            <p>Système centralisé permettant la gestion de vos établissements à distance. Gardez un œil sur vos stocks de produits, vos réassorts et vos programmes de fidélisation clients[cite: 1].</p>
+                        </div>
+                        <div class="bento-tags" style="flex-direction: column; gap: 0.5rem; align-items: flex-end;">
+                            <a href="backoffice.html" class="btn" style="font-size: 0.85rem; padding: 0.5rem 1rem; width: 100%;">Gérer mon réseau</a>
+                            <div style="display:flex; gap:0.5rem; margin-top:0.5rem;">
+                                <a href="stock.html" class="bento-link-tag">Stock</a>
+                                <a href="rh.html" class="bento-link-tag">RH</a>
+                                <a href="fidelite.html" class="bento-link-tag">Fidélité</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <!-- 5. SECTION EXPERTISES (LES 3 SECTEURS CIBLES) -->
+        <section id="expertises">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Des solutions adaptées à chaque configuration de flux</h2>
+                    <p class="section-subtitle">Parce que la gestion opérationnelle inter-sites varie selon vos volumes, Bill déploie une ingénierie dédiée à votre secteur commercial.</p>
+                </div>
+
+                <div class="expertises-grid">
+                    <!-- Expertises 1 -->
+                    <div class="expertise-node">
+                        <div class="img-placeholder expertise-icon-wrapper">🖼 [Illustration - QSR]</div>
+                        <h3>Restauration Rapide & QSR</h3>
+                        <p>Absorbez des cadences intensives en période de rush, réduisez le temps de transaction et éliminez définitivement les erreurs de caisse.</p>
+                        <a href="qsr.html" class="btn btn-secondary" style="font-size: 0.85rem; width: 100%;">Voir l'expertise</a>
+                    </div>
+                    <!-- Expertises 2 -->
+                    <div class="expertise-node">
+                        <div class="img-placeholder expertise-icon-wrapper">🖼 [Illustration - Franchises]</div>
+                        <h3>Franchise & Chaînes</h3>
+                        <p>Verrouillez vos paramètres sensibles, harmonisez vos catalogues produits nationaux et comparez facilement les performances globales de vos points de vente.</p>
+                        <a href="franchises.html" class="btn btn-secondary" style="font-size: 0.85rem; width: 100%;">Voir l'expertise</a>
+                    </div>
+                    <!-- Expertises 3 -->
+                    <div class="expertise-node">
+                        <div class="img-placeholder expertise-icon-wrapper">🖼 [Illustration - Parcs]</div>
+                        <h3>Parcs de loisirs</h3>
+                        <p>Maîtrisez l'encaissement et l'orientation des visiteurs sur de vastes espaces grâce à des configurations matérielles nomades et autonomes.</p>
+                        <a href="parcs-loisirs.html" class="btn btn-secondary" style="font-size: 0.85rem; width: 100%;">Voir l'expertise</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. SECTION NAVIGATION POULPE (STRUCTURE MAILLAGE INTERNE) -->
+        <section id="navigation-poulpe">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Plan architectural de l'écosystème Bill</h2>
+                    <p class="section-subtitle">Visualisez globalement l'arborescence structurelle du réseau et l'interconnexion de nos 29 points de contact.</p>
+                </div>
+
+                <div class="poulpe-map-wrapper">
+                    <div class="poulpe-head">Sitemap interactif de la suite Bill</div>
+                    <div class="poulpe-tentacles">
+                        <!-- Tentacle 1 -->
+                        <div class="tentacle">
+                            <h4>1. Qui Sommes-Nous</h4>
+                            <ul class="suction-cups">
+                                <li><a href="qui-est-bill.html">➔ Qui est Bill</a></li>
+                                <li><a href="nos-clients.html">➔ Nos clients</a></li>
+                                <li><a href="blog.html">➔ Blog & Ressources</a></li>
+                            </ul>
+                        </div>
+                        <!-- Tentacle 2 -->
+                        <div class="tentacle">
+                            <h4>2. Prise de Commande</h4>
+                            <ul class="suction-cups">
+                                <li><a href="borne.html">➔ Borne + Totem</a></li>
+                                <li><a href="commande-en-ligne.html">➔ Cmde en ligne</a></li>
+                                <li><a href="app-mobile.html">➔ App mobile</a></li>
+                                <li><a href="audio-drive.html">➔ Audio drive</a></li>
+                            </ul>
+                        </div>
+                        <!-- Tentacle 3 -->
+                        <div class="tentacle">
+                            <h4>3. Caisse & Production</h4>
+                            <ul class="suction-cups">
+                                <li><a href="caisse-nf.html">➔ Caisse NF (Fixe/Mobile)</a></li>
+                                <li><a href="monnayeur.html">➔ Monnayeur auto</a></li>
+                                <li><a href="bpay.html">➔ Solution BPay</a></li>
+                                <li><a href="kds.html">➔ Écrans KDS Cuisine</a></li>
+                                <li><a href="imprimante.html">➔ Imprimante production</a></li>
+                            </ul>
+                        </div>
+                        <!-- Tentacle 4 -->
+                        <div class="tentacle">
+                            <h4>4. Pilotage & Médias</h4>
+                            <ul class="suction-cups">
+                                <li><a href="plateformes-livraison.html">➔ Plateformes livraison</a></li>
+                                <li><a href="remise-commande.html">➔ Remise de commande</a></li>
+                                <li><a href="affichage-dynamique.html">➔ Affichage dynamique</a></li>
+                                <li><a href="menuboard.html">➔ Menuboard</a></li>
+                                <li><a href="ecran-confiance.html">➔ Ecran confiance</a></li>
+                                <li><a href="menu-interactif.html">➔ Menu interactif</a></li>
+                                <li><a href="backoffice.html">➔ Backoffice unique</a></li>
+                                <li><a href="stock.html">➔ Gestion de Stock</a></li>
+                                <li><a href="rh.html">➔ Gestion RH</a></li>
+                                <li><a href="fidelite.html">➔ Programme Fidélité</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. SECTION SOCIAL PROOF (CHIFFRES & TEMOIGNAGES) -->
+        <section id="social-proof">
+            <div class="container">
+                <div class="proof-metrics-grid">
+                    <div class="metric-unit">
+                        <h3>+20%</h3>
+                        <p>D'augmentation du panier moyen constaté[cite: 1]</p>
+                    </div>
+                    <div class="metric-unit">
+                        <h3>4%</h3>
+                        <p>Taux d'erreur constaté en cuisine[cite: 1]</p>
+                    </div>
+                    <div class="metric-unit">
+                        <h3>-2%</h3>
+                        <p>De commandes perdues en rush[cite: 1]</p>
+                    </div>
+                </div>
+
+                <div class="testimonials-grid">
+                    <!-- Témoignage 1 -->
+                    <div class="testimonial-wire-card">
+                        <blockquote>« Bill nous offre un système informatique global et complet, avec un interlocuteur unique, et une grande flexibilité pour des solutions sur-mesure. Nous sommes ravis de travailler avec eux. »[cite: 1]</blockquote>
+                        <div>
+                            <cite>Jérémy CRETIEN[cite: 1]</cite>
+                            <span class="quote-role" style="font-size:0.8rem; color:#9CA3AF; font-weight:700; text-transform:uppercase;">Co fondateur — Green2Green[cite: 1]</span>
+                        </div>
+                    </div>
+                    <!-- Témoignage 2 -->
+                    <div class="testimonial-wire-card">
+                        <blockquote>« Bill et ses modules intégrés simplifient et optimisent notre processus de production, offrant une efficacité exceptionnelle à chaque étape de la préparation culinaire. »[cite: 1]</blockquote>
+                        <div>
+                            <cite>Léa HOBBES[cite: 1]</cite>
+                            <span class="quote-role" style="font-size:0.8rem; color:#9CA3AF; font-weight:700; text-transform:uppercase;">Responsable Communication — Supreme[cite: 1]</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. SECTION FAQ (QUESTIONS FREQUENTES) -->
+        <section id="faq">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Des réponses claires à vos problématiques de gestion</h2>
+                    <p class="section-subtitle">Découvrez les détails réglementaires et techniques de l'écosystème Bill.</p>
+                </div>
+
+                <div class="faq-accordion-blueprint">
+                    <div class="faq-node">
+                        <div class="faq-prompt">Est-il obligatoire d'avoir un logiciel de caisse certifié NF525 en 2026 ?</div>
+                        <div class="faq-response">Oui, la loi française impose l'inaltérabilité, la sécurisation, l'archivage et la conservation des données de transaction pour lutter contre la fraude fiscale à la TVA. Bill intègre nativement cette conformité structurelle.</div>
+                    </div>
+                    <div class="faq-node">
+                        <div class="faq-prompt">Comment la solution centralisée aide-t-elle la gestion de la restauration multi-sites ?</div>
+                        <div class="faq-response">Le catalogue produits, les fiches techniques, les droits d'accès et les prix nationaux sont définis au niveau du siège et répercutés instantanément sur l'ensemble de votre réseau pour éviter les dérives financières inter-sites.</div>
+                    </div>
+                    <div class="faq-node">
+                        <div class="faq-prompt">Peut-on interconnecter des plateformes de livraison externes (Uber Eats, Deliveroo) ?</div>
+                        <div class="faq-response">Parfaitement. Bill intègre nativement les flux de commandes provenant des canaux externes au sein d'un tableau de bord centralisé et synchronisé avec vos écrans de production de la cuisine (KDS).</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <!-- 9. FOOTER -->
     <footer>
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <h5>Solutions</h5>
+                    <h5>Prise de commande</h5>
                     <ul>
-                        <li><a href="borne.html">Borne Tactile</a></li>
-                        <li><a href="commande-en-ligne.html">Commande en Ligne</a></li>
-                        <li><a href="caisse-nf.html">Caisse NF525</a></li>
-                        <li><a href="kds.html">Écrans Cuisine KDS</a></li>
+                        <li><a href="borne.html">Borne + meuble totem</a></li>
+                        <li><a href="commande-en-ligne.html">Cmde en ligne</a></li>
+                        <li><a href="app-mobile.html">App mobile</a></li>
+                        <li><a href="audio-drive.html">Audio drive</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h5>Expertises</h5>
+                    <h5>Encaissement & Cuisine</h5>
                     <ul>
-                        <li><a href="qsr.html">Restauration Rapide</a></li>
-                        <li><a href="franchises.html">Réseaux de Franchises</a></li>
-                        <li><a href="parcs-loisirs.html">Gestion de Parcs</a></li>
+                        <li><a href="caisse-nf.html">Caisse NF</a></li>
+                        <li><a href="monnayeur.html">Monnayeur auto</a></li>
+                        <li><a href="bpay.html">BPay Cashless</a></li>
+                        <li><a href="kds.html">Écrans KDS Cuisine</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h5>Ressources</h5>
+                    <h5>Expertises & Management</h5>
                     <ul>
-                        <li><a href="blog.html">Notre Blog</a></li>
-                        <li><a href="centre-aide.html">Centre de Support</a></li>
-                        <li><a href="integrations.html">Fiches Intégrations</a></li>
+                        <li><a href="qsr.html">Restauration rapide</a></li>
+                        <li><a href="franchises.html">Franchise & Réseaux</a></li>
+                        <li><a href="backoffice.html">Backoffice unique</a></li>
+                        <li><a href="integrations.html">Intégrations API</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h5>Contact & Infos</h5>
+                    <h5>À propos & Support</h5>
                     <ul>
-                        <li><a href="contact.html">Demande de Démo</a></li>
-                        <li><a href="qui-est-bill.html">À propos de Bill</a></li>
-                        <li><a href="nos-clients.html">Témoignages Clients</a></li>
+                        <li><a href="qui-est-bill.html">Qui est Bill</a></li>
+                        <li><a href="nos-clients.html">Nos clients</a></li>
+                        <li><a href="centre-aide.html">Centre d'aide</a></li>
+                        <li><a href="contact.html">Demander un Devis</a></li>
                     </ul>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <div>&copy; 2026 BILL SAS. Tous droits réservés. Projet Maquette Fil de Fer Front-end.</div>
-                <div style="display: flex; gap: 1rem;">
+            <div class="footer-base">
+                <div>&copy; 2026 BILL SAS. Structure Maquette Basse-Fidélité pour l'Intégration Front-end. Tous droits réservés.</div>
+                <div style="display:flex; gap:1.5rem;">
                     <a href="#">Mentions Légales</a>
                     <a href="#">Confidentialité (RGPD)</a>
                 </div>
