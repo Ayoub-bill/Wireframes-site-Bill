@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wireframe Low-Fi - Bill (Partenariats &amp; Intégrations)</title>
+    <style>
+        /* --- SYSTEME DE DESIGN WIREFRAME (LOW-FI) --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #FFFFFF;
+            color: #1F2937;
+            line-height: 1.6;
+        }
+
+        a {
+            color: #1F2937;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #1F2937;
+            color: #FFFFFF;
+            padding: 0.75rem 1.5rem;
+            border: 1px solid #1F2937;
+            font-weight: bold;
+            cursor: pointer;
+            text-align: center;
+            transition: background-color 0.2s;
+        }
+
+        .btn:hover {
+            background-color: #374151;
+            text-decoration: none;
+        }
+
+        .btn-secondary {
+            background-color: #F3F4F6;
+            color: #1F2937;
+            border: 1px solid #D1D5DB;
+        }
+
+        .btn-secondary:hover {
+            background-color: #E5E7EB;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        section {
+            padding: 4rem 0;
+            border-bottom: 1px solid #D1D5DB;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #9CA3AF;
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* --- BLOCS IMAGES WIREFRAME --- */
+        .img-placeholder {
+            background-color: #F3F4F6;
+            border: 2px dashed #9CA3AF;
+            color: #1F2937;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* --- HEADER & GLOBAL NAVIGATION --- */
+        header {
+            background-color: #FFFFFF;
+            border-bottom: 1px solid #D1D5DB;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-item > a {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #FFFFFF;
+            border: 1px solid #D1D5DB;
+            padding: 0.5rem 0;
+            min-width: 240px;
+            list-style: none;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .nav-item:hover .dropdown {
+            display: block;
+        }
+
+        .dropdown a {
+            display: block;
+            padding: 0.5rem 1rem;
+            font-size: 0.8rem;
+            text-transform: none;
+        }
+
+        .dropdown a:hover {
+            background-color: #F3F4F6;
+        }
+
+        /* --- HERO SECTION --- */
+        #integrations-hero {
+            background-color: #FFFFFF;
+            padding: 5rem 0;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 2.5rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            font-weight: 800;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: #374151;
+        }
+
+        /* --- CATEGORIES & MARKETPLACE --- */
+        #marketplace-section {
+            background-color: #F3F4F6;
+        }
+
+        .search-filter-wire {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .search-mock {
+            flex-grow: 1;
+            border: 1px solid #D1D5DB;
+            background-color: #FFFFFF;
+            padding: 0.75rem;
+            font-size: 0.9rem;
+            color: #9CA3AF;
+        }
+
+        .filter-select-mock {
+            border: 1px solid #D1D5DB;
+            background-color: #FFFFFF;
+            padding: 0.75rem 1.5rem;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .marketplace-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .partner-card {
+            background-color: #FFFFFF;
+            border: 1px solid #D1D5DB;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .partner-card .card-logo-placeholder {
+            height: 60px;
+            margin-bottom: 1.5rem;
+        }
+
+        .partner-card h3 {
+            font-size: 1.15rem;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .partner-card p {
+            font-size: 0.85rem;
+            color: #4B5563;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .partner-card .tag-mock {
+            display: inline-block;
+            align-self: flex-start;
+            border: 1px solid #1F2937;
+            padding: 0.15rem 0.5rem;
+            font-size: 0.7rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        /* --- API HUB SECTION --- */
+        #api-hub-section {
+            background-color: #FFFFFF;
+        }
+
+        .api-split-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .api-content h2 {
+            font-size: 2rem;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+        }
+
+        .api-content p {
+            color: #374151;
+            margin-bottom: 1.5rem;
+        }
+
+        .api-features-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+        }
+
+        .api-features-list li {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .api-features-list li::before {
+            content: "▪";
+            position: absolute;
+            left: 0;
+            color: #1F2937;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #1F2937;
+            color: #FFFFFF;
+            padding: 4rem 0 2rem 0;
+        }
+
+        footer a {
+            color: #9CA3AF;
+        }
+
+        footer a:hover {
+            color: #FFFFFF;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-col h5 {
+            color: #FFFFFF;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .footer-col ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #9CA3AF;
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: #9CA3AF;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER & GLOBAL NAVIGATION -->
+    <header>
+        <div class="navbar">
+            <a href="index.html" class="logo">BILL</a>
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="qui-est-bill.html">Pourquoi Bill</a>
+                        <ul class="dropdown">
+                            <li><a href="qui-est-bill.html">Qui est Bill</a></li>
+                            <li><a href="nos-clients.html">Nos Clients</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="borne.html">Prise de commande</a>
+                        <ul class="dropdown">
+                            <li><a href="borne.html">Borne + Totem</a></li>
+                            <li><a href="commande-en-ligne.html">Commande en ligne</a></li>
+                            <li><a href="app-mobile.html">Application Mobile</a></li>
+                            <li><a href="audio-drive.html">Audio Drive</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="caisse-nf.html">Encaissement</a>
+                        <ul class="dropdown">
+                            <li><a href="caisse-nf.html">Caisse NF525</a></li>
+                            <li><a href="monnayeur.html">Monnayeur automatique</a></li>
+                            <li><a href="bpay.html">BPay</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="kds.html">Production & Pilotage</a>
+                        <ul class="dropdown">
+                            <li><a href="kds.html">Écrans Cuisine (KDS)</a></li>
+                            <li><a href="imprimante.html">Imprimante de Production</a></li>
+                            <li><a href="plateformes-livraison.html">Plateformes de Livraison</a></li>
+                            <li><a href="remise-commande.html">Remise de Commande</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="qsr.html">Expertises</a>
+                        <ul class="dropdown">
+                            <li><a href="qsr.html">Restauration Rapide & QSR</a></li>
+                            <li><a href="franchises.html">Franchises & Chaînes</a></li>
+                            <li><a href="parcs-loisirs.html">Parcs de Loisirs</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="blog.html" style="border-bottom: 2px solid #1F2937;">Ressources</a>
+                        <ul class="dropdown">
+                            <li><a href="blog.html">Blog & Actualités</a></li>
+                            <li><a href="centre-aide.html">Centre d'aide</a></li>
+                            <li><a href="integrations.html">Intégrations & API</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            <a href="contact.html" class="btn" style="font-size: 0.8rem; padding: 0.5rem 1rem;">Démo / Contact</a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="integrations-hero">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <h1>Partenariats &amp; Intégrations Bill-App</h1>
+                    <p>Profitez de partenariats stratégiques et d’intégrations innovantes pour simplifier et enrichir la gestion globale de votre restaurant[cite: 1]. Connectez de manière unifiée vos briques logicielles tierces préférées à notre noyau centralisé[cite: 1].</p>
+                    <div style="display: flex; gap: 1rem;">
+                        <a href="contact.html" class="btn">Devenir partenaire technique</a>
+                        <a href="#marketplace-section" class="btn btn-secondary">Explorer le catalogue</a>
+                    </div>
+                </div>
+                <div class="img-placeholder" style="min-height: 380px;">
+                    Écosystème Connecteurs Graphique — 🖼️ [Logos de logiciels tiers de livraison, de comptabilité et de gestion connectés à la plateforme centrale Bill-App via des nœuds API synchrones]
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MARKETPLACE HUB SECTION -->
+    <section id="marketplace-section">
+        <div class="container">
+            <h2 class="section-title">Catalogue des solutions interconnectées</h2>
+            <p class="section-subtitle">Filtrez et recherchez les passerelles applicatives prêtes à l'emploi avec votre <a href="backoffice.html" style="text-decoration: underline;">Backoffice unique</a>[cite: 1].</p>
+            
+            <!-- Wireframe Search Filters -->
+            <div class="search-filter-wire">
+                <div class="search-mock">🔍 Rechercher une intégration technique (ex: Deliveroo, Stripe, QuickBooks...)</div>
+                <div class="filter-select-mock">Catégories : Toutes ▾</div>
+                <div class="filter-select-mock">Compatibilité : Cloud ▾</div>
+            </div>
+
+            <!-- Cards Marketplace Grid -->
+            <div class="marketplace-grid">
+                
+                <!-- Card 1 -->
+                <div class="partner-card">
+                    <div class="img-placeholder card-logo-placeholder">🖼️ [Logo Deliveroo]</div>
+                    <div class="tag-mock">Plateformes Livraison[cite: 1]</div>
+                    <h3>Deliveroo x Bill[cite: 1]</h3>
+                    <p>Injectez automatiquement vos ventes de livraison dans vos <a href="kds.html">écrans de production cuisine</a> et bénéficiez d'avantages exclusifs de crédits publicitaires[cite: 1].</p>
+                    <a href="plateformes-livraison.html" class="btn btn-secondary" style="font-size: 0.8rem; text-align: center;">Fiche d'intégration</a>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="partner-card">
+                    <div class="img-placeholder card-logo-placeholder">🖼️ [Logo Uber Eats]</div>
+                    <div class="tag-mock">Plateformes Livraison[cite: 1]</div>
+                    <h3>Uber Eats Sync</h3>
+                    <p>Centralisation des commandes en cours, mise à jour instantanée de vos stocks théoriques et synchronisation directe avec le flux comptable[cite: 1].</p>
+                    <a href="plateformes-livraison.html" class="btn btn-secondary" style="font-size: 0.8rem; text-align: center;">Fiche d'intégration</a>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="partner-card">
+                    <div class="img-placeholder card-logo-placeholder">🖼️ [Logo Stripe / BPay]</div>
+                    <div class="tag-mock">Passerelles Paiement</div>
+                    <h3>Stripe Gateway / BPay</h3>
+                    <p>Sécurisation totale des transactions monétiques, paiement sans friction pour la commande mobile à table et traitement comptable automatisé[cite: 1].</p>
+                    <a href="bpay.html" class="btn btn-secondary" style="font-size: 0.8rem; text-align: center;">Fiche d'intégration</a>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="partner-card">
+                    <div class="img-placeholder card-logo-placeholder">🖼️ [Logo QuickBooks]</div>
+                    <div class="tag-mock">Comptabilité &amp; Finance</div>
+                    <h3>QuickBooks Comptabilité</h3>
+                    <p>Export automatisé de vos rapports de clôtures fiscales horodatées et traçables conformes à la réglementation NF525[cite: 1].</p>
+                    <a href="caisse-nf.html" class="btn btn-secondary" style="font-size: 0.8rem; text-align: center;">Fiche d'intégration</a>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="partner-card">
+                    <div class="img-placeholder card-logo-placeholder">🖼️ [Logo Organismes Halal]</div>
+                    <div class="tag-mock">Certifications éthiques</div>
+                    <h3>AVS &amp; Halal Europe Certified</h3>
+                    <p>Fiches de traçabilité matière et étiquetage de conformité fournisseurs intégrés nativement pour les segments spécialisés[cite: 1].</p>
+                    <a href="qsr.html" class="btn btn-secondary" style="font-size: 0.8rem; text-align: center;">Fiche d'intégration</a>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="partner-card">
+                    <div class="img-placeholder card-logo-placeholder">🖼️ [Logo Logiciels RH]</div>
+                    <div class="tag-mock">Ressources Humaines[cite: 1]</div>
+                    <h3>Combo / Skello RH Sync</h3>
+                    <p>Exportation en un clic de vos pointages d'émargement de caisse pour alimenter la paie de vos collaborateurs et simplifier la planification des rushs[cite: 1].</p>
+                    <a href="rh.html" class="btn btn-secondary" style="font-size: 0.8rem; text-align: center;">Fiche d'intégration</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- DEVELOPER API HUB SECTION -->
+    <section id="api-hub-section">
+        <div class="container api-split-grid">
+            <div class="api-content">
+                <h2>Bill API : Conçu pour les développeurs et les réseaux</h2>
+                <p>Si vos besoins techniques s'avèrent extrêmement spécifiques, notre architecture logicielle unifiée met à votre disposition une API ouverte complète pour connecter vos propres outils maison ou applications personnalisées[cite: 1].</p>
+                <ul class="api-features-list">
+                    <li>Documentation complète Swagger REST API</li>
+                    <li>Webhooks temps réel pour les ventes et l'état des stocks[cite: 1]</li>
+                    <li>Hiérarchisation des accès et clés de sécurité cryptées[cite: 1]</li>
+                    <li>Environnement Sandbox de test gratuit</li>
+                </ul>
+                <a href="centre-aide.html" class="btn">Consulter la doc développeur</a>
+            </div>
+            <div class="img-placeholder" style="min-height: 350px;">
+                Interface Visualisation API Code — 🖼️ [Maquette d'un éditeur de code affichant un modèle JSON de webhook de transaction d'encaissement et le bouton de génération de clés secrètes]
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h5>Solutions</h5>
+                    <ul>
+                        <li><a href="borne.html">Borne Tactile</a></li>
+                        <li><a href="commande-en-ligne.html">Commande en Ligne</a></li>
+                        <li><a href="caisse-nf.html">Caisse NF525</a></li>
+                        <li><a href="kds.html">Écrans Cuisine KDS</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Expertises</h5>
+                    <ul>
+                        <li><a href="qsr.html">Restauration Rapide &amp; QSR</a></li>
+                        <li><a href="franchises.html">Réseaux de Franchises</a></li>
+                        <li><a href="parcs-loisirs.html">Parcs de Loisirs</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Ressources</h5>
+                    <ul>
+                        <li><a href="blog.html">Notre Blog</a></li>
+                        <li><a href="centre-aide.html">Centre de Support</a></li>
+                        <li><a href="integrations.html">Fiches Intégrations</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Contact &amp; Infos</h5>
+                    <ul>
+                        <li><a href="contact.html">Demande de Démo</a></li>
+                        <li><a href="qui-est-bill.html">À propos de Bill</a></li>
+                        <li><a href="nos-clients.html">Témoignages Clients</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div>&copy; 2026 BILL SAS. Tous droits réservés. Projet Maquette Fil de Fer Front-end.</div>
+                <div style="display: flex; gap: 1rem;">
+                    <a href="#">Mentions Légales</a>
+                    <a href="#">Confidentialité (RGPD)</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

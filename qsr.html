@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wireframe Low-Fi - Bill (Restauration Rapide & QSR)</title>
+    <style>
+        /* --- SYSTEME DE DESIGN WIREFRAME (LOW-FI) --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #FFFFFF;
+            color: #1F2937;
+            line-height: 1.6;
+        }
+
+        a {
+            color: #1F2937;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #1F2937;
+            color: #FFFFFF;
+            padding: 0.75rem 1.5rem;
+            border: 1px solid #1F2937;
+            font-weight: bold;
+            cursor: pointer;
+            text-align: center;
+            transition: background-color 0.2s;
+        }
+
+        .btn:hover {
+            background-color: #374151;
+            text-decoration: none;
+        }
+
+        .btn-secondary {
+            background-color: #F3F4F6;
+            color: #1F2937;
+            border: 1px solid #D1D5DB;
+        }
+
+        .btn-secondary:hover {
+            background-color: #E5E7EB;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        section {
+            padding: 4rem 0;
+            border-bottom: 1px solid #D1D5DB;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #9CA3AF;
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* --- BLOCS IMAGES WIREFRAME --- */
+        .img-placeholder {
+            background-color: #F3F4F6;
+            border: 2px dashed #9CA3AF;
+            color: #1F2937;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* --- HEADER & GLOBAL NAVIGATION --- */
+        header {
+            background-color: #FFFFFF;
+            border-bottom: 1px solid #D1D5DB;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-item > a {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #FFFFFF;
+            border: 1px solid #D1D5DB;
+            padding: 0.5rem 0;
+            min-width: 240px;
+            list-style: none;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .nav-item:hover .dropdown {
+            display: block;
+        }
+
+        .dropdown a {
+            display: block;
+            padding: 0.5rem 1rem;
+            font-size: 0.8rem;
+            text-transform: none;
+        }
+
+        .dropdown a:hover {
+            background-color: #F3F4F6;
+        }
+
+        /* --- EXPERTISE HERO SECTION --- */
+        #expertise-hero {
+            background-color: #FFFFFF;
+            padding: 5rem 0;
+        }
+
+        .expertise-hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .expertise-hero-content h1 {
+            font-size: 2.5rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            font-weight: 800;
+        }
+
+        .expertise-hero-content p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: #374151;
+        }
+
+        .expertise-img-main {
+            min-height: 400px;
+            height: 100%;
+        }
+
+        /* --- CHALLENGES GRID --- */
+        #qsr-challenges {
+            background-color: #F3F4F6;
+        }
+
+        .challenges-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .challenge-card {
+            background-color: #FFFFFF;
+            border: 1px solid #D1D5DB;
+            padding: 2.5rem 2rem;
+        }
+
+        .challenge-card h3 {
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #1F2937;
+            padding-bottom: 0.25rem;
+        }
+
+        .challenge-card p {
+            font-size: 0.9rem;
+            color: #4B5563;
+        }
+
+        /* --- WORKFLOW SPLIT FLOW SECTION --- */
+        #qsr-workflow {
+            background-color: #FFFFFF;
+        }
+
+        .workflow-split-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .workflow-column {
+            border: 1px solid #D1D5DB;
+            padding: 2rem;
+            background-color: #FFFFFF;
+        }
+
+        .workflow-column h3 {
+            font-size: 1.3rem;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            background-color: #F3F4F6;
+            padding: 0.5rem;
+            border: 1px solid #D1D5DB;
+        }
+
+        .workflow-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .workflow-list li {
+            border-left: 3px solid #1F2937;
+            padding-left: 1rem;
+        }
+
+        .workflow-list h4 {
+            font-size: 1.05rem;
+            text-transform: uppercase;
+            margin-bottom: 0.25rem;
+        }
+
+        .workflow-list p {
+            font-size: 0.9rem;
+            color: #4B5563;
+        }
+
+        /* --- FINAL CTA --- */
+        .cta-section {
+            background-color: #1F2937;
+            color: #FFFFFF;
+            padding: 5rem 0;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+        }
+
+        .cta-section p {
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            color: #D1D5DB;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-section .btn {
+            background-color: #FFFFFF;
+            color: #1F2937;
+            border: none;
+        }
+
+        .cta-section .btn:hover {
+            background-color: #F3F4F6;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER & GLOBAL NAVIGATION -->
+    <header>
+        <div class="navbar">
+            <a href="index.html" class="logo">BILL</a>
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="qui-est-bill.html">Pourquoi Bill</a>
+                        <ul class="dropdown">
+                            <li><a href="qui-est-bill.html">Qui est Bill</a></li>
+                            <li><a href="nos-clients.html">Nos Clients</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="borne.html">Prise de commande</a>
+                        <ul class="dropdown">
+                            <li><a href="borne.html">Borne + Totem</a></li>
+                            <li><a href="commande-en-ligne.html">Commande en ligne</a></li>
+                            <li><a href="app-mobile.html">Application Mobile</a></li>
+                            <li><a href="audio-drive.html">Audio Drive</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="caisse-nf.html">Encaissement</a>
+                        <ul class="dropdown">
+                            <li><a href="caisse-nf.html">Caisse NF525</a></li>
+                            <li><a href="monnayeur.html">Monnayeur automatique</a></li>
+                            <li><a href="bpay.html">BPay</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="kds.html">Production & Pilotage</a>
+                        <ul class="dropdown">
+                            <li><a href="kds.html">Écrans Cuisine (KDS)</a></li>
+                            <li><a href="imprimante.html">Imprimante de Production</a></li>
+                            <li><a href="plateformes-livraison.html">Plateformes de Livraison</a></li>
+                            <li><a href="remise-commande.html">Remise de Commande</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="qsr.html" style="border-bottom: 2px solid #1F2937;">Expertises</a>
+                        <ul class="dropdown">
+                            <li><a href="qsr.html">Restauration Rapide & QSR</a></li>
+                            <li><a href="franchises.html">Franchises & Chaînes</a></li>
+                            <li><a href="parcs-loisirs.html">Parcs de Loisirs</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="blog.html">Ressources</a>
+                        <ul class="dropdown">
+                            <li><a href="blog.html">Blog & Actualités</a></li>
+                            <li><a href="centre-aide.html">Centre d'aide</a></li>
+                            <li><a href="integrations.html">Intégrations & API</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            <a href="contact.html" class="btn" style="font-size: 0.8rem; padding: 0.5rem 1rem;">Démo / Contact</a>
+        </div>
+    </header>
+
+    <!-- EXPERTISE HERO SECTION -->
+    <section id="expertise-hero">
+        <div class="container">
+            <div class="expertise-hero-grid">
+                <div class="expertise-hero-content">
+                    <h1>Restauration Rapide & QSR</h1>
+                    <p>La restauration rapide repose historiquement sur un modèle simple : produire vite, servir vite, encaisser vite[cite: 1]. Gérer un fast-food ou un restaurant de service rapide moderne, c’est jongler quotidiennement entre satisfaction client absolue et efficacité opérationnelle millimétrée[cite: 1]. Notre suite d'outils interconnectés unifie l'ensemble de vos flux pour maximiser durablement vos résultats.</p>
+                    <div style="display: flex; gap: 1rem;">
+                        <a href="contact.html" class="btn">Échanger avec un expert QSR</a>
+                        <a href="#qsr-challenges" class="btn btn-secondary">Découvrir les leviers</a>
+                    </div>
+                </div>
+                <div class="img-placeholder expertise-img-main">
+                    Écosystème QSR UI — 🖼️ [Plan de flux d'un fast-food montrant les interactions synchrones entre les bornes en salle, les flux drive extérieurs, et la ligne de production KDS en cuisine]
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CHALLENGES SECTION -->
+    <section id="qsr-challenges">
+        <div class="container">
+            <h2 class="section-title">Les piliers de la performance QSR</h2>
+            <p class="section-subtitle">Chaque minute compte, chaque erreur coûte[cite: 1]. Découvrez les variables critiques sur lesquelles nos solutions digitales agissent de manière immédiate[cite: 1].</p>
+            
+            <div class="challenges-grid">
+                <!-- Pivot 1 -->
+                <div class="challenge-card">
+                    <h3>Absorption des périodes de rush</h3>
+                    <p>Les pics horaires intenses et parfois imprévisibles révèlent immédiatement les failles d’organisation[cite: 1]. L’automatisation des parcours de commande via des outils autonomes permet de désengorger la file principale, de lisser la charge du staff et de réduire drastiquement l’attente perçue par vos clients[cite: 1].</p>
+                </div>
+                <!-- Pivot 2 -->
+                <div class="challenge-card">
+                    <h3>Palliations contre le turnover</h3>
+                    <p>En restauration rapide, le turnover structurel peut dépasser le seuil critique de 30 % par an[cite: 1]. Simplifier l’environnement technologique et proposer des interfaces hautement intuitives facilite la formation immédiate du nouveau personnel et diminue l'impact des rotations d’équipes[cite: 1].</p>
+                </div>
+                <!-- Pivot 3 -->
+                <div class="challenge-card">
+                    <h3>Maîtrise fine des marges nets</h3>
+                    <p>Avec la hausse des coûts des matières premières, la marge par produit, le taux d’erreur de préparation ou le gaspillage en cuisine influencent directement votre performance financière finale[cite: 1]. Un système intégré remplace les approximations par des faits observables et mesurables pour piloter rationnellement votre restaurant[cite: 1].</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- OPERATIONS WORKFLOW FLOW SECTION -->
+    <section id="qsr-workflow">
+        <div class="container">
+            <h2 class="section-title">Une architecture technologique unifiée</h2>
+            <p class="section-subtitle">Brisez les silos. Pour garantir une exécution sans faille, les flux clients (Front) et les flux de production (Back) partagent en continu le même environnement applicatif[cite: 1].</p>
+            
+            <div class="workflow-split-grid">
+                <!-- Column 1: Front of House -->
+                <div class="workflow-column">
+                    <h3>Parcours Client & Salle</h3>
+                    <ul class="workflow-list">
+                        <li>
+                            <h4><a href="borne.html" style="text-decoration: underline;">Bornes tactiles interactives</a></h4>
+                            <p>Permettent aux clients de commander en totale autonomie[cite: 1]. L'interface visuelle structurée guide la personnalisation et propose des suggestions automatiques d'upsell, augmentant naturellement le panier moyen de 15 % à 30 %[cite: 1].</p>
+                        </li>
+                        <li>
+                            <h4><a href="commande-en-ligne.html" style="text-decoration: underline;">Click & Collect & Commande à table</a></h4>
+                            <p>Déporte l'expérience client hors du point de vente physique (transports, bureau, domicile)[cite: 1]. Le client planifie et maîtrise son temps, ce qui réduit considérablement la congestion des files d'attente sur place lors des services du midi[cite: 1].</p>
+                        </li>
+                        <li>
+                            <h4><a href="audio-drive.html" style="text-decoration: underline;">Module Drive Intelligent</a></h4>
+                            <p>Orchestre la file d'attente automobile grâce à des capteurs et des écrans d'affichage dynamique déportés aidant à la construction pas-à-pas des menus complexes en rush[cite: 1].</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Column 2: Back of House -->
+                <div class="workflow-column">
+                    <h3>Cuisine, Logistique & Siège</h3>
+                    <ul class="workflow-list">
+                        <li>
+                            <h4><a href="kds.html" style="text-decoration: underline;">Écrans Cuisine (KDS)</a></h4>
+                            <p>Remplacent définitivement les bons papier volants ou égarés[cite: 1]. Centralisent en temps réel les flux provenant de la salle, du drive et des <a href="plateformes-livraison.html" style="text-decoration: underline;">plateformes de livraison</a> externes pour coordonner idéalement les lancements par poste[cite: 1].</p>
+                        </li>
+                        <li>
+                            <h4><a href="stock.html" style="text-decoration: underline;">Gestion automatique des stocks</a></h4>
+                            <p>Chaque burger ou boisson validé décrémente instantanément vos matières premières selon vos fiches techniques[cite: 1]. Le système intègre des alertes de surstockage et le déclenchement automatique des réassorts fournisseurs[cite: 1].</p>
+                        </li>
+                        <li>
+                            <h4><a href="backoffice.html" style="text-decoration: underline;">Backoffice unique centralisé</a></h4>
+                            <p>L'outil cockpit idéal pour piloter vos catalogues produits, harmoniser vos grilles tarifaires nationales d'un clic et suivre vos indicateurs financiers clés consolidés à distance[cite: 1].</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CALL TO ACTION -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Prêt à optimiser les performances de votre fast-food ?</h2>
+            <p>Testez notre suite d’outils intégrés 360° et améliorez votre rendement, la productivité de vos équipes et l’expérience globale de vos clients. Démarquez-vous dès maintenant[cite: 1].</p>
+            <a href="contact.html" class="btn">Demander une étude d'impact opérationnel</a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h5>Solutions</h5>
+                    <ul>
+                        <li><a href="borne.html">Borne Tactile</a></li>
+                        <li><a href="commande-en-ligne.html">Commande en Ligne</a></li>
+                        <li><a href="caisse-nf.html">Caisse NF525</a></li>
+                        <li><a href="kds.html">Écrans Cuisine KDS</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Expertises</h5>
+                    <ul>
+                        <li><a href="qsr.html">Restauration Rapide & QSR</a></li>
+                        <li><a href="franchises.html">Réseaux de Franchises</a></li>
+                        <li><a href="parcs-loisirs.html">Gestion de Parcs</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Ressources</h5>
+                    <ul>
+                        <li><a href="blog.html">Notre Blog</a></li>
+                        <li><a href="centre-aide.html">Centre de Support</a></li>
+                        <li><a href="integrations.html">Fiches Intégrations</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Contact & Infos</h5>
+                    <ul>
+                        <li><a href="contact.html">Demande de Démo</a></li>
+                        <li><a href="qui-est-bill.html">À propos de Bill</a></li>
+                        <li><a href="nos-clients.html">Témoignages Clients</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div>&copy; 2026 BILL SAS. Tous droits réservés. Projet Maquette Fil de Fer Front-end.</div>
+                <div style="display: flex; gap: 1rem;">
+                    <a href="#">Mentions Légales</a>
+                    <a href="#">Confidentialité (RGPD)</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

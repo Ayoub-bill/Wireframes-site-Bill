@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wireframe Low-Fi - Bill (Backoffice Unique de Pilotage)</title>
+    <style>
+        /* --- SYSTEME DE DESIGN WIREFRAME (LOW-FI) --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #FFFFFF;
+            color: #1F2937;
+            line-height: 1.6;
+        }
+
+        a {
+            color: #1F2937;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #1F2937;
+            color: #FFFFFF;
+            padding: 0.75rem 1.5rem;
+            border: 1px solid #1F2937;
+            font-weight: bold;
+            cursor: pointer;
+            text-align: center;
+            transition: background-color 0.2s;
+        }
+
+        .btn:hover {
+            background-color: #374151;
+            text-decoration: none;
+        }
+
+        .btn-secondary {
+            background-color: #F3F4F6;
+            color: #1F2937;
+            border: 1px solid #D1D5DB;
+        }
+
+        .btn-secondary:hover {
+            background-color: #E5E7EB;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        section {
+            padding: 4rem 0;
+            border-bottom: 1px solid #D1D5DB;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #9CA3AF;
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* --- BLOCS IMAGES WIREFRAME --- */
+        .img-placeholder {
+            background-color: #F3F4F6;
+            border: 2px dashed #9CA3AF;
+            color: #1F2937;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* --- HEADER & GLOBAL NAVIGATION --- */
+        header {
+            background-color: #FFFFFF;
+            border-bottom: 1px solid #D1D5DB;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-item > a {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #FFFFFF;
+            border: 1px solid #D1D5DB;
+            padding: 0.5rem 0;
+            min-width: 230px;
+            list-style: none;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .nav-item:hover .dropdown {
+            display: block;
+        }
+
+        .dropdown a {
+            display: block;
+            padding: 0.5rem 1rem;
+            font-size: 0.8rem;
+            text-transform: none;
+        }
+
+        .dropdown a:hover {
+            background-color: #F3F4F6;
+        }
+
+        /* --- PRODUCT HERO SECTION --- */
+        #backoffice-hero {
+            background-color: #FFFFFF;
+            padding: 5rem 0;
+        }
+
+        .product-hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .product-hero-content h1 {
+            font-size: 2.5rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            font-weight: 800;
+        }
+
+        .product-hero-content p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: #374151;
+        }
+
+        .product-img-main {
+            min-height: 400px;
+            height: 100%;
+        }
+
+        /* --- CORE MODULES GRID --- */
+        #backoffice-modules {
+            background-color: #F3F4F6;
+        }
+
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .module-card {
+            background-color: #FFFFFF;
+            border: 1px solid #D1D5DB;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .module-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            border-bottom: 2px solid #1F2937;
+            padding-bottom: 0.25rem;
+        }
+
+        .module-card p {
+            font-size: 0.9rem;
+            color: #374151;
+            margin-bottom: 1.5rem;
+        }
+
+        /* --- OMNICHANNEL FLOW AGGREGATION --- */
+        #backoffice-flows {
+            background-color: #FFFFFF;
+        }
+
+        .split-flow-grid {
+            display: grid;
+            grid-template-columns: 3fr 2fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .flow-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .flow-list li {
+            border-left: 3px solid #1F2937;
+            padding-left: 1rem;
+        }
+
+        .flow-list h4 {
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            margin-bottom: 0.25rem;
+        }
+
+        .flow-list p {
+            font-size: 0.9rem;
+            color: #374151;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #1F2937;
+            color: #FFFFFF;
+            padding: 4rem 0 2rem 0;
+        }
+
+        footer a {
+            color: #9CA3AF;
+        }
+
+        footer a:hover {
+            color: #FFFFFF;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-col h5 {
+            color: #FFFFFF;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .footer-col ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #9CA3AF;
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: #9CA3AF;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER & GLOBAL NAVIGATION -->
+    <header>
+        <div class="navbar">
+            <a href="index.html" class="logo">BILL</a>
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="qui-est-bill.html">Pourquoi Bill</a>
+                        <ul class="dropdown">
+                            <li><a href="qui-est-bill.html">Qui est Bill</a></li>
+                            <li><a href="nos-clients.html">Nos Clients</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="borne.html">Prise de commande</a>
+                        <ul class="dropdown">
+                            <li><a href="borne.html">Borne + Totem</a></li>
+                            <li><a href="commande-en-ligne.html">Commande en ligne</a></li>
+                            <li><a href="app-mobile.html">Application Mobile</a></li>
+                            <li><a href="audio-drive.html">Audio Drive</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="caisse-nf.html">Encaissement</a>
+                        <ul class="dropdown">
+                            <li><a href="caisse-nf.html">Caisse NF525</a></li>
+                            <li><a href="monnayeur.html">Monnayeur automatique</a></li>
+                            <li><a href="bpay.html">BPay</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="kds.html">Production & Pilotage</a>
+                        <ul class="dropdown">
+                            <li><a href="kds.html">Écrans Cuisine (KDS)</a></li>
+                            <li><a href="imprimante.html">Imprimante de Production</a></li>
+                            <li><a href="plateformes-livraison.html">Plateformes de Livraison</a></li>
+                            <li><a href="remise-commande.html">Remise de Commande</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="qsr.html">Expertises</a>
+                        <ul class="dropdown">
+                            <li><a href="qsr.html">Restauration Rapide & QSR</a></li>
+                            <li><a href="franchises.html">Franchises & Chaînes</a></li>
+                            <li><a href="parcs-loisirs.html">Parcs de Loisirs</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="blog.html" style="border-bottom: 2px solid #1F2937;">Ressources</a>
+                        <ul class="dropdown">
+                            <li><a href="blog.html">Blog & Actualités</a></li>
+                            <li><a href="centre-aide.html">Centre d'aide</a></li>
+                            <li><a href="integrations.html">Intégrations & API</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            <a href="contact.html" class="btn" style="font-size: 0.8rem; padding: 0.5rem 1rem;">Démo / Contact</a>
+        </div>
+    </header>
+
+    <!-- PRODUCT HERO SECTION -->
+    <section id="backoffice-hero">
+        <div class="container">
+            <div class="product-hero-grid">
+                <div class="product-hero-content">
+                    <h1>Backoffice Unique de Gestion</h1>
+                    <p>Optimisez l’organisation et la gestion de vos établissements grâce à notre solution BackOffice unifiée, conçue pour assurer un suivi rigoureux de vos sites[cite: 1]. Notre système centralisé tout-en-un permet la gestion de vos établissements à distance avec une lisibilité stratégique parfaite[cite: 1].</p>
+                    <div style="display: flex; gap: 1rem;">
+                        <a href="contact.html" class="btn">Centraliser ma gestion</a>
+                        <a href="#backoffice-modules" class="btn btn-secondary">Explorer les briques</a>
+                    </div>
+                </div>
+                <div class="img-placeholder product-img-main">
+                    Dashboard Central Cloud — 🖼️ [Aperçu de l'interface de reporting consolidée inter-sites avec graphiques de performance et cartes réseau]
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CORE MANAGEMENT MODULES SECTION -->
+    <section id="backoffice-modules">
+        <div class="container">
+            <h2 class="section-title">Piloter efficacement votre réseau</h2>
+            <p class="section-subtitle">Passez d’une posture purement opérationnelle à un véritable pilotage stratégique de votre chaîne de points de vente[cite: 1].</p>
+            
+            <div class="modules-grid">
+                <!-- Module 1 : Catalog & Prices -->
+                <div class="module-card">
+                    <div>
+                        <h3>Catalogue & Recettes Centralisés</h3>
+                        <p>Le catalogue produits, les fiches techniques, les recettes et les prix nationaux doivent être définis au niveau du siège[cite: 1]. Un outil unique permet d'assurer cette cohérence instantanément sur l’ensemble des établissements pour éliminer tout risque d'écart ou d’incohérence[cite: 1].</p>
+                    </div>
+                    <div class="img-placeholder" style="height: 120px;">🖼️ [Interface UI — Éditeur de menu global et répercussion synchrone]</div>
+                </div>
+
+                <!-- Module 2 : Access Control & Rights -->
+                <div class="module-card">
+                    <div>
+                        <h3>Hiérarchisation des Accès</h3>
+                        <p>Le siège doit pouvoir structurer et verrouiller les paramètres sensibles, tandis que les managers locaux disposent des leviers opérationnels nécessaires pour conserver de l'agilité locale[cite: 1]. Cette séparation stricte des accès protège la cohérence de votre identité de marque[cite: 1].</p>
+                    </div>
+                    <div class="img-placeholder" style="height: 120px;">🖼️ [Interface UI — Matrice de droits : Administrateur vs Manager vs Staff]</div>
+                </div>
+
+                <!-- Module 3 : Inventory & Stock -->
+                <div class="module-card">
+                    <div>
+                        <h3>Suivi des Approvisionnements</h3>
+                        <p>Intégrez nos deux modules BackOffice complémentaires pour simplifier la gestion du stock et de l’approvisionnement[cite: 1]. Suivez précisément vos productions, tracez vos transferts inter-sites et analysez vos coûts matière pour éviter les dérives financières invisibles[cite: 1]. Le système intègre le déclenchement automatique des réassorts[cite: 1].</p>
+                    </div>
+                    <div style="display: flex; gap: 0.5rem;">
+                        <a href="stock.html" class="btn btn-secondary" style="font-size: 0.8rem; padding: 0.5rem 1rem; width: 100%;">Aller au module Stock ➔</a>
+                    </div>
+                </div>
+
+                <!-- Module 4 : Consolidated Metrics -->
+                <div class="module-card">
+                    <div>
+                        <h3>Comparatif inter-sites</h3>
+                        <p>La donnée unifiée est le socle du pilotage. Comparez facilement de nombreuses données consolidées[cite: 1] : chiffre d’affaires en temps réel, volumes de ventes par produit, performance horaire brute ou encore le temps moyen passé à table par vos clients[cite: 1]. Identifiez instantanément les points de vente qui dévient du référentiel commun[cite: 1].</p>
+                    </div>
+                    <div style="display: flex; gap: 0.5rem;">
+                        <a href="rh.html" class="btn btn-secondary" style="font-size: 0.8rem; padding: 0.5rem 1rem; width: 50%;">Brique RH ➔</a>
+                        <a href="fidelite.html" class="btn btn-secondary" style="font-size: 0.8rem; padding: 0.5rem 1rem; width: 50%;">Fidélisation ➔</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- OMNICHANNEL FLOW AGGREGATION SECTION -->
+    <section id="backoffice-flows">
+        <div class="container split-flow-grid">
+            <div>
+                <h2 class="section-title" style="text-align: left; margin-bottom: 1.5rem;">Unification des flux sans silos</h2>
+                <p style="font-size: 1rem; color: #4B5563; margin-bottom: 1.5rem;">Multiplier les briques applicatives non connectées crée de la double saisie, des pertes d'informations critiques et de la friction opérationnelle coûteuse[cite: 1].</p>
+                <ul class="flow-list">
+                    <li>
+                        <h4>Retours des ventes physiques & digitales</h4>
+                        <p>Qu'un établissement vende via la salle, une <a href="borne.html" style="text-decoration: underline;">borne de commande tactiles</a>, le drive ou la <a href="commande-en-ligne.html" style="text-decoration: underline;">commande en ligne</a>, tous ces canaux convergent dans un entonnoir unique[cite: 1].</p>
+                    </li>
+                    <li>
+                        <h4>Agrégation des Canaux de Livraison Externes</h4>
+                        <p>Intégrez les plateformes de livraison tierces (Uber Eats, Deliveroo) au sein du même environnement[cite: 1]. Centralisez la lecture clients et automatisez la mise à jour de vos catalogues externes depuis un seul écran.</p>
+                    </li>
+                    <li>
+                        <h4>Lien direct Cuisine et Encaissement</h4>
+                        <p>Vos moniteurs de cuisine (<a href="kds.html" style="text-decoration: underline;">KDS</a>) transmettent directement leurs temps d'exécution au Backoffice pour mesurer précisément vos performances d'assemblage en période de rush[cite: 1].</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="img-placeholder" style="min-height: 380px;">
+                Architecture de Centralisation — 🖼️ [Schéma logique : Canaux Ventes & Cuisine ➔ Traitement API Unique ➔ Tableaux de bord Backoffice Siège]
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h5>Solutions</h5>
+                    <ul>
+                        <li><a href="borne.html">Borne Tactile</a></li>
+                        <li><a href="commande-en-ligne.html">Commande en Ligne</a></li>
+                        <li><a href="caisse-nf.html">Caisse NF525</a></li>
+                        <li><a href="kds.html">Écrans Cuisine KDS</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Expertises</h5>
+                    <ul>
+                        <li><a href="qsr.html">Restauration Rapide & QSR</a></li>
+                        <li><a href="franchises.html">Réseaux de Franchises</a></li>
+                        <li><a href="parcs-loisirs.html">Gestion de Parcs</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Ressources</h5>
+                    <ul>
+                        <li><a href="blog.html">Notre Blog</a></li>
+                        <li><a href="centre-aide.html">Centre de Support</a></li>
+                        <li><a href="integrations.html">Fiches Intégrations</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Contact & Infos</h5>
+                    <ul>
+                        <li><a href="contact.html">Demande de Démo</a></li>
+                        <li><a href="qui-est-bill.html">À propos de Bill</a></li>
+                        <li><a href="nos-clients.html">Témoignages Clients</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div>&copy; 2026 BILL SAS. Tous droits réservés. Projet Maquette Fil de Fer Front-end.</div>
+                <div style="display: flex; gap: 1rem;">
+                    <a href="#">Mentions Légales</a>
+                    <a href="#">Confidentialité (RGPD)</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

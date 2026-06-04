@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wireframe Low-Fi - Bill (Menu Interactif sur Table)</title>
+    <style>
+        /* --- SYSTEME DE DESIGN WIREFRAME (LOW-FI) --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #FFFFFF;
+            color: #1F2937;
+            line-height: 1.6;
+        }
+
+        a {
+            color: #1F2937;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #1F2937;
+            color: #FFFFFF;
+            padding: 0.75rem 1.5rem;
+            border: 1px solid #1F2937;
+            font-weight: bold;
+            cursor: pointer;
+            text-align: center;
+            transition: background-color 0.2s;
+        }
+
+        .btn:hover {
+            background-color: #374151;
+            text-decoration: none;
+        }
+
+        .btn-secondary {
+            background-color: #F3F4F6;
+            color: #1F2937;
+            border: 1px solid #D1D5DB;
+        }
+
+        .btn-secondary:hover {
+            background-color: #E5E7EB;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        section {
+            padding: 4rem 0;
+            border-bottom: 1px solid #D1D5DB;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #9CA3AF;
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* --- BLOCS IMAGES WIREFRAME --- */
+        .img-placeholder {
+            background-color: #F3F4F6;
+            border: 2px dashed #9CA3AF;
+            color: #1F2937;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* --- HEADER & GLOBAL NAVIGATION --- */
+        header {
+            background-color: #FFFFFF;
+            border-bottom: 1px solid #D1D5DB;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-item > a {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #FFFFFF;
+            border: 1px solid #D1D5DB;
+            padding: 0.5rem 0;
+            min-width: 230px;
+            list-style: none;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .nav-item:hover .dropdown {
+            display: block;
+        }
+
+        .dropdown a {
+            display: block;
+            padding: 0.5rem 1rem;
+            font-size: 0.8rem;
+            text-transform: none;
+        }
+
+        .dropdown a:hover {
+            background-color: #F3F4F6;
+        }
+
+        /* --- PRODUCT HERO SECTION --- */
+        #interactive-hero {
+            background-color: #FFFFFF;
+            padding: 5rem 0;
+        }
+
+        .product-hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .product-hero-content h1 {
+            font-size: 2.5rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            font-weight: 800;
+        }
+
+        .product-hero-content p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: #374151;
+        }
+
+        .product-img-main {
+            min-height: 400px;
+            height: 100%;
+        }
+
+        /* --- CORE FEATURES --- */
+        #interactive-features {
+            background-color: #F3F4F6;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background-color: #FFFFFF;
+            border: 1px solid #D1D5DB;
+            padding: 2.5rem 2rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #1F2937;
+            padding-bottom: 0.25rem;
+        }
+
+        .feature-card p {
+            font-size: 0.9rem;
+            color: #4B5563;
+        }
+
+        /* --- ECOSYSTEM LIAISON --- */
+        #interactive-sync {
+            background-color: #FFFFFF;
+        }
+
+        .sync-split-grid {
+            display: grid;
+            grid-template-columns: 3fr 2fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .sync-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .sync-list li {
+            border-left: 3px solid #1F2937;
+            padding-left: 1rem;
+        }
+
+        .sync-list h4 {
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            margin-bottom: 0.25rem;
+        }
+
+        .sync-list p {
+            font-size: 0.9rem;
+            color: #374151;
+        }
+
+        /* --- UI WORKFLOW PREVIEW --- */
+        #interactive-workflow {
+            background-color: #F3F4F6;
+        }
+
+        .workflow-timeline {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .timeline-node {
+            background-color: #FFFFFF;
+            border: 1px solid #D1D5DB;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .timeline-step {
+            display: inline-block;
+            background-color: #1F2937;
+            color: #FFFFFF;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            line-height: 30px;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            font-size: 0.85rem;
+        }
+
+        .timeline-node h4 {
+            font-size: 1rem;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-node p {
+            font-size: 0.85rem;
+            color: #4B5563;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER & GLOBAL NAVIGATION -->
+    <header>
+        <div class="navbar">
+            <a href="index.html" class="logo">BILL</a>
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="qui-est-bill.html">Pourquoi Bill</a>
+                        <ul class="dropdown">
+                            <li><a href="qui-est-bill.html">Qui est Bill</a></li>
+                            <li><a href="nos-clients.html">Nos Clients</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="borne.html">Prise de commande</a>
+                        <ul class="dropdown">
+                            <li><a href="borne.html">Borne + Totem</a></li>
+                            <li><a href="commande-en-ligne.html">Commande en ligne</a></li>
+                            <li><a href="app-mobile.html">Application Mobile</a></li>
+                            <li><a href="audio-drive.html">Audio Drive</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="caisse-nf.html">Encaissement</a>
+                        <ul class="dropdown">
+                            <li><a href="caisse-nf.html">Caisse NF525</a></li>
+                            <li><a href="monnayeur.html">Monnayeur automatique</a></li>
+                            <li><a href="bpay.html">BPay</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="kds.html">Production & Pilotage</a>
+                        <ul class="dropdown">
+                            <li><a href="kds.html">Écrans Cuisine (KDS)</a></li>
+                            <li><a href="imprimante.html">Imprimante de Production</a></li>
+                            <li><a href="plateformes-livraison.html">Plateformes de Livraison</a></li>
+                            <li><a href="remise-commande.html">Remise de Commande</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="qsr.html">Expertises</a>
+                        <ul class="dropdown">
+                            <li><a href="qsr.html">Restauration Rapide & QSR</a></li>
+                            <li><a href="franchises.html">Franchises & Chaînes</a></li>
+                            <li><a href="parcs-loisirs.html">Parcs de Loisirs</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="blog.html" style="border-bottom: 2px solid #1F2937;">Ressources</a>
+                        <ul class="dropdown">
+                            <li><a href="blog.html">Blog & Actualités</a></li>
+                            <li><a href="centre-aide.html">Centre d'aide</a></li>
+                            <li><a href="integrations.html">Intégrations & API</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            <a href="contact.html" class="btn" style="font-size: 0.8rem; padding: 0.5rem 1rem;">Démo / Contact</a>
+        </div>
+    </header>
+
+    <!-- PRODUCT HERO SECTION -->
+    <section id="interactive-hero">
+        <div class="container">
+            <div class="product-hero-grid">
+                <div class="product-hero-content">
+                    <h1>Menu Interactif sur Smartphone</h1>
+                    <p>Intégrer un menu interactif ou une application de commande peut vous aider à fidéliser vos clients et augmenter vos ventes[cite: 1]. Offrez une carte accessible partout et tout le temps pour accroître la visibilité de votre enseigne[cite: 1] directement depuis les tables de votre restaurant.</p>
+                    <div style="display: flex; gap: 1rem;">
+                        <a href="contact.html" class="btn">Déployer les menus à table</a>
+                        <a href="commande-en-ligne.html" class="btn btn-secondary">Commande en ligne globale</a>
+                    </div>
+                </div>
+                <div class="img-placeholder product-img-main">
+                    Expérience Client Mobile — 🖼️ [Parcours de navigation du menu digitalisé sur smartphone avec photos des plats et filtres d'ingrédients]
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CORE FEATURES SECTION -->
+    <section id="interactive-features">
+        <div class="container">
+            <h2 class="section-title">Une consultation fluide et autonome</h2>
+            <p class="section-subtitle">Le menu interactif redéfinit la relation à table en supprimant la pression implicite de l'attente tout en guidant les choix des consommateurs.</p>
+            
+            <div class="features-grid">
+                <!-- Feature 1 -->
+                <div class="feature-card">
+                    <h3>Autonomie & Confort</h3>
+                    <p>Le client prend le temps de consulter la carte, de comparer les options et de configurer son repas à son propre rythme, sans stress ni files d'attente.</p>
+                </div>
+                <!-- Feature 2 -->
+                <div class="feature-card">
+                    <h3>Filtres & Allergènes</h3>
+                    <p>Affichage dynamique des spécificités techniques et sanitaires des plats : requêtes particulières, signalisation claire des allergènes ou restrictions alimentaires.</p>
+                </div>
+                <!-- Feature 3 -->
+                <div class="feature-card">
+                    <h3>Valorisation Visuelle</h3>
+                    <p>Une mise en valeur graphique et structurée de vos offres. Les suggestions intelligentes basées sur la composition du panier augmentent naturellement les ventes d'accompagnements et de desserts.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ECOSYSTEM INTEGRATION SECTION -->
+    <section id="interactive-sync">
+        <div class="container sync-split-grid">
+            <div>
+                <h2 class="section-title" style="text-align: left; margin-bottom: 1.5rem;">Unification des processus métiers</h2>
+                <ul class="sync-list">
+                    <li>
+                        <h4>Envoi direct en cuisine (KDS)</h4>
+                        <p>Les choix validés par vos clients sur leur smartphone se déversent instantanément sous forme de bons ordonnés sur vos écrans de production de cuisine (<a href="kds.html" style="text-decoration: underline;">KDS</a>).</p>
+                    </li>
+                    <li>
+                        <h4>Centralisation comptable et prix</h4>
+                        <p>Le catalogue visuel interactif est géré de manière unique. Toute modification de carte ou mise à jour de tarifs s'effectue sur le <a href="backoffice.html" style="text-decoration: underline;">Backoffice unique</a> et se répercute en direct, évitant les incohérences avec votre <a href="caisse-nf.html" style="text-decoration: underline;">Caisse enregistreuse</a>.</p>
+                    </li>
+                    <li>
+                        <h4>Suivi et alertes des stocks</h4>
+                        <p>Lié en temps réel au module <a href="stock.html" style="text-decoration: underline;">Stock</a>. Si une boisson ou un dessert atteint l'épuisement, la brique logicielle masque automatiquement l'élément du menu interactif pour éviter les déconvenues à table.</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="img-placeholder" style="min-height: 350px;">
+                Schéma d'architecture — 🖼️ [QRCode Table ➔ Smartphone Client ➔ Routeur API Bill ➔ KDS Cuisine / Caisse Comptoir]
+            </div>
+        </div>
+    </section>
+
+    <!-- UI WORKFLOW TIMELINE SECTION -->
+    <section id="interactive-workflow">
+        <div class="container">
+            <h2 class="section-title">Le parcours de commande à table</h2>
+            <p class="section-subtitle">Découvrez comment vos visiteurs commandent et consomment en toute simplicité en quatre étapes clés.</p>
+            
+            <div class="workflow-timeline">
+                <!-- Step 1 -->
+                <div class="timeline-node">
+                    <div class="timeline-step">1</div>
+                    <h4>Flash du QRCode</h4>
+                    <p>Le client scanne le code présent sur sa table, lui donnant un accès immédiat à la carte mise à jour selon l'heure du service.</p>
+                </div>
+                <!-- Step 2 -->
+                <div class="timeline-node">
+                    <div class="timeline-step">2</div>
+                    <h4>Consultation</h4>
+                    <p>Exploration visuelle des catégories, sélection personnalisée des formules, des options de cuisson et des suppléments.</p>
+                </div>
+                <!-- Step 3 -->
+                <div class="timeline-node">
+                    <div class="timeline-step">3</div>
+                    <h4>Validation & Paiement</h4>
+                    <p>Validation autonome du panier et paiement électronique sécurisé sans nécessiter le déplacement d'un serveur.</p>
+                </div>
+                <!-- Step 4 -->
+                <div class="timeline-node">
+                    <div class="timeline-step">4</div>
+                    <h4>Production & Service</h4>
+                    <p>La commande est envoyée en cuisine. Le staff localise la table et apporte la préparation dès réception du signal prêt.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h5>Solutions</h5>
+                    <ul>
+                        <li><a href="borne.html">Borne Tactile</a></li>
+                        <li><a href="commande-en-ligne.html">Commande en Ligne</a></li>
+                        <li><a href="caisse-nf.html">Caisse NF525</a></li>
+                        <li><a href="kds.html">Écrans Cuisine KDS</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Expertises</h5>
+                    <ul>
+                        <li><a href="qsr.html">Restauration Rapide & QSR</a></li>
+                        <li><a href="franchises.html">Réseaux de Franchises</a></li>
+                        <li><a href="parcs-loisirs.html">Gestion de Parcs</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Ressources</h5>
+                    <ul>
+                        <li><a href="blog.html">Notre Blog</a></li>
+                        <li><a href="centre-aide.html">Centre de Support</a></li>
+                        <li><a href="integrations.html">Fiches Intégrations</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Contact & Infos</h5>
+                    <ul>
+                        <li><a href="contact.html">Demande de Démo</a></li>
+                        <li><a href="qui-est-bill.html">À propos de Bill</a></li>
+                        <li><a href="nos-clients.html">Témoignages Clients</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div>&copy; 2026 BILL SAS. Tous droits réservés. Projet Maquette Fil de Fer Front-end.</div>
+                <div style="display: flex; gap: 1rem;">
+                    <a href="#">Mentions Légales</a>
+                    <a href="#">Confidentialité (RGPD)</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

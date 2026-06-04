@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wireframe Low-Fi - Bill (Centre d'aide & Support)</title>
+    <style>
+        /* --- SYSTEME DE DESIGN WIREFRAME (LOW-FI) --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #FFFFFF;
+            color: #1F2937;
+            line-height: 1.6;
+        }
+
+        a {
+            color: #1F2937;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #1F2937;
+            color: #FFFFFF;
+            padding: 0.75rem 1.5rem;
+            border: 1px solid #1F2937;
+            font-weight: bold;
+            cursor: pointer;
+            text-align: center;
+            transition: background-color 0.2s;
+        }
+
+        .btn:hover {
+            background-color: #374151;
+            text-decoration: none;
+        }
+
+        .btn-secondary {
+            background-color: #F3F4F6;
+            color: #1F2937;
+            border: 1px solid #D1D5DB;
+        }
+
+        .btn-secondary:hover {
+            background-color: #E5E7EB;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        section {
+            padding: 4rem 0;
+            border-bottom: 1px solid #D1D5DB;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #9CA3AF;
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* --- BLOCS IMAGES WIREFRAME --- */
+        .img-placeholder {
+            background-color: #F3F4F6;
+            border: 2px dashed #9CA3AF;
+            color: #1F2937;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* --- HEADER & GLOBAL NAVIGATION --- */
+        header {
+            background-color: #FFFFFF;
+            border-bottom: 1px solid #D1D5DB;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-item > a {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #FFFFFF;
+            border: 1px solid #D1D5DB;
+            padding: 0.5rem 0;
+            min-width: 240px;
+            list-style: none;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .nav-item:hover .dropdown {
+            display: block;
+        }
+
+        .dropdown a {
+            display: block;
+            padding: 0.5rem 1rem;
+            font-size: 0.8rem;
+            text-transform: none;
+        }
+
+        .dropdown a:hover {
+            background-color: #F3F4F6;
+        }
+
+        /* --- HELP CENTER HERO SEARCH --- */
+        #help-hero {
+            background-color: #F3F4F6;
+            padding: 5rem 0;
+            text-align: center;
+        }
+
+        .search-container-mock {
+            max-width: 600px;
+            margin: 2rem auto 0 auto;
+            display: flex;
+            border: 2px solid #1F2937;
+            background-color: #FFFFFF;
+        }
+
+        .search-input-mock {
+            flex-grow: 1;
+            padding: 1rem;
+            border: none;
+            font-size: 1rem;
+            color: #1F2937;
+            outline: none;
+        }
+
+        .search-btn-mock {
+            background-color: #1F2937;
+            color: #FFFFFF;
+            border: none;
+            padding: 0 2rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            cursor: pointer;
+        }
+
+        /* --- CATEGORIES KNOWLEDGE BASE GRID --- */
+        #help-categories {
+            background-color: #FFFFFF;
+        }
+
+        .kb-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .kb-card {
+            border: 1px solid #D1D5DB;
+            padding: 2rem;
+            background-color: #FFFFFF;
+        }
+
+        .kb-card h3 {
+            font-size: 1.25rem;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #1F2937;
+            padding-bottom: 0.25rem;
+        }
+
+        .kb-links-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .kb-links-list li a {
+            text-decoration: underline;
+        }
+
+        /* --- POPULAR TOPICS SECTION --- */
+        #help-popular {
+            background-color: #F3F4F6;
+        }
+
+        .popular-split-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 4rem;
+        }
+
+        .articles-list-wire {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .article-node-wire {
+            border-left: 3px solid #9CA3AF;
+            padding-left: 1.25rem;
+        }
+
+        .article-node-wire h4 {
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            margin-bottom: 0.25rem;
+        }
+
+        .article-node-wire p {
+            font-size: 0.9rem;
+            color: #4B5563;
+        }
+
+        .status-box-wire {
+            background-color: #FFFFFF;
+            border: 1px solid #D1D5DB;
+            padding: 1.5rem;
+        }
+
+        .status-indicator-wire {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-top: 1rem;
+            padding: 0.5rem;
+            background-color: #F9FAFB;
+            border: 1px dashed #9CA3AF;
+        }
+
+        /* --- DIRECT CONTACT CTA --- */
+        .cta-section {
+            background-color: #1F2937;
+            color: #FFFFFF;
+            padding: 5rem 0;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+        }
+
+        .cta-section p {
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            color: #D1D5DB;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-section .btn {
+            background-color: #FFFFFF;
+            color: #1F2937;
+            border: none;
+        }
+
+        .cta-section .btn:hover {
+            background-color: #F3F4F6;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER & GLOBAL NAVIGATION -->
+    <header>
+        <div class="navbar">
+            <a href="index.html" class="logo">BILL</a>
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="qui-est-bill.html">Pourquoi Bill</a>
+                        <ul class="dropdown">
+                            <li><a href="qui-est-bill.html">Qui est Bill</a></li>
+                            <li><a href="nos-clients.html">Nos Clients</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="borne.html">Prise de commande</a>
+                        <ul class="dropdown">
+                            <li><a href="borne.html">Borne + Totem</a></li>
+                            <li><a href="commande-en-ligne.html">Commande en ligne</a></li>
+                            <li><a href="app-mobile.html">Application Mobile</a></li>
+                            <li><a href="audio-drive.html">Audio Drive</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="caisse-nf.html">Encaissement</a>
+                        <ul class="dropdown">
+                            <li><a href="caisse-nf.html">Caisse NF525</a></li>
+                            <li><a href="monnayeur.html">Monnayeur automatique</a></li>
+                            <li><a href="bpay.html">BPay</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="kds.html">Production & Pilotage</a>
+                        <ul class="dropdown">
+                            <li><a href="kds.html">Écrans Cuisine (KDS)</a></li>
+                            <li><a href="imprimante.html">Imprimante de Production</a></li>
+                            <li><a href="plateformes-livraison.html">Plateformes de Livraison</a></li>
+                            <li><a href="remise-commande.html">Remise de Commande</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="qsr.html">Expertises</a>
+                        <ul class="dropdown">
+                            <li><a href="qsr.html">Restauration Rapide & QSR</a></li>
+                            <li><a href="franchises.html">Franchises & Chaînes</a></li>
+                            <li><a href="parcs-loisirs.html">Parcs de Loisirs</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="blog.html" style="border-bottom: 2px solid #1F2937;">Ressources</a>
+                        <ul class="dropdown">
+                            <li><a href="blog.html">Blog & Actualités</a></li>
+                            <li><a href="centre-aide.html">Centre d'aide</a></li>
+                            <li><a href="integrations.html">Intégrations & API</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            <a href="contact.html" class="btn" style="font-size: 0.8rem; padding: 0.5rem 1rem;">Démo / Contact</a>
+        </div>
+    </header>
+
+    <!-- HELP CENTER HERO & SEARCH MOCKUP -->
+    <section id="help-hero">
+        <div class="container">
+            <h1 class="section-title">Centre de Support &amp; d'Aide Bill</h1>
+            <p style="color: #4B5563; max-width: 650px; margin: 0 auto; font-size: 1.1rem;">Recherchez des guides de configuration, des fiches de dépannage matériel ou des tutoriels d'utilisation de votre écosystème de restauration.</p>
+            
+            <div class="search-container-mock">
+                <input type="text" class="search-input-mock" placeholder="Ex: Mettre à jour ma caisse NF525, configurer mon KDS..." disabled>
+                <button class="search-btn-mock">Rechercher</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAIN HELP CATEGORIES KNOWLEDGE BASE -->
+    <section id="help-categories">
+        <div class="container">
+            <div class="kb-grid">
+                
+                <!-- Category 1 -->
+                <div class="kb-card">
+                    <h3>Prise de commande</h3>
+                    <ul class="kb-links-list">
+                        <li><a href="borne.html">Borne Tactile : Résoudre un problème de terminal d'impression</a></li>
+                        <li><a href="commande-en-ligne.html">Commande en ligne : Configurer les créneaux horaires éphémères</a></li>
+                        <li><a href="audio-drive.html">Audio Drive : Optimiser le volume des casques d'équipes</a></li>
+                        <li><a href="app-mobile.html">Application Mobile : Activer les notifications push publicitaires</a></li>
+                    </ul>
+                </div>
+
+                <!-- Category 2 -->
+                <div class="kb-card">
+                    <h3>Encaissement &amp; Matériel</h3>
+                    <ul class="kb-links-list">
+                        <li><a href="caisse-nf.html">Caisse NF525 : Récupérer mes historiques de clôtures fiscales</a></li>
+                        <li><a href="monnayeur.html">Monnayeur automatique : Procédure de vidage sécurisé de fin de journée</a></li>
+                        <li><a href="bpay.html">BPay : Associer un terminal TPE nomade Bluetooth à la caisse</a></li>
+                        <li><a href="ecran-confiance.html">Écran Confiance : Personnaliser le carrousel des ventes additionnelles</a></li>
+                    </ul>
+                </div>
+
+                <!-- Category 3 -->
+                <div class="kb-card">
+                    <h3>Cuisine &amp; Production</h3>
+                    <ul class="kb-links-list">
+                        <li><a href="kds.html">Écrans Cuisine (KDS) : Modifier l'ordre d'affichage des priorités</a></li>
+                        <li><a href="imprimante.html">Imprimante de Production : Remplacement du rouleau thermique</a></li>
+                        <li><a href="plateformes-livraison.html">Plateformes de Livraison : Synchroniser Uber Eats et Deliveroo</a></li>
+                        <li><a href="remise-commande.html">Remise de commande : Associer un bipeur client à une table</a></li>
+                    </ul>
+                </div>
+
+                <!-- Category 4 -->
+                <div class="kb-card">
+                    <h3>Backoffice &amp; Gestion</h3>
+                    <ul class="kb-links-list">
+                        <li><a href="backoffice.html">Backoffice unique : Structurer les profils et les droits d'accès</a></li>
+                        <li><a href="stock.html">Stock &amp; Approvisionnement : Configurer le déclenchement des réassorts</a></li>
+                        <li><a href="rh.html">RH &amp; Plannings : Planifier les simulations de rush d'équipes</a></li>
+                        <li><a href="fidelite.html">Fidélité client : Éditer les règles d'attribution des coupons de réduction</a></li>
+                    </ul>
+                </div>
+
+                <!-- Category 5 -->
+                <div class="kb-card">
+                    <h3>Configuration Écrans</h3>
+                    <ul class="kb-links-list">
+                        <li><a href="affichage-dynamique.html">Affichage dynamique : Glisser-déposer une playlist de médias</a></li>
+                        <li><a href="menuboard.html">Menuboard Numérique : Modifier l'affichage des prix des formules</a></li>
+                        <li><a href="menu-interactif.html">Menu interactif : Ajouter des icônes d'ingrédients allergènes</a></li>
+                    </ul>
+                </div>
+
+                <!-- Category 6 -->
+                <div class="kb-card">
+                    <h3>Réseaux &amp; Groupes</h3>
+                    <ul class="kb-links-list">
+                        <li><a href="franchises.html">Franchises : Déployer une fiche de tarifs commune sur 10 sites</a></li>
+                        <li><a href="parcs-loisirs.html">Parcs de Loisirs : Organiser les terminaux par zone de vente</a></li>
+                        <li><a href="integrations.html">Intégrations API : Récupérer la documentation pour les développeurs</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- POPULAR TOPICS & LIVE INFRASTRUCTURE STATUS -->
+    <section id="help-popular">
+        <div class="container popular-split-grid">
+            
+            <!-- Popular Articles List Wire -->
+            <div>
+                <h3 style="text-transform: uppercase; font-size: 1.3rem; margin-bottom: 2rem;">Articles les plus consultés</h3>
+                <div class="articles-list-wire">
+                    <div class="article-node-wire">
+                        <h4>Planifier les mises à jour logicielles de ma caisse</h4>
+                        <p>Pour éviter toute panne ou ralentissement de votre flux d'encaissement, planifiez toujours vos mises à jour en dehors des heures de service.</p>
+                    </div>
+                    <div class="article-node-wire">
+                        <h4>Se prémunir d'une panne internet en plein rush</h4>
+                        <p>Découvrez comment configurer le mode déconnecté de votre système de caisse pour continuer à encaisser et transmettre à vos KDS même en cas de coupure réseau.</p>
+                    </div>
+                    <div class="article-node-wire">
+                        <h4>Quels sont mes risques en cas de contrôle fiscal ?</h4>
+                        <p>En France, la loi impose l'inaltérabilité des données. Une caisse non certifiée ou falsifiée expose à une amende immédiate de 7 500 € par terminal.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Live Service Status Sidebar Wire -->
+            <div>
+                <h3 style="text-transform: uppercase; font-size: 1.3rem; margin-bottom: 2rem;">État des services Bill</h3>
+                <div class="status-box-wire">
+                    <p style="font-size: 0.85rem; color: #4B5563;">Vérification automatique en temps réel des infrastructures cloud et de la synchronisation API.</p>
+                    
+                    <div class="status-indicator-wire">
+                        <span style="display:inline-block; width: 12px; height: 12px; background-color: #1F2937; border-radius: 50%;"></span>
+                        <span>Serveurs Cloud : OPÉRATIONNELS</span>
+                    </div>
+                    <div class="status-indicator-wire">
+                        <span style="display:inline-block; width: 12px; height: 12px; background-color: #1F2937; border-radius: 50%;"></span>
+                        <span>Flux Bornes / Caisses : OPÉRATIONNELS</span>
+                    </div>
+                    <div class="status-indicator-wire">
+                        <span style="display:inline-block; width: 12px; height: 12px; background-color: #1F2937; border-radius: 50%;"></span>
+                        <span>Passerelles Uber Eats : OPÉRATIONNELLES</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- DIRECT CONTACT CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Vous ne trouvez pas la solution à votre problème ?</h2>
+            <p>Notre équipe d'assistance technique et d'ingénieurs réseaux est disponible pour vous accompagner pas à pas dans la résolution de vos frictions opérationnelles.</p>
+            <a href="contact.html" class="btn">Ouvrir un ticket d'assistance prioritaire</a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h5>Solutions</h5>
+                    <ul>
+                        <li><a href="borne.html">Borne Tactile</a></li>
+                        <li><a href="commande-en-ligne.html">Commande en Ligne</a></li>
+                        <li><a href="caisse-nf.html">Caisse NF525</a></li>
+                        <li><a href="kds.html">Écrans Cuisine KDS</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Expertises</h5>
+                    <ul>
+                        <li><a href="qsr.html">Restauration Rapide &amp; QSR</a></li>
+                        <li><a href="franchises.html">Réseaux de Franchises</a></li>
+                        <li><a href="parcs-loisirs.html">Parcs de Loisirs</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Ressources</h5>
+                    <ul>
+                        <li><a href="blog.html">Notre Blog</a></li>
+                        <li><a href="centre-aide.html">Centre de Support</a></li>
+                        <li><a href="integrations.html">Fiches Intégrations</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Contact &amp; Infos</h5>
+                    <ul>
+                        <li><a href="contact.html">Demande de Démo</a></li>
+                        <li><a href="qui-est-bill.html">À propos de Bill</a></li>
+                        <li><a href="nos-clients.html">Témoignages Clients</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div>&copy; 2026 BILL SAS. Tous droits réservés. Projet Maquette Fil de Fer Front-end.</div>
+                <div style="display: flex; gap: 1rem;">
+                    <a href="#">Mentions Légales</a>
+                    <a href="#">Confidentialité (RGPD)</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

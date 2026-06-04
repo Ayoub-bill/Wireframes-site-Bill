@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wireframe Low-Fi - Bill (Expertise Franchises & Chaînes)</title>
+    <style>
+        /* --- SYSTEME DE DESIGN WIREFRAME (LOW-FI) --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #FFFFFF;
+            color: #1F2937;
+            line-height: 1.6;
+        }
+
+        a {
+            color: #1F2937;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #1F2937;
+            color: #FFFFFF;
+            padding: 0.75rem 1.5rem;
+            border: 1px solid #1F2937;
+            font-weight: bold;
+            cursor: pointer;
+            text-align: center;
+            transition: background-color 0.2s;
+        }
+
+        .btn:hover {
+            background-color: #374151;
+            text-decoration: none;
+        }
+
+        .btn-secondary {
+            background-color: #F3F4F6;
+            color: #1F2937;
+            border: 1px solid #D1D5DB;
+        }
+
+        .btn-secondary:hover {
+            background-color: #E5E7EB;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        section {
+            padding: 4rem 0;
+            border-bottom: 1px solid #D1D5DB;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #9CA3AF;
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* --- BLOCS IMAGES WIREFRAME --- */
+        .img-placeholder {
+            background-color: #F3F4F6;
+            border: 2px dashed #9CA3AF;
+            color: #1F2937;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* --- HEADER & GLOBAL NAVIGATION --- */
+        header {
+            background-color: #FFFFFF;
+            border-bottom: 1px solid #D1D5DB;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-item > a {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #FFFFFF;
+            border: 1px solid #D1D5DB;
+            padding: 0.5rem 0;
+            min-width: 240px;
+            list-style: none;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .nav-item:hover .dropdown {
+            display: block;
+        }
+
+        .dropdown a {
+            display: block;
+            padding: 0.5rem 1rem;
+            font-size: 0.8rem;
+            text-transform: none;
+        }
+
+        .dropdown a:hover {
+            background-color: #F3F4F6;
+        }
+
+        /* --- PRODUCT HERO SECTION --- */
+        #franchise-hero {
+            background-color: #FFFFFF;
+            padding: 5rem 0;
+        }
+
+        .product-hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .product-hero-content h1 {
+            font-size: 2.5rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            font-weight: 800;
+        }
+
+        .product-hero-content p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: #374151;
+        }
+
+        /* --- CORE FEATURES GRID --- */
+        #franchise-pillars {
+            background-color: #F3F4F6;
+        }
+
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .pillar-card {
+            background-color: #FFFFFF;
+            border: 1px solid #D1D5DB;
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pillar-card h3 {
+            font-size: 1.25rem;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #1F2937;
+            padding-bottom: 0.25rem;
+        }
+
+        .pillar-card p {
+            font-size: 0.95rem;
+            color: #4B5563;
+        }
+
+        /* --- CENTRALIZED CONFIGURATION FLOW --- */
+        #franchise-architecture {
+            background-color: #FFFFFF;
+        }
+
+        .sync-split-grid {
+            display: grid;
+            grid-template-columns: 3fr 2fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .sync-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .sync-list li {
+            border-left: 3px solid #1F2937;
+            padding-left: 1rem;
+        }
+
+        .sync-list h4 {
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            margin-bottom: 0.25rem;
+        }
+
+        .sync-list p {
+            font-size: 0.9rem;
+            color: #374151;
+        }
+
+        /* --- NETWORK DASHBOARD BLUEPRINT --- */
+        #network-blueprint {
+            background-color: #F3F4F6;
+        }
+
+        .blueprint-wrapper {
+            border: 1px solid #D1D5DB;
+            background-color: #FFFFFF;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        .blueprint-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #1F2937;
+            padding-bottom: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .blueprint-stats-strip {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .stat-box-mock {
+            border: 1px solid #D1D5DB;
+            background-color: #F9FAFB;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .stat-box-mock span {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: #9CA3AF;
+        }
+
+        .stat-box-mock h4 {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .blueprint-table-mock {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .blueprint-table-mock th, .blueprint-table-mock td {
+            border: 1px solid #D1D5DB;
+            padding: 0.75rem;
+            font-size: 0.85rem;
+            text-align: left;
+        }
+
+        .blueprint-table-mock th {
+            background-color: #F3F4F6;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .status-pill-mock {
+            display: inline-block;
+            padding: 0.15rem 0.5rem;
+            font-size: 0.75rem;
+            font-weight: bold;
+            border: 1px solid #1F2937;
+            background-color: #F3F4F6;
+        }
+
+        /* --- FINAL CTA --- */
+        .cta-section {
+            background-color: #1F2937;
+            color: #FFFFFF;
+            padding: 5rem 0;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+        }
+
+        .cta-section p {
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            color: #D1D5DB;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-section .btn {
+            background-color: #FFFFFF;
+            color: #1F2937;
+            border: none;
+        }
+
+        .cta-section .btn:hover {
+            background-color: #F3F4F6;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #1F2937;
+            color: #FFFFFF;
+            padding: 4rem 0 2rem 0;
+        }
+
+        footer a {
+            color: #9CA3AF;
+        }
+
+        footer a:hover {
+            color: #FFFFFF;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-col h5 {
+            color: #FFFFFF;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .footer-col ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #9CA3AF;
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: #9CA3AF;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER & GLOBAL NAVIGATION -->
+    <header>
+        <div class="navbar">
+            <a href="index.html" class="logo">BILL</a>
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="qui-est-bill.html">Pourquoi Bill</a>
+                        <ul class="dropdown">
+                            <li><a href="qui-est-bill.html">Qui est Bill</a></li>
+                            <li><a href="nos-clients.html">Nos Clients</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="borne.html">Prise de commande</a>
+                        <ul class="dropdown">
+                            <li><a href="borne.html">Borne + Totem</a></li>
+                            <li><a href="commande-en-ligne.html">Commande en ligne</a></li>
+                            <li><a href="app-mobile.html">Application Mobile</a></li>
+                            <li><a href="audio-drive.html">Audio Drive</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="caisse-nf.html">Encaissement</a>
+                        <ul class="dropdown">
+                            <li><a href="caisse-nf.html">Caisse NF525</a></li>
+                            <li><a href="monnayeur.html">Monnayeur automatique</a></li>
+                            <li><a href="bpay.html">BPay</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="kds.html">Production & Pilotage</a>
+                        <ul class="dropdown">
+                            <li><a href="kds.html">Écrans Cuisine (KDS)</a></li>
+                            <li><a href="imprimante.html">Imprimante de Production</a></li>
+                            <li><a href="plateformes-livraison.html">Plateformes de Livraison</a></li>
+                            <li><a href="remise-commande.html">Remise de Commande</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="qsr.html" style="border-bottom: 2px solid #1F2937;">Expertises</a>
+                        <ul class="dropdown">
+                            <li><a href="qsr.html">Restauration Rapide & QSR</a></li>
+                            <li><a href="franchises.html">Franchises & Chaînes</a></li>
+                            <li><a href="parcs-loisirs.html">Parcs de Loisirs</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="blog.html">Ressources</a>
+                        <ul class="dropdown">
+                            <li><a href="blog.html">Blog & Actualités</a></li>
+                            <li><a href="centre-aide.html">Centre d'aide</a></li>
+                            <li><a href="integrations.html">Intégrations & API</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            <a href="contact.html" class="btn" style="font-size: 0.8rem; padding: 0.5rem 1rem;">Démo / Contact</a>
+        </div>
+    </header>
+
+    <!-- PRODUCT HERO SECTION -->
+    <section id="franchise-hero">
+        <div class="container">
+            <div class="product-hero-grid">
+                <div class="product-hero-content">
+                    <h1>Gestion de Réseaux de Franchises & Chaînes</h1>
+                    <p>Standardisez vos processus et dupliquez un modèle d’exploitation validé en toute sérénité sur l'ensemble de vos implantations européennes[cite: 1]. Notre architecture centralisée offre un cadre commun et structurant pour maintenir une cohérence opérationnelle parfaite, peu importe la vitesse de votre croissance[cite: 1].</p>
+                    <div style="display: flex; gap: 1rem;">
+                        <a href="contact.html" class="btn">Déployer sur mon réseau</a>
+                        <a href="#franchise-pillars" class="btn btn-secondary">Découvrir l'infrastructure</a>
+                    </div>
+                </div>
+                <div class="img-placeholder product-img-main">
+                    Hub Réseau de Franchise UI — 🖼️ [Schéma d'interconnexion globale reliant une centrale de marque à des grappes de points de vente régionaux synchronisés]
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CORE FEATURE PILLARS SECTION -->
+    <section id="franchise-pillars">
+        <div class="container">
+            <h2 class="section-title">Maintenir la conformité et la performance à l'échelle</h2>
+            <p class="section-subtitle">La force de la franchise repose sur la duplication d’un modèle qui fonctionne : même offre, même expérience, mêmes standards[cite: 1].</p>
+            
+            <div class="pillars-grid">
+                <!-- Pillar 1 -->
+                <div class="pillar-card">
+                    <h3>Standardisation Rigoureuse</h3>
+                    <p>Évitez les dérives et variations de pratiques locales entre franchisés[cite: 1]. Verrouillez l'intégrité de la marque en imposant des process d'exécution rigoureux à l'aide d'outils numériques communs déployés sur l'ensemble du réseau[cite: 1].</p>
+                </div>
+                <!-- Pillar 2 -->
+                <div class="pillar-card">
+                    <h3>Pilotage Stratégique Siège</h3>
+                    <p>Le catalogue produits, les fiches techniques uniformes, les coûts matière et les prix nationaux sont définis de manière souveraine au niveau du siège[cite: 1]. Sans cette structure centralisée, chaque modification locale devient un risque d'erreur financière immédiat[cite: 1].</p>
+                </div>
+                <!-- Pillar 3 -->
+                <div class="pillar-card">
+                    <h3>Vision Consolidée Data</h3>
+                    <p>Quittez la gestion purement opérationnelle de terrain[cite: 1]. Collectez, centralisez et analysez en temps réel les indicateurs de performance de vos établissements pour comparer les sites, mesurer les écarts et identifier les tendances[cite: 1].</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ARCHITECTURAL INTEGRATION FLOW SECTION -->
+    <section id="franchise-architecture">
+        <div class="container sync-split-grid">
+            <div>
+                <h2 class="section-title" style="text-align: left; margin-bottom: 1.5rem;">Une interface unifiée pour franchisés et franchiseurs</h2>
+                <ul class="sync-list">
+                    <li>
+                        <h4>Séparation stricte des droits d'accès</h4>
+                        <p>La hiérarchisation des accès est stratégique en multi-sites[cite: 1]. Le siège verrouille les paramètres sensibles, tandis que les gérants locaux disposent des leviers nécessaires pour adapter les plannings <a href="rh.html" style="text-decoration: underline;">RH</a> ou la disponibilité du <a href="stock.html" style="text-decoration: underline;">stock</a>[cite: 1].</p>
+                    </li>
+                    <li>
+                        <h4>Flexibilité et agilité des zones</h4>
+                        <p>Adaptez facilement vos grilles de menus en ligne, vos horaires d'ouverture ou vos variations tarifaires ciblées selon la ville ou la zone de chalandise pour répondre avec souplesse aux réalités locales sans briser l’équilibre global[cite: 1].</p>
+                    </li>
+                    <li>
+                        <h4>Omnicanalité totale sans double saisie</h4>
+                        <p>Les flux issus de vos <a href="borne.html" style="text-decoration: underline;">bornes tactiles</a>, de votre application de commande ou des plateformes de livraison externes remontent dans un <a href="backoffice.html" style="text-decoration: underline;">Backoffice unique</a>, réduisant la friction et le temps d'administration[cite: 1].</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="img-placeholder" style="min-height: 380px;">
+                Fichier Technique Réseau — 🖼️ [Matrice d'administration : Éditeur de tarification par groupe de restaurants et gestion des droits DIP/RGPD]
+            </div>
+        </div>
+    </section>
+
+    <!-- BLUEPRINT LAYOUT NETWORK DASHBOARD COMPONENT -->
+    <section id="network-blueprint">
+        <div class="container">
+            <h2 class="section-title">Composant Maquette — Console de Supervision Réseau</h2>
+            <p class="section-subtitle">Visualisation basse-fidélité de l'interface de contrôle du siège pour le suivi global multi-sites.</p>
+            
+            <div class="blueprint-wrapper">
+                <div class="blueprint-header">
+                    <span style="font-weight: bold; font-transform: uppercase; font-size: 0.85rem;">📈 CONSOLE DE SUPERVISION BILL — Tête de Réseau Franchise</span>
+                    <span style="font-size: 0.8rem; color: #9CA3AF;">Fichier de référence : image_25.png</span>
+                </div>
+                
+                <!-- KPI Strip Mockup -->
+                <div class="blueprint-stats-strip">
+                    <div class="stat-box-mock">
+                        <span>Points de vente actifs</span>
+                        <h4>42 Sites</h4>
+                    </div>
+                    <div class="stat-box-mock">
+                        <span>Chiffre d'Affaires Réseau J+0</span>
+                        <h4>142 850 €</h4>
+                    </div>
+                    <div class="stat-box-mock">
+                        <span>Ticket Moyen Consolidé</span>
+                        <h4>21,40 €</h4>
+                    </div>
+                    <div class="stat-box-mock">
+                        <span>Conformité Fiches Tarifs</span>
+                        <h4>100 %</h4>
+                    </div>
+                </div>
+
+                <!-- Table Grid Mockup -->
+                <table class="blueprint-table-mock">
+                    <thead>
+                        <tr>
+                            <th>Nom du Point de Vente</th>
+                            <th>Région / Ville</th>
+                            <th>Statut Caisse NF525</th>
+                            <th>Mise à jour Menu</th>
+                            <th>Alertes Ruptures Matières</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Bill Restaurant Lyon Sala</td>
+                            <td>Rhône-Alpes / Lyon[cite: 1]</td>
+                            <td><span class="status-pill-mock">Conforme certifié</span></td>
+                            <td>Synchronisé (v2.4)</td>
+                            <td>Aucune — OK</td>
+                        </tr>
+                        <tr>
+                            <td>Bill Fast Food Paris Rosiers</td>
+                            <td>Île-de-France / Paris[cite: 1]</td>
+                            <td><span class="status-pill-mock">Conforme certifié</span></td>
+                            <td>Synchronisé (v2.4)</td>
+                            <td>⚠️ 2 Ingrédients critiques</td>
+                        </tr>
+                        <tr>
+                            <td>Bill Trattoria Clichy Milly</td>
+                            <td>Île-de-France / Clichy[cite: 1]</td>
+                            <td><span class="status-pill-mock">Conforme certifié</span></td>
+                            <td>Synchronisé (v2.4)</td>
+                            <td>Aucune — OK</td>
+                        </tr>
+                        <tr>
+                            <td>Bill QSR Marseille Littoral</td>
+                            <td>PACA / Marseille[cite: 1]</td>
+                            <td><span class="status-pill-mock">Conforme certifié</span></td>
+                            <td>En attente push...</td>
+                            <td>⚠️ 1 Ingrédient critique</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CALL TO ACTION -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Sécurisez la croissance de votre enseigne</h2>
+            <p>Découvrez comment les plus grands réseaux s'appuient sur notre écosystème d'outils digitaux unifiés pour optimiser leurs marges opérationnelles. Rencontrez nos experts franchise.</p>
+            <a href="contact.html" class="btn">Prendre rendez-vous avec un ingénieur d'affaires</a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h5>Solutions</h5>
+                    <ul>
+                        <li><a href="borne.html">Borne Tactile</a></li>
+                        <li><a href="commande-en-ligne.html">Commande en Ligne</a></li>
+                        <li><a href="caisse-nf.html">Caisse NF525</a></li>
+                        <li><a href="kds.html">Écrans Cuisine KDS</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Expertises</h5>
+                    <ul>
+                        <li><a href="qsr.html">Restauration Rapide & QSR</a></li>
+                        <li><a href="franchises.html">Franchises & Chaînes</a></li>
+                        <li><a href="parcs-loisirs.html">Parcs de Loisirs</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Ressources</h5>
+                    <ul>
+                        <li><a href="blog.html">Notre Blog</a></li>
+                        <li><a href="centre-aide.html">Centre de Support</a></li>
+                        <li><a href="integrations.html">Fiches Intégrations</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Contact & Infos</h5>
+                    <ul>
+                        <li><a href="contact.html">Demande de Démo</a></li>
+                        <li><a href="qui-est-bill.html">À propos de Bill</a></li>
+                        <li><a href="nos-clients.html">Témoignages Clients</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div>&copy; 2026 BILL SAS. Tous droits réservés. Projet Maquette Fil de Fer Front-end.</div>
+                <div style="display: flex; gap: 1rem;">
+                    <a href="#">Mentions Légales</a>
+                    <a href="#">Confidentialité (RGPD)</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

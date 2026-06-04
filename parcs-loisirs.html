@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wireframe Low-Fi - Bill (Expertise Parcs de Loisirs)</title>
+    <style>
+        /* --- SYSTEME DE DESIGN WIREFRAME (LOW-FI) --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #FFFFFF;
+            color: #1F2937;
+            line-height: 1.6;
+        }
+
+        a {
+            color: #1F2937;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #1F2937;
+            color: #FFFFFF;
+            padding: 0.75rem 1.5rem;
+            border: 1px solid #1F2937;
+            font-weight: bold;
+            cursor: pointer;
+            text-align: center;
+            transition: background-color 0.2s;
+        }
+
+        .btn:hover {
+            background-color: #374151;
+            text-decoration: none;
+        }
+
+        .btn-secondary {
+            background-color: #F3F4F6;
+            color: #1F2937;
+            border: 1px solid #D1D5DB;
+        }
+
+        .btn-secondary:hover {
+            background-color: #E5E7EB;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        section {
+            padding: 4rem 0;
+            border-bottom: 1px solid #D1D5DB;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #9CA3AF;
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* --- BLOCS IMAGES WIREFRAME --- */
+        .img-placeholder {
+            background-color: #F3F4F6;
+            border: 2px dashed #9CA3AF;
+            color: #1F2937;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* --- HEADER & GLOBAL NAVIGATION --- */
+        header {
+            background-color: #FFFFFF;
+            border-bottom: 1px solid #D1D5DB;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-item > a {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #FFFFFF;
+            border: 1px solid #D1D5DB;
+            padding: 0.5rem 0;
+            min-width: 240px;
+            list-style: none;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .nav-item:hover .dropdown {
+            display: block;
+        }
+
+        .dropdown a {
+            display: block;
+            padding: 0.5rem 1rem;
+            font-size: 0.8rem;
+            text-transform: none;
+        }
+
+        .dropdown a:hover {
+            background-color: #F3F4F6;
+        }
+
+        /* --- HERO SECTION --- */
+        #park-hero {
+            background-color: #FFFFFF;
+            padding: 5rem 0;
+        }
+
+        .product-hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .product-hero-content h1 {
+            font-size: 2.5rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            font-weight: 800;
+        }
+
+        .product-hero-content p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: #374151;
+        }
+
+        .product-img-main {
+            min-height: 400px;
+            height: 100%;
+        }
+
+        /* --- CHALLENGES GRID --- */
+        #park-challenges {
+            background-color: #F3F4F6;
+        }
+
+        .challenges-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .challenge-card {
+            background-color: #FFFFFF;
+            border: 1px solid #D1D5DB;
+            padding: 2.5rem 2rem;
+        }
+
+        .challenge-card h3 {
+            font-size: 1.25rem;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #1F2937;
+            padding-bottom: 0.25rem;
+        }
+
+        .challenge-card p {
+            font-size: 0.9rem;
+            color: #4B5563;
+        }
+
+        /* --- MULTI-CONCEPT OPERATIONS --- */
+        #park-solutions {
+            background-color: #FFFFFF;
+        }
+
+        .split-solution-grid {
+            display: grid;
+            grid-template-columns: 3fr 2fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .solution-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .solution-list li {
+            border-left: 3px solid #1F2937;
+            padding-left: 1rem;
+        }
+
+        .solution-list h4 {
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            margin-bottom: 0.25rem;
+        }
+
+        .solution-list p {
+            font-size: 0.9rem;
+            color: #374151;
+        }
+
+        /* --- DASHBOARD COMPONENT LAYOUT --- */
+        #park-analytics-blueprint {
+            background-color: #F3F4F6;
+        }
+
+        .blueprint-wrapper {
+            border: 1px solid #D1D5DB;
+            background-color: #FFFFFF;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        .blueprint-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #1F2937;
+            padding-bottom: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .blueprint-grid-visual {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .zone-card-mock {
+            border: 1px solid #D1D5DB;
+            background-color: #F9FAFB;
+            padding: 1.5rem;
+        }
+
+        .zone-title {
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            border-bottom: 1px dashed #9CA3AF;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .zone-data-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .kpi-indicator {
+            display: inline-block;
+            padding: 0.1rem 0.4rem;
+            font-size: 0.75rem;
+            font-weight: bold;
+            border: 1px solid #1F2937;
+            background-color: #E5E7EB;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER & GLOBAL NAVIGATION -->
+    <header>
+        <div class="navbar">
+            <a href="index.html" class="logo">BILL</a>
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="qui-est-bill.html">Pourquoi Bill</a>
+                        <ul class="dropdown">
+                            <li><a href="qui-est-bill.html">Qui est Bill</a></li>
+                            <li><a href="nos-clients.html">Nos Clients</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="borne.html">Prise de commande</a>
+                        <ul class="dropdown">
+                            <li><a href="borne.html">Borne + Totem</a></li>
+                            <li><a href="commande-en-ligne.html">Commande en ligne</a></li>
+                            <li><a href="app-mobile.html">Application Mobile</a></li>
+                            <li><a href="audio-drive.html">Audio Drive</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="caisse-nf.html">Encaissement</a>
+                        <ul class="dropdown">
+                            <li><a href="caisse-nf.html">Caisse NF525</a></li>
+                            <li><a href="monnayeur.html">Monnayeur automatique</a></li>
+                            <li><a href="bpay.html">BPay</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="kds.html">Production & Pilotage</a>
+                        <ul class="dropdown">
+                            <li><a href="kds.html">Écrans Cuisine (KDS)</a></li>
+                            <li><a href="imprimante.html">Imprimante de Production</a></li>
+                            <li><a href="plateformes-livraison.html">Plateformes de Livraison</a></li>
+                            <li><a href="remise-commande.html">Remise de Commande</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="qsr.html" style="border-bottom: 2px solid #1F2937;">Expertises</a>
+                        <ul class="dropdown">
+                            <li><a href="qsr.html">Restauration Rapide & QSR</a></li>
+                            <li><a href="franchises.html">Franchises & Chaînes</a></li>
+                            <li><a href="parcs-loisirs.html">Parcs de Loisirs</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="blog.html">Ressources</a>
+                        <ul class="dropdown">
+                            <li><a href="blog.html">Blog & Actualités</a></li>
+                            <li><a href="centre-aide.html">Centre d'aide</a></li>
+                            <li><a href="integrations.html">Intégrations & API</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            <a href="contact.html" class="btn" style="font-size: 0.8rem; padding: 0.5rem 1rem;">Démo / Contact</a>
+        </div>
+    </header>
+
+    <!-- PARK HERO SECTION -->
+    <section id="park-hero">
+        <div class="container">
+            <div class="product-hero-grid">
+                <div class="product-hero-content">
+                    <h1>Gestion Restauration pour Parcs de Loisirs</h1>
+                    <p>Unifiez la gestion de l'ensemble des points de vente de votre complexe de loisirs (food courts, kiosques éphémères, restaurants à thème, vente ambulante) au sein d'une infrastructure technologique unifiée[cite: 1]. Absorbez les volumes de flux massifs et pilotez stratégiquement votre rentabilité globale[cite: 1].</p>
+                    <div style="display: flex; gap: 1rem;">
+                        <a href="contact.html" class="btn">Optimiser mon Parc de Loisirs</a>
+                        <a href="backoffice.html" class="btn btn-secondary">Découvrir le Backoffice</a>
+                    </div>
+                </div>
+                <div class="img-placeholder product-img-main">
+                    Écosystème Parcs de Loisirs UI — 🖼 [Plan de déploiement multi-zones : Bornes en zone d'attente, KDS synchronisés par pôle de restauration, et remontée unifiée sur Backoffice unique]
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMPLEX CHALLENGES SECTION -->
+    <section id="park-challenges">
+        <div class="container">
+            <h2 class="section-title">Les défis de la restauration à fort débit</h2>
+            <p class="section-subtitle">Les parcs de loisirs et espaces hybrides concentrent des problématiques uniques d'organisation où la donnée se fragmente rapidement[cite: 1].</p>
+            
+            <div class="challenges-grid">
+                <!-- Challenge 1 -->
+                <div class="challenge-card">
+                    <h3>Multiplicité des concepts</h3>
+                    <p>Un grand parc n’est pas un restaurant unique[cite: 1]. C’est un ensemble de concepts hétérogènes (restauration rapide, kiosques snacks, points de vente nomades) qui doivent fonctionner ensemble sans créer de silos d'information[cite: 1]. Encaissement, production et reporting se croisent en permanence[cite: 1].</p>
+                </div>
+                <!-- Challenge 2 -->
+                <div class="challenge-card">
+                    <h3>Saturation en période de rush</h3>
+                    <p>Les pics horaires sont ultra-violents (vagues de sortie d'attractions, coup de feu du midi)[cite: 1]. Les files d’attente s'allongent, la pression sur les équipes augmente et les erreurs de commande se multiplient[cite: 1]. Une prise de commande lente ou imprécise crée des frictions opérationnelles immédiates[cite: 1].</p>
+                </div>
+                <!-- Challenge 3 -->
+                <div class="challenge-card">
+                    <h3>Dispersions logistiques</h3>
+                    <p>Gérer l'approvisionnement matière sur plusieurs hectares est extrêmement sensible[cite: 1]. Les fiches techniques non harmonisées ou les réceptions mal enregistrées génèrent des distorsions invisibles au départ, mais qui érodent drastiquement vos marges bénéficiaires annuelles[cite: 1].</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FULL INTEGRATION SOLUTIONS SECTION -->
+    <section id="park-solutions">
+        <div class="container split-solution-grid">
+            <div>
+                <h2 class="section-title" style="text-align: left; margin-bottom: 1.5rem;">Une solution tout-en-un pour centraliser efficacement</h2>
+                <p style="font-size: 1rem; color: #4B5563; margin-bottom: 1.5rem;">La centralisation repose sur une architecture digitale cohérente[cite: 1]. En regroupant vos opérations, vous reprenez le contrôle de votre exploitation multi-sites[cite: 1].</p>
+                <ul class="solution-list">
+                    <li>
+                        <h4>Gestion de food courts et corners[cite: 1]</h4>
+                        <p>Structurez l'ensemble de vos stands avec un seul système cohérent[cite: 1]. Vos visiteurs commandent via des <a href="borne.html" style="text-decoration: underline;">bornes de commande tactiles</a> ou via la <a href="commande-en-ligne.html" style="text-decoration: underline;">commande en ligne</a> (Click & Collect avant sortie d'attraction), et payent sur une plateforme centralisée[cite: 1].</p>
+                    </li>
+                    <li>
+                        <h4>Synchronisation et transmission cuisine</h4>
+                        <p>Les commandes d'un même visiteur ou de flux distincts sont ventilées vers les écrans de production numériques (<a href="kds.html" style="text-decoration: underline;">KDS</a>) correspondants aux bons postes de préparation[cite: 1]. Les instructions sont claires, standardisées, éliminant les erreurs de transmission orales ou papier[cite: 1].</p>
+                    </li>
+                    <li>
+                        <h4>Rationnalisation logistique globale</h4>
+                        <p>Adoptez nos deux modules BackOffice complémentaires intégrés à notre brique de gestion de <a href="stock.html" style="text-decoration: underline;">stock</a>[cite: 1]. Suivez en direct vos productions, unifiez vos fiches techniques et déclenchez automatiquement les réassorts pour éliminer définitivement les ruptures d'ingrédients en plein rush[cite: 1].</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="img-placeholder" style="min-height: 380px;">
+                Flux d'orchestration centralisé — 1. Validation Panier Client (Bornes/Web) ➔ 2. Ventilation Média Écrans Cuisine KDS ➔ 3. Décrémentation Stock Théorique ➔ 4. Consolidation Reporting Siège[cite: 1]
+            </div>
+        </div>
+    </section>
+
+    <!-- BLUEPRINT LAYOUT COMPONENT SECTION -->
+    <section id="park-analytics-blueprint">
+        <div class="container">
+            <h2 class="section-title">Composant Maquette — Suivi des pôles de restauration</h2>
+            <p class="section-subtitle">Visualisation basse-fidélité de l'interface de contrôle du manager de parc pour le suivi en temps réel des performances des zones de vente[cite: 1].</p>
+            
+            <div class="blueprint-wrapper">
+                <div class="blueprint-header">
+                    <span style="font-weight: bold; text-transform: uppercase; font-size: 0.85rem;">📊 SUPERVISION MULTI-CONCEPTS — Hub Parc de Loisirs</span>
+                    <span style="font-size: 0.8rem; color: #9CA3AF;">Fichier de référence : image_26.png</span>
+                </div>
+                
+                <div class="blueprint-grid-visual">
+                    <!-- Zone 1 -->
+                    <div class="zone-card-mock">
+                        <div class="zone-title">Food Court Principal[cite: 1]</div>
+                        <div class="zone-data-row"><span>Bornes d'appel actives[cite: 1]</span><strong>6 unités</strong></div>
+                        <div class="zone-data-row"><span>Commandes en cours (KDS)[cite: 1]</span><strong>34 tickets</strong></div>
+                        <div class="zone-data-row"><span>Temps de préparation moyen[cite: 1]</span><strong>4 min 12s</strong></div>
+                        <div class="zone-data-row"><span>Statut flux</span><span class="kpi-indicator">RUSH INTENSE</span></div>
+                    </div>
+                    <!-- Zone 2 -->
+                    <div class="zone-card-mock">
+                        <div class="zone-title">Kiosque Snack - Zone Aquatique</div>
+                        <div class="zone-data-row"><span>Terminaux caisses nomades[cite: 1]</span><strong>2 unités</strong></div>
+                        <div class="zone-data-row"><span>Commandes en cours (KDS)[cite: 1]</span><strong>12 tickets</strong></div>
+                        <div class="zone-data-row"><span>Temps de préparation moyen[cite: 1]</span><strong>2 min 45s</strong></div>
+                        <div class="zone-data-row"><span>Statut flux</span><span class="kpi-indicator" style="background-color: #F3F4F6;">FLUIDE</span></div>
+                    </div>
+                    <!-- Zone 3 -->
+                    <div class="zone-card-mock">
+                        <div class="zone-title">Restaurant à Thème - Village</div>
+                        <div class="zone-data-row"><span>Commandes sur mobile (Web App)[cite: 1]</span><strong>18 tables</strong></div>
+                        <div class="zone-data-row"><span>Commandes en cours (KDS)[cite: 1]</span><strong>22 tickets</strong></div>
+                        <div class="zone-data-row"><span>Temps moyen passé à table[cite: 1]</span><strong>42 min</strong></div>
+                        <div class="zone-data-row"><span>Statut flux</span><span class="kpi-indicator">RUSH MODÉRÉ</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
