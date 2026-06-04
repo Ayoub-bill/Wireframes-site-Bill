@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wireframe Low-Fi - Bill (Menuboard Numérique)</title>
+    <style>
+        /* --- SYSTEME DE DESIGN WIREFRAME (LOW-FI) --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #FFFFFF;
+            color: #1F2937;
+            line-height: 1.6;
+        }
+
+        a {
+            color: #1F2937;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #1F2937;
+            color: #FFFFFF;
+            padding: 0.75rem 1.5rem;
+            border: 1px solid #1F2937;
+            font-weight: bold;
+            cursor: pointer;
+            text-align: center;
+            transition: background-color 0.2s;
+        }
+
+        .btn:hover {
+            background-color: #374151;
+            text-decoration: none;
+        }
+
+        .btn-secondary {
+            background-color: #F3F4F6;
+            color: #1F2937;
+            border: 1px solid #D1D5DB;
+        }
+
+        .btn-secondary:hover {
+            background-color: #E5E7EB;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        section {
+            padding: 4rem 0;
+            border-bottom: 1px solid #D1D5DB;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #9CA3AF;
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* --- IMAGE PLACEHOLDER --- */
+        .img-placeholder {
+            background-color: #F3F4F6;
+            border: 2px dashed #9CA3AF;
+            color: #1F2937;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* --- HEADER & GLOBAL NAVIGATION --- */
+        header {
+            background-color: #FFFFFF;
+            border-bottom: 1px solid #D1D5DB;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-item > a {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #FFFFFF;
+            border: 1px solid #D1D5DB;
+            padding: 0.5rem 0;
+            min-width: 230px;
+            list-style: none;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .nav-item:hover .dropdown {
+            display: block;
+        }
+
+        .dropdown a {
+            display: block;
+            padding: 0.5rem 1rem;
+            font-size: 0.8rem;
+            text-transform: none;
+        }
+
+        .dropdown a:hover {
+            background-color: #F3F4F6;
+        }
+
+        /* --- HERO SECTION --- */
+        #menuboard-hero {
+            background-color: #FFFFFF;
+            padding: 5rem 0;
+        }
+
+        .product-hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .product-hero-content h1 {
+            font-size: 2.5rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            font-weight: 800;
+        }
+
+        .product-hero-content p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: #374151;
+        }
+
+        .product-img-main {
+            min-height: 380px;
+            height: 100%;
+        }
+
+        /* --- VALUE PROPOSITION CHIPS --- */
+        #menuboard-benefits {
+            background-color: #F3F4F6;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .benefit-card {
+            background-color: #FFFFFF;
+            border: 1px solid #D1D5DB;
+            padding: 2.5rem 2rem;
+        }
+
+        .benefit-card h3 {
+            font-size: 1.25rem;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #1F2937;
+            padding-bottom: 0.25rem;
+        }
+
+        .benefit-card p {
+            font-size: 0.9rem;
+            color: #4B5563;
+        }
+
+        /* --- CENTRALIZED CONFIGURATION FLOW --- */
+        #menuboard-sync {
+            background-color: #FFFFFF;
+        }
+
+        .sync-split-grid {
+            display: grid;
+            grid-template-columns: 3fr 2fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .sync-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .sync-list li {
+            border-left: 3px solid #1F2937;
+            padding-left: 1rem;
+        }
+
+        .sync-list h4 {
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            margin-bottom: 0.25rem;
+        }
+
+        .sync-list p {
+            font-size: 0.9rem;
+            color: #374151;
+        }
+
+        /* --- PREVIEW GRID SIMULATION --- */
+        #menuboard-preview {
+            background-color: #F3F4F6;
+        }
+
+        .preview-display-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .preview-screen {
+            height: 200px;
+            background-color: #FFFFFF;
+            border: 4px solid #1F2937;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 1rem;
+        }
+
+        .preview-screen-header {
+            font-size: 0.75rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #9CA3AF;
+            border-bottom: 1px solid #D1D5DB;
+            padding-bottom: 0.25rem;
+        }
+
+        .preview-screen-body {
+            font-size: 0.8rem;
+            text-align: center;
+            font-style: italic;
+            color: #4B5563;
+        }
+
+        /* --- FINAL CTA --- */
+        .cta-section {
+            background-color: #1F2937;
+            color: #FFFFFF;
+            padding: 5rem 0;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+        }
+
+        .cta-section p {
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            color: #D1D5DB;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #1F2937;
+            color: #FFFFFF;
+            padding: 4rem 0 2rem 0;
+        }
+
+        footer a {
+            color: #9CA3AF;
+        }
+
+        footer a:hover {
+            color: #FFFFFF;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-col h5 {
+            color: #FFFFFF;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .footer-col ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #9CA3AF;
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: #9CA3AF;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER & GLOBAL NAVIGATION -->
+    <header>
+        <div class="navbar">
+            <a href="index.html" class="logo">BILL</a>
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="qui-est-bill.html">Pourquoi Bill</a>
+                        <ul class="dropdown">
+                            <li><a href="qui-est-bill.html">Qui est Bill</a></li>
+                            <li><a href="nos-clients.html">Nos Clients</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="borne.html">Prise de commande</a>
+                        <ul class="dropdown">
+                            <li><a href="borne.html">Borne + Totem</a></li>
+                            <li><a href="commande-en-ligne.html">Commande en ligne</a></li>
+                            <li><a href="app-mobile.html">Application Mobile</a></li>
+                            <li><a href="audio-drive.html">Audio Drive</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="caisse-nf.html">Encaissement</a>
+                        <ul class="dropdown">
+                            <li><a href="caisse-nf.html">Caisse NF525</a></li>
+                            <li><a href="monnayeur.html">Monnayeur automatique</a></li>
+                            <li><a href="bpay.html">BPay</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="kds.html">Production & Pilotage</a>
+                        <ul class="dropdown">
+                            <li><a href="kds.html">Écrans Cuisine (KDS)</a></li>
+                            <li><a href="imprimante.html">Imprimante de Production</a></li>
+                            <li><a href="plateformes-livraison.html">Plateformes de Livraison</a></li>
+                            <li><a href="remise-commande.html">Remise de Commande</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="qsr.html">Expertises</a>
+                        <ul class="dropdown">
+                            <li><a href="qsr.html">Restauration Rapide & QSR</a></li>
+                            <li><a href="franchises.html">Franchises & Chaînes</a></li>
+                            <li><a href="parcs-loisirs.html">Parcs de Loisirs</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="blog.html" style="border-bottom: 2px solid #1F2937;">Ressources</a>
+                        <ul class="dropdown">
+                            <li><a href="blog.html">Blog & Actualités</a></li>
+                            <li><a href="centre-aide.html">Centre d'aide</a></li>
+                            <li><a href="integrations.html">Intégrations & API</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            <a href="contact.html" class="btn" style="font-size: 0.8rem; padding: 0.5rem 1rem;">Démo / Contact</a>
+        </div>
+    </header>
+
+    <!-- PRODUCT HERO SECTION -->
+    <section id="menuboard-hero">
+        <div class="container">
+            <div class="product-hero-grid">
+                <div class="product-hero-content">
+                    <h1>Menuboards Numériques Connectés</h1>
+                    <p>Déployez des écrans d'affichage dynamiques en hauteur pour valoriser votre carte en temps réel[cite: 1]. Offrez une lisibilité optimale de vos menus, évitez les supports papier obsolètes et stimulez vos ventes additionnelles de manière automatisée[cite: 1].</p>
+                    <div style="display: flex; gap: 1rem;">
+                        <a href="contact.html" class="btn">Digitaliser mes Menus</a>
+                        <a href="affichage-dynamique.html" class="btn btn-secondary">Affichage Global</a>
+                    </div>
+                </div>
+                <div class="img-placeholder product-img-main">
+                    Simulateur de Disposition — 🖼️ [Alignement horizontal de 3 écrans Menuboards rétroéclairés affichant les grilles de menus et suggestions]
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BENEFITS SECTION -->
+    <section id="menuboard-benefits">
+        <div class="container">
+            <h2 class="section-title">Les atouts du menu numérique interactif</h2>
+            <p class="section-subtitle">Le menuboard n'est pas une simple liste de produits, c'est le cœur de l'expérience visuelle de votre ligne d'encaissement[cite: 1].</p>
+            
+            <div class="benefits-grid">
+                <!-- Card 1 -->
+                <div class="benefit-card">
+                    <h3>Mise à jour instantanée</h3>
+                    <p>Un menu digital offre une meilleure lisibilité et permet des rafraîchissements instantanés[cite: 1]. Modifiez un tarif, ajoutez une suggestion ou supprimez une offre éphémère en quelques secondes à distance.</p>
+                </div>
+                <!-- Card 2 -->
+                <div class="benefit-card">
+                    <h3>Ventes Additionnelles</h3>
+                    <p>Idéal pour le couplage avec votre tunnel de vente. Mettez en avant vos produits phares, formulez des suggestions intelligentes basées sur la météo ou l'heure pour faire progresser votre panier moyen.</p>
+                </div>
+                <!-- Card 3 -->
+                <div class="benefit-card">
+                    <h3>Zéro Incohérence</h3>
+                    <p>Évitez les erreurs frustrantes pour le consommateur : un prix affiché sur vos écrans muraux qui ne correspondrait pas à celui configuré sur vos bornes tactiles ou votre caisse enregistreuse[cite: 1].</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ARCHITECTURE FLOW & DATA CENTRALIZATION SECTION -->
+    <section id="menuboard-sync">
+        <div class="container sync-split-grid">
+            <div>
+                <h2 class="section-title" style="text-align: left; margin-bottom: 1.5rem;">Un pilotage unifié via Backoffice</h2>
+                <ul class="sync-list">
+                    <li>
+                        <h4>Gestion centralisée multi-sites</h4>
+                        <p>Grâce à la centralisation via les outils de gestion comme le <a href="backoffice.html" style="text-decoration: underline;">Backoffice unique</a>, harmonisez les cartes et les tarifs de l'ensemble de vos franchises d'un coup[cite: 1].</p>
+                    </li>
+                    <li>
+                        <h4>Planification selon vos services</h4>
+                        <p>Configurez le basculement automatique de l'affichage selon le moment de la journée (Formule Déjeuner ➔ Formule Goûter ➔ Formule Dîner) sans aucune action manuelle de votre staff opérationnel.</p>
+                    </li>
+                    <li>
+                        <h4>Ruptures de stocks intelligentes</h4>
+                        <p>Connecté nativement au module <a href="stock.html" style="text-decoration: underline;">Stock</a>. Dès qu'un produit atteint son seuil d'alerte, il disparaît automatiquement des suggestions visuelles du menuboard pour fluidifier le rush[cite: 1].</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="img-placeholder" style="min-height: 350px;">
+                Schéma d'intégration — 🖼️ [Base de données centrale unique ➔ Flux instantané ➔ Bornes / Menuboards / Commande en ligne]
+            </div>
+        </div>
+    </section>
+
+    <!-- PREVIEW LAYOUT SECTION -->
+    <section id="menuboard-preview">
+        <div class="container">
+            <h2 class="section-title">Exemple de configuration standard (Triple Écran)</h2>
+            <p class="section-subtitle">Visualisez la structure visuelle type recommandée pour une ligne de vente de restauration rapide (QSR)[cite: 1].</p>
+            
+            <div class="preview-display-grid">
+                <!-- Screen 1 -->
+                <div class="preview-screen">
+                    <div class="preview-screen-header">Écran gauche : Entrées & Plats</div>
+                    <div class="preview-screen-body">🖼️ [Grille des Burgers, Tacos et Fiches Produits avec Prix]</div>
+                    <div style="font-size: 0.7rem; text-align: right; color: #9CA3AF;">Fichier média : menu_gauche.json</div>
+                </div>
+                <!-- Screen 2 -->
+                <div class="preview-screen">
+                    <div class="preview-screen-header">Écran Central : Vidéo Promotionnelle</div>
+                    <div class="preview-screen-body">🖼️ [Clip Vidéo High-Definition du produit phare du mois en boucle]</div>
+                    <div style="font-size: 0.7rem; text-align: right; color: #9CA3AF;">Fichier média : promo_juin.mp4</div>
+                </div>
+                <!-- Screen 3 -->
+                <div class="preview-screen">
+                    <div class="preview-screen-header">Écran droit : Desserts, Boissons & Suggestions</div>
+                    <div class="preview-screen-body">🖼️ [Grille des Suppléments, Menus Enfants et Suggestions d'upsell]</div>
+                    <div style="font-size: 0.7rem; text-align: right; color: #9CA3AF;">Fichier média : menu_droit.json</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CALL TO ACTION -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Prêt à dynamiser vos ventes en salle ?</h2>
+            <p>Testez notre suite d’outils et améliorez votre performance et l’expérience de vos clients. Démarquez-vous dès maintenant.[cite: 1]</p>
+            <a href="contact.html" class="btn">Demander un devis sur-mesure pour mes écrans</a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h5>Solutions</h5>
+                    <ul>
+                        <li><a href="borne.html">Borne Tactile</a></li>
+                        <li><a href="commande-en-ligne.html">Commande en Ligne</a></li>
+                        <li><a href="caisse-nf.html">Caisse NF525</a></li>
+                        <li><a href="kds.html">Écrans Cuisine KDS</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Expertises</h5>
+                    <ul>
+                        <li><a href="qsr.html">Restauration Rapidité & QSR</a></li>
+                        <li><a href="franchises.html">Réseaux de Franchises</a></li>
+                        <li><a href="parcs-loisirs.html">Gestion de Parcs</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Ressources</h5>
+                    <ul>
+                        <li><a href="blog.html">Notre Blog</a></li>
+                        <li><a href="centre-aide.html">Centre de Support</a></li>
+                        <li><a href="integrations.html">Fiches Intégrations</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Contact & Infos</h5>
+                    <ul>
+                        <li><a href="contact.html">Demande de Démo</a></li>
+                        <li><a href="qui-est-bill.html">À propos de Bill</a></li>
+                        <li><a href="nos-clients.html">Témoignages Clients</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div>&copy; 2026 BILL SAS. Tous droits réservés. Projet Maquette Fil de Fer Front-end.</div>
+                <div style="display: flex; gap: 1rem;">
+                    <a href="#">Mentions Légales</a>
+                    <a href="#">Confidentialité (RGPD)</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

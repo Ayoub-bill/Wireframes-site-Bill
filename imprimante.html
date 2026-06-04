@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wireframe Low-Fi - Bill (Imprimante de Production)</title>
+    <style>
+        /* --- BASES & SYSTEM DESIGN (LOW-FI) --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #FFFFFF;
+            color: #1F2937;
+            line-height: 1.6;
+        }
+
+        a {
+            color: #1F2937;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #1F2937;
+            color: #FFFFFF;
+            padding: 0.75rem 1.5rem;
+            border: 1px solid #1F2937;
+            font-weight: bold;
+            cursor: pointer;
+            text-align: center;
+            transition: background-color 0.2s;
+        }
+
+        .btn:hover {
+            background-color: #374151;
+            text-decoration: none;
+        }
+
+        .btn-secondary {
+            background-color: #F3F4F6;
+            color: #1F2937;
+            border: 1px solid #D1D5DB;
+        }
+
+        .btn-secondary:hover {
+            background-color: #E5E7EB;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        section {
+            padding: 4rem 0;
+            border-bottom: 1px solid #D1D5DB;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #9CA3AF;
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* --- IMAGE PLACEHOLDER STANDARD --- */
+        .img-placeholder {
+            background-color: #F3F4F6;
+            border: 2px dashed #9CA3AF;
+            color: #1F2937;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* --- HEADER & NAVIGATION --- */
+        header {
+            background-color: #FFFFFF;
+            border-bottom: 1px solid #D1D5DB;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-item > a {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #FFFFFF;
+            border: 1px solid #D1D5DB;
+            padding: 0.5rem 0;
+            min-width: 220px;
+            list-style: none;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .nav-item:hover .dropdown {
+            display: block;
+        }
+
+        .dropdown a {
+            display: block;
+            padding: 0.5rem 1rem;
+            font-size: 0.8rem;
+            text-transform: none;
+        }
+
+        .dropdown a:hover {
+            background-color: #F3F4F6;
+        }
+
+        /* --- PRODUCT HERO SECTION --- */
+        #printer-hero {
+            background-color: #FFFFFF;
+            padding: 5rem 0;
+        }
+
+        .product-hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .product-hero-content h1 {
+            font-size: 2.5rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            font-weight: 800;
+        }
+
+        .product-hero-content p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: #374151;
+        }
+
+        .product-img-main {
+            min-height: 400px;
+            height: 100%;
+        }
+
+        /* --- HYBRID ARCHITECTURE FEATURES --- */
+        #printer-features {
+            background-color: #F3F4F6;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background-color: #FFFFFF;
+            border: 1px solid #D1D5DB;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .feature-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            border-bottom: 2px solid #1F2937;
+            padding-bottom: 0.25rem;
+        }
+
+        .feature-card p {
+            font-size: 0.9rem;
+            color: #374151;
+        }
+
+        /* --- ADVANCED FLOW SECTION --- */
+        #printer-flow {
+            background-color: #FFFFFF;
+        }
+
+        .split-flow-grid {
+            display: grid;
+            grid-template-columns: 3fr 2fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .flow-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .flow-list li {
+            border-left: 3px solid #1F2937;
+            padding-left: 1rem;
+        }
+
+        .flow-list h4 {
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            margin-bottom: 0.25rem;
+        }
+
+        .flow-list p {
+            font-size: 0.9rem;
+            color: #374151;
+        }
+
+        /* --- HARDWARE SPECS --- */
+        #printer-specs {
+            background-color: #F3F4F6;
+        }
+
+        .specs-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #FFFFFF;
+            border: 1px solid #D1D5DB;
+        }
+
+        .specs-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #D1D5DB;
+            font-size: 0.95rem;
+        }
+
+        .specs-table tr:nth-child(even) {
+            background-color: #F9FAFB;
+        }
+
+        .specs-table td:first-child {
+            font-weight: bold;
+            width: 30%;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            color: #4B5563;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER & GLOBAL NAVIGATION -->
+    <header>
+        <div class="navbar">
+            <a href="index.html" class="logo">BILL</a>
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="qui-est-bill.html">Pourquoi Bill</a>
+                        <ul class="dropdown">
+                            <li><a href="qui-est-bill.html">Qui est Bill</a></li>
+                            <li><a href="nos-clients.html">Nos Clients</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="borne.html">Prise de commande</a>
+                        <ul class="dropdown">
+                            <li><a href="borne.html">Borne + Totem</a></li>
+                            <li><a href="commande-en-ligne.html">Commande en ligne</a></li>
+                            <li><a href="app-mobile.html">Application Mobile</a></li>
+                            <li><a href="audio-drive.html">Audio Drive</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="caisse-nf.html">Encaissement</a>
+                        <ul class="dropdown">
+                            <li><a href="caisse-nf.html">Caisse NF525</a></li>
+                            <li><a href="monnayeur.html">Monnayeur automatique</a></li>
+                            <li><a href="bpay.html">BPay</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="kds.html" style="border-bottom: 2px solid #1F2937;">Production & Pilotage</a>
+                        <ul class="dropdown">
+                            <li><a href="kds.html">Écrans Cuisine (KDS)</a></li>
+                            <li><a href="imprimante.html">Imprimante de Production</a></li>
+                            <li><a href="plateformes-livraison.html">Plateformes de Livraison</a></li>
+                            <li><a href="remise-commande.html">Remise de Commande</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="qsr.html">Expertises</a>
+                        <ul class="dropdown">
+                            <li><a href="qsr.html">Restauration Rapide & QSR</a></li>
+                            <li><a href="franchises.html">Franchises & Chaînes</a></li>
+                            <li><a href="parcs-loisirs.html">Parcs de Loisirs</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="blog.html">Ressources</a>
+                        <ul class="dropdown">
+                            <li><a href="blog.html">Blog & Actualités</a></li>
+                            <li><a href="centre-aide.html">Centre d'aide</a></li>
+                            <li><a href="integrations.html">Intégrations & API</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            <a href="contact.html" class="btn" style="font-size: 0.8rem; padding: 0.5rem 1rem;">Démo / Contact</a>
+        </div>
+    </header>
+
+    <!-- MAIN HERO SECTION -->
+    <section id="printer-hero">
+        <div class="container">
+            <div class="product-hero-grid">
+                <div class="product-hero-content">
+                    <h1>Imprimante de Production Cuisine</h1>
+                    <p>Bien que les rouleaux de papier et la maintenance induisent un coût réel par rapport à un écosystème d'écrans[cite: 1], l'impression de tickets thermiques durcis reste indispensable pour l'étiquetage des sacs de livraison, les fiches de packaging et les configurations de cuisines hybrides.</p>
+                    <div style="display: flex; gap: 1rem;">
+                        <a href="contact.html" class="btn">Équiper mes postes de cuisine</a>
+                        <a href="kds.html" class="btn btn-secondary">Découvrir l'alternative KDS</a>
+                    </div>
+                </div>
+                <div class="img-placeholder product-img-main">
+                    Base Hardware UI — 🖼️ [Imprimante thermique connectée avec découpe automatique et indicateur LED d'alerte rush]
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CORE FEATURES SECTION -->
+    <section id="printer-features">
+        <div class="container">
+            <h2 class="section-title">Une gestion de flux stable et communicative</h2>
+            <p class="section-subtitle">Optimisez la transmission de l'information entre les postes concernés pour booster votre productivité en cuisine[cite: 1].</p>
+            
+            <div class="features-grid">
+                <!-- Card 1 -->
+                <div class="feature-card">
+                    <h3>Visibilité de l'information</h3>
+                    <p>Impression claire et instantanée des commandes et de leurs spécificités critiques : demandes particulières des clients, allergènes ou ingrédients à exclure[cite: 1].</p>
+                </div>
+                <!-- Card 2 -->
+                <div class="feature-card">
+                    <h3>Routage Intelligent</h3>
+                    <p>Le système répartit automatiquement les impressions par corps de métier[cite: 1]. Le bon des burgers s'imprime au poste grill, tandis que les boissons s'impriment directement au comptoir d'emballage.</p>
+                </div>
+                <!-- Card 3 -->
+                <div class="feature-card">
+                    <h3>Sécurité Logique & Backup</h3>
+                    <p>Fonctionne comme une brique de secours résiliente en parallèle de vos écrans numériques (<a href="kds.html" style="text-decoration: underline;">KDS</a>)[cite: 1] pour assurer la continuité du service même lors des incidents techniques majeurs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WORKFLOW SYNCHRONIZATION SECTION -->
+    <section id="printer-flow">
+        <div class="container split-flow-grid">
+            <div>
+                <h2 class="section-title" style="text-align: left; margin-bottom: 1.5rem;">Une interface de production intégrée</h2>
+                <ul class="flow-list">
+                    <li>
+                        <h4>Zéro perte de données</h4>
+                        <p>Toutes les commandes validées depuis vos <a href="borne.html" style="text-decoration: underline;">bornes</a>, votre <a href="caisse-nf.html" style="text-decoration: underline;">caisse NF525</a>[cite: 1] ou la commande en ligne sont instantanément traduites en tickets physiques standardisés.</p>
+                    </li>
+                    <li>
+                        <h4>Optimisé pour le conditionnement</h4>
+                        <p>Générez automatiquement des étiquettes autocollantes pour sceller et identifier les sacs destinés aux plateformes de livraison (Uber Eats, Deliveroo)[cite: 1].</p>
+                    </li>
+                    <li>
+                        <h4>Centralisation automatique</h4>
+                        <p>Même si le support de préparation est physique, l'historique complet des temps de traitement et d'impression reste tracé à distance au sein de votre <a href="backoffice.html" style="text-decoration: underline;">Backoffice unique</a>[cite: 1].</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="img-placeholder" style="min-height: 350px;">
+                Architecture Réseau — 🖼️ [Schéma de connexion : Caisse/Bornes ➔ Hub Réseau Ethernet ➔ Imprimantes Cuisine Postes Grill / Friture / Emballage]
+            </div>
+        </div>
+    </section>
+
+    <!-- TECHNICAL SPECIFICATIONS SECTION -->
+    <section id="printer-specs">
+        <div class="container">
+            <h2 class="section-title">Caractéristiques Techniques du Matériel</h2>
+            <p class="section-subtitle">Une brique robuste conçue pour endurer l'environnement exigeant d'une cuisine professionnelle de restauration rapide (chaleur, humidité, projections de graisse).</p>
+            
+            <table class="specs-table">
+                <tbody>
+                    <tr>
+                        <td>Technologie d'impression</td>
+                        <td>Thermique directe haute densité (pas de ruban encreur nécessaire).</td>
+                    </tr>
+                    <tr>
+                        <td>Vitesse de traitement</td>
+                        <td>Jusqu'à 250 mm par seconde pour absorber les flux intenses lors des périodes de rush[cite: 1].</td>
+                    </tr>
+                    <tr>
+                        <td>Robustesse & Certification</td>
+                        <td>Structure en acier durci étanche aux projections liquides. Tête d'impression longue durée.</td>
+                    </tr>
+                    <tr>
+                        <td>Connectivité native</td>
+                        <td>Ports Ethernet (RJ45), USB et Wi-Fi sécurisé intégrés pour une interconnexion immédiate à la caisse[cite: 1].</td>
+                    </tr>
+                    <tr>
+                        <td>Consommables compatibles</td>
+                        <td>Rouleaux thermiques standards 80mm avec système d'alerte de fin de bande visuelle[cite: 1].</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h5>Solutions</h5>
+                    <ul>
+                        <li><a href="borne.html">Borne Tactile</a></li>
+                        <li><a href="commande-en-ligne.html">Commande en Ligne</a></li>
+                        <li><a href="caisse-nf.html">Caisse NF525</a></li>
+                        <li><a href="kds.html">Écrans Cuisine KDS</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Expertises</h5>
+                    <ul>
+                        <li><a href="qsr.html">Restauration Rapide</a></li>
+                        <li><a href="franchises.html">Réseaux de Franchises</a></li>
+                        <li><a href="parcs-loisirs.html">Gestion de Parcs</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Ressources</h5>
+                    <ul>
+                        <li><a href="blog.html">Notre Blog</a></li>
+                        <li><a href="centre-aide.html">Centre de Support</a></li>
+                        <li><a href="integrations.html">Fiches Intégrations</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Contact & Infos</h5>
+                    <ul>
+                        <li><a href="contact.html">Demande de Démo</a></li>
+                        <li><a href="qui-est-bill.html">À propos de Bill</a></li>
+                        <li><a href="nos-clients.html">Témoignages Clients</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div>&copy; 2026 BILL SAS. Tous droits réservés. Projet Maquette Fil de Fer Front-end.</div>
+                <div style="display: flex; gap: 1rem;">
+                    <a href="#">Mentions Légales</a>
+                    <a href="#">Confidentialité (RGPD)</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

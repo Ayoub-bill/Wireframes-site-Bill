@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wireframe Low-Fi - Bill (Écrans Cuisine KDS)</title>
+    <style>
+        /* --- BASES & SYSTEM DESIGN (LOW-FI) --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #FFFFFF;
+            color: #1F2937;
+            line-height: 1.6;
+        }
+
+        a {
+            color: #1F2937;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #1F2937;
+            color: #FFFFFF;
+            padding: 0.75rem 1.5rem;
+            border: 1px solid #1F2937;
+            font-weight: bold;
+            cursor: pointer;
+            text-align: center;
+            transition: background-color 0.2s;
+        }
+
+        .btn:hover {
+            background-color: #374151;
+            text-decoration: none;
+        }
+
+        .btn-secondary {
+            background-color: #F3F4F6;
+            color: #1F2937;
+            border: 1px solid #D1D5DB;
+        }
+
+        .btn-secondary:hover {
+            background-color: #E5E7EB;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        section {
+            padding: 4rem 0;
+            border-bottom: 1px solid #D1D5DB;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #9CA3AF;
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* --- IMAGE PLACEHOLDER STANDARD --- */
+        .img-placeholder {
+            background-color: #F3F4F6;
+            border: 2px dashed #9CA3AF;
+            color: #1F2937;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* --- HEADER & NAVIGATION --- */
+        header {
+            background-color: #FFFFFF;
+            border-bottom: 1px solid #D1D5DB;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-item > a {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #FFFFFF;
+            border: 1px solid #D1D5DB;
+            padding: 0.5rem 0;
+            min-width: 220px;
+            list-style: none;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .nav-item:hover .dropdown {
+            display: block;
+        }
+
+        .dropdown a {
+            display: block;
+            padding: 0.5rem 1rem;
+            font-size: 0.8rem;
+            text-transform: none;
+        }
+
+        .dropdown a:hover {
+            background-color: #F3F4F6;
+        }
+
+        /* --- PRODUCT HERO SECTION --- */
+        #kds-hero {
+            background-color: #FFFFFF;
+            padding: 5rem 0;
+        }
+
+        .product-hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .product-hero-content h1 {
+            font-size: 2.5rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            font-weight: 800;
+        }
+
+        .product-hero-content p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: #374151;
+        }
+
+        .product-img-main {
+            min-height: 400px;
+            height: 100%;
+        }
+
+        /* --- PERFORMANCE METRICS --- */
+        #kds-metrics {
+            background-color: #F3F4F6;
+            padding: 3rem 0;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .metric-card h3 {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 0.25rem;
+        }
+
+        .metric-card p {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #4B5563;
+            font-weight: 700;
+        }
+
+        /* --- CORE FEATURES CHANNELS --- */
+        #kds-features {
+            background-color: #FFFFFF;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .feature-block h3 {
+            font-size: 1.35rem;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            border-left: 4px solid #1F2937;
+            padding-left: 0.75rem;
+        }
+
+        .feature-block p {
+            font-size: 0.95rem;
+            color: #4B5563;
+            margin-bottom: 1rem;
+        }
+
+        /* --- SCREEN CONFIGURATIONS (3 TYPES) --- */
+        #kds-modes {
+            background-color: #F3F4F6;
+        }
+
+        .modes-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .mode-card {
+            background-color: #FFFFFF;
+            border: 1px solid #D1D5DB;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mode-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            padding-bottom: 0.25rem;
+            border-bottom: 2px solid #1F2937;
+        }
+
+        .mode-card p {
+            font-size: 0.9rem;
+            color: #374151;
+            flex-grow: 1;
+            margin-bottom: 1.5rem;
+        }
+
+        /* --- FINAL CTA --- */
+        .cta-section {
+            background-color: #1F2937;
+            color: #FFFFFF;
+            padding: 5rem 0;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+        }
+
+        .cta-section p {
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            color: #D1D5DB;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-section .btn {
+            background-color: #FFFFFF;
+            color: #1F2937;
+            border: none;
+        }
+
+        .cta-section .btn:hover {
+            background-color: #F3F4F6;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #1F2937;
+            color: #FFFFFF;
+            padding: 4rem 0 2rem 0;
+        }
+
+        footer a {
+            color: #9CA3AF;
+        }
+
+        footer a:hover {
+            color: #FFFFFF;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-col h5 {
+            color: #FFFFFF;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .footer-col ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #9CA3AF;
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: #9CA3AF;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER & GLOBAL NAVIGATION -->
+    <header>
+        <div class="navbar">
+            <a href="index.html" class="logo">BILL</a>
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="qui-est-bill.html">Pourquoi Bill</a>
+                        <ul class="dropdown">
+                            <li><a href="qui-est-bill.html">Qui est Bill</a></li>
+                            <li><a href="nos-clients.html">Nos Clients</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="borne.html">Prise de commande</a>
+                        <ul class="dropdown">
+                            <li><a href="borne.html">Borne + Totem</a></li>
+                            <li><a href="commande-en-ligne.html">Commande en ligne</a></li>
+                            <li><a href="app-mobile.html">Application Mobile</a></li>
+                            <li><a href="audio-drive.html">Audio Drive</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="caisse-nf.html">Encaissement</a>
+                        <ul class="dropdown">
+                            <li><a href="caisse-nf.html">Caisse NF525</a></li>
+                            <li><a href="monnayeur.html">Monnayeur automatique</a></li>
+                            <li><a href="bpay.html">BPay</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="kds.html" style="border-bottom: 2px solid #1F2937;">Production & Pilotage</a>
+                        <ul class="dropdown">
+                            <li><a href="kds.html">Écrans Cuisine (KDS)</a></li>
+                            <li><a href="imprimante.html">Imprimante de Production</a></li>
+                            <li><a href="plateformes-livraison.html">Plateformes de Livraison</a></li>
+                            <li><a href="remise-commande.html">Remise de Commande</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="qsr.html">Expertises</a>
+                        <ul class="dropdown">
+                            <li><a href="qsr.html">Restauration Rapide & QSR</a></li>
+                            <li><a href="franchises.html">Franchises & Chaînes</a></li>
+                            <li><a href="parcs-loisirs.html">Parcs de Loisirs</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="blog.html">Ressources</a>
+                        <ul class="dropdown">
+                            <li><a href="blog.html">Blog & Actualités</a></li>
+                            <li><a href="centre-aide.html">Centre d'aide</a></li>
+                            <li><a href="integrations.html">Intégrations & API</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            <a href="contact.html" class="btn" style="font-size: 0.8rem; padding: 0.5rem 1rem;">Démo / Contact</a>
+        </div>
+    </header>
+
+    <!-- PRODUCT HERO SECTION -->
+    <section id="kds-hero">
+        <div class="container">
+            <div class="product-hero-grid">
+                <div class="product-hero-content">
+                    <h1>Écrans de Production Cuisine (KDS) - Bill App</h1>
+                    <p>Optez pour une interface de production avec une gestion optimisée et communicative entre les postes concernés et boostez votre productivité en cuisine. Enfin une cuisine ordonnée !</p>
+                    <div style="display: flex; gap: 1rem;">
+                        <a href="contact.html" class="btn">Moderniser ma cuisine</a>
+                        <a href="#kds-modes" class="btn btn-secondary">Voir les modes d'affichage</a>
+                    </div>
+                </div>
+                <div class="img-placeholder product-img-main">
+                    Interface KDS — 🖼️ [Vue multi-bons numérique avec statuts de préparation et alertes de retard temporisées]
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PERFORMANCE METRICS SECTION -->
+    <section id="kds-metrics">
+        <div class="container">
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <h3>+100%</h3>
+                    <p>De visibilité sur les temps de production</p>
+                </div>
+                <div class="metric-card">
+                    <h3>-4%</h3>
+                    <p>D'erreurs de préparation constatées</p>
+                </div>
+                <div class="metric-card">
+                    <h3>+20%</h3>
+                    <p>De commandes traitées en période de rush</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CORE FEATURES SECTION -->
+    <section id="kds-features">
+        <div class="container">
+            <h2 class="section-title">Fluidifiez vos interfaces de préparation</h2>
+            <p class="section-subtitle">Dites adieu aux tickets papier perdus ou illisibles et unifiez la transmission de données logistiques terrain entre chaque poste de production en temps réel.</p>
+            
+            <div class="features-grid">
+                <!-- Bloc 1 : Omnicanalité -->
+                <div class="feature-block">
+                    <h3>Sur place, en livraison, à emporter</h3>
+                    <p>Centralisez l’ensemble des flux sur un écran unique pour une organisation simplifiée et centralisée. Le système trie dynamiquement la file de production selon le type de mise à disposition pour optimiser la cadence.</p>
+                </div>
+
+                <!-- Bloc 2 : Canaux Externes -->
+                <div class="feature-block">
+                    <h3>Intégration Plateformes Externes</h3>
+                    <p>Intégrez à votre KDS les commandes provenant des plateformes de livraison tierces comme Uber Eats ou Deliveroo. Supprimez le besoin de ressaisir manuellement vos tickets sur des terminaux différents.</p>
+                </div>
+
+                <!-- Bloc 3 : Production Guidée -->
+                <div class="feature-block">
+                    <h3>Production Guidée & Spécificités</h3>
+                    <p>Affichez instantanément les commandes et leurs spécificités détaillées : demandes particulières, allergènes ou ingrédients à retirer. Les interfaces sont pensées et connectées pour chaque corps de métier (grill, friteuse, assemblage).</p>
+                </div>
+
+                <!-- Bloc 4 : Traçabilité Backoffice -->
+                <div class="feature-block">
+                    <h3>État d'avancement & Archivage</h3>
+                    <p>Le système assure la centralisation des commandes en cours et de l’historique complet sur le BackOffice. Les actions de validation sont horodatées pour identifier les goulots d'étranglement et analyser vos performances opérationnelles.</p>
+                </div>
+            </div>
+
+            <div class="img-placeholder" style="min-height: 250px;">
+                🖼️ [Wireframe UI — Postes de répartition cuisine synchronisés : Écran Chaud vs Écran Froid vs Écran Packager]
+            </div>
+        </div>
+    </section>
+
+    <!-- SCREEN CONFIGURATIONS (3 TYPES) SECTION -->
+    <section id="kds-modes">
+        <div class="container">
+            <h2 class="section-title">Possibilité de paramétrer vos écrans de production</h2>
+            <p class="section-subtitle">Bénéficiez de 3 types d’écrans préconfigurés selon les exigences de votre concept gastronomique pour s’adapter au mieux à votre mode de fonctionnement.</p>
+            
+            <div class="modes-grid">
+                <!-- Mode 1 : QSR -->
+                <div class="mode-card">
+                    <h3>Configuration QSR</h3>
+                    <p>Idéal pour la restauration rapide de masse. Code couleur dynamique pour différencier immédiatement les commandes sur place ou à emporter, associé à un minuteur d’attente précis par bon.</p>
+                    <div class="img-placeholder" style="height: 100px;">🖼️ [Interface UI — Grille QSR]</div>
+                </div>
+
+                <!-- Mode 2 : Bistrot -->
+                <div class="mode-card">
+                    <h3>Configuration Bistrot</h3>
+                    <p>Pensé pour la restauration traditionnelle organisée. Mise en avant des réclames et des suites logiques pour lancer la préparation du plat chaud immédiatement après l’envoi de l’entrée.</p>
+                    <div class="img-placeholder" style="height: 100px;">🖼️ [Interface UI — Plan de suites]</div>
+                </div>
+
+                <!-- Mode 3 : Gastronomique -->
+                <div class="mode-card">
+                    <h3>Configuration Gastronomique</h3>
+                    <p>Dédié au service premium. Focus complet sur la numérotation fine des tables, le suivi des commentaires complexes du chef de rang et le respect pointilleux de l'ordre d'envoi des assiettes.</p>
+                    <div class="img-placeholder" style="height: 100px;">🖼️ [Interface UI — Détails de Table]</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CALL TO ACTION -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Essayez nos solutions dès maintenant</h2>
+            <p>Testez notre suite d’outils et améliorer votre performance et l’expérience de vos clients. Démarquez-vous dès maintenant.</p>
+            <a href="contact.html" class="btn">Prendre rendez-vous avec un expert cuisine</a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h5>Solutions</h5>
+                    <ul>
+                        <li><a href="borne.html">Borne Tactile</a></li>
+                        <li><a href="commande-en-ligne.html">Commande en Ligne</a></li>
+                        <li><a href="caisse-nf.html">Caisse NF525</a></li>
+                        <li><a href="kds.html">Écrans Cuisine KDS</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Expertises</h5>
+                    <ul>
+                        <li><a href="qsr.html">Restauration Rapide</a></li>
+                        <li><a href="franchises.html">Réseaux de Franchises</a></li>
+                        <li><a href="parcs-loisirs.html">Gestion de Parcs</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Ressources</h5>
+                    <ul>
+                        <li><a href="blog.html">Notre Blog</a></li>
+                        <li><a href="centre-aide.html">Centre de Support</a></li>
+                        <li><a href="integrations.html">Fiches Intégrations</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Contact & Infos</h5>
+                    <ul>
+                        <li><a href="contact.html">Demande de Démo</a></li>
+                        <li><a href="qui-est-bill.html">À propos de Bill</a></li>
+                        <li><a href="nos-clients.html">Témoignages Clients</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div>&copy; 2026 BILL SAS. Tous droits réservés. Projet Maquette Fil de Fer Front-end.</div>
+                <div style="display: flex; gap: 1rem;">
+                    <a href="#">Mentions Légales</a>
+                    <a href="#">Confidentialité (RGPD)</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
