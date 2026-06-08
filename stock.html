@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -131,7 +132,7 @@
             position: relative;
         }
 
-        .nav-item > a {
+        .nav-item>a {
             font-size: 0.85rem;
             font-weight: 600;
             text-transform: uppercase;
@@ -148,7 +149,7 @@
             padding: 0.5rem 0;
             min-width: 240px;
             list-style: none;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
         }
 
         .nav-item:hover .dropdown {
@@ -279,7 +280,8 @@
             border-collapse: collapse;
         }
 
-        .blueprint-table-mock th, .blueprint-table-mock td {
+        .blueprint-table-mock th,
+        .blueprint-table-mock td {
             border: 1px solid #D1D5DB;
             padding: 0.75rem;
             font-size: 0.85rem;
@@ -348,68 +350,340 @@
         }
     </style>
 </head>
+
 <body>
 
     <!-- HEADER & GLOBAL NAVIGATION -->
-    <header>
-        <div class="navbar">
-            <a href="index.html" class="logo">BILL</a>
-            <nav>
-                <ul class="nav-menu">
-                    <li class="nav-item">
-                        <a href="qui-est-bill.html">Pourquoi Bill</a>
-                        <ul class="dropdown">
-                            <li><a href="qui-est-bill.html">Qui est Bill</a></li>
-                            <li><a href="nos-clients.html">Nos Clients</a></li>
+    <style>
+/* ==========================================================================
+   BARRE DE NAVIGATION UNIVERSELLE BILL (LOW-FI)
+   Couleurs : #FFFFFF, #F3F4F6, #9CA3AF, #1F2937, #D1D5DB
+   ========================================================================== */
+
+.bill-header {
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #D1D5DB;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    position: relative;
+    z-index: 9999;
+}
+
+.bill-navbar {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+    height: 70px;
+}
+
+.bill-logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #1F2937;
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+
+.bill-nav {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    gap: 2rem;
+}
+
+.bill-nav-item {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.bill-nav-link {
+    text-decoration: none;
+    color: #1F2937;
+    font-weight: 500;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    height: 100%;
+    transition: color 0.2s;
+}
+
+.bill-nav-link:hover {
+    color: #9CA3AF;
+}
+
+/* Chevron CSS pur pour éviter les dépendances externes */
+.bill-chevron::after {
+    content: "";
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: translateY(-2px) rotate(45deg);
+    transition: transform 0.2s;
+    margin-left: 4px;
+}
+
+.bill-nav-item:hover .bill-chevron::after {
+    transform: translateY(2px) rotate(225deg);
+}
+
+/* Petits Menus Déroulants */
+.bill-dropdown {
+    position: absolute;
+    top: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #FFFFFF;
+    border: 1px solid #D1D5DB;
+    box-shadow: 0 4px 6px rgba(31, 41, 55, 0.1);
+    min-width: 200px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s;
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem 0;
+}
+
+.bill-nav-item:hover .bill-dropdown {
+    opacity: 1;
+    visibility: visible;
+}
+
+.bill-dropdown-link {
+    text-decoration: none;
+    color: #1F2937;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9rem;
+    display: block;
+    transition: background-color 0.2s;
+}
+
+.bill-dropdown-link:hover {
+    background-color: #F3F4F6;
+}
+
+/* Méga-Menu Solutions */
+.bill-mega-menu {
+    position: absolute;
+    top: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #FFFFFF;
+    border: 1px solid #D1D5DB;
+    border-top: none;
+    box-shadow: 0 10px 15px -3px rgba(31, 41, 55, 0.1);
+    width: 100vw;
+    max-width: 1200px;
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s;
+}
+
+.bill-nav-item:hover .bill-mega-menu {
+    opacity: 1;
+    visibility: visible;
+}
+
+.bill-mega-col-title {
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: #9CA3AF;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #F3F4F6;
+    padding-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.bill-mega-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.bill-mega-link {
+    text-decoration: none;
+    color: #1F2937;
+    font-size: 0.9rem;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.bill-mega-link:hover {
+    background-color: #F3F4F6;
+}
+
+/* Icônes Low-Fi simulées (Carrés gris) pour rester sémantique sans SVG lourds */
+.icon-lofi {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background-color: #D1D5DB;
+    border-radius: 2px;
+    margin-right: 8px;
+    flex-shrink: 0;
+}
+
+.bill-mega-col-title .icon-lofi {
+    background-color: #9CA3AF;
+}
+
+/* Bouton Contact */
+.bill-btn {
+    background-color: #1F2937;
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 0.6rem 1.25rem;
+    font-size: 0.9rem;
+    font-weight: bold;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.bill-btn:hover {
+    background-color: #9CA3AF;
+}
+</style>
+
+<!-- ==========================================================================
+     DÉBUT DU BLOC HTML NAVBAR (À COPIER-COLLER DANS VOS 29 PAGES)
+     ========================================================================== -->
+<header class="bill-header">
+    <div class="bill-navbar">
+        <!-- LOGO -->
+        <a href="index.html" class="bill-logo">BILL</a>
+        
+        <!-- NAVIGATION -->
+        <ul class="bill-nav">
+            <li class="bill-nav-item">
+                <a href="index.html" class="bill-nav-link">Accueil</a>
+            </li>
+            
+            <!-- DROPDOWN : Pourquoi Bill -->
+            <li class="bill-nav-item">
+                <span class="bill-nav-link bill-chevron">Pourquoi Bill</span>
+                <div class="bill-dropdown">
+                    <a href="qui-est-bill.html" class="bill-dropdown-link">Qui est Bill</a>
+                    <a href="nos-clients.html" class="bill-dropdown-link">Nos clients</a>
+                </div>
+            </li>
+
+            <!-- MEGA-MENU : Solutions -->
+            <li class="bill-nav-item">
+                <span class="bill-nav-link bill-chevron">Solutions</span>
+                <div class="bill-mega-menu">
+                    
+                    <!-- Colonne 1 -->
+                    <div class="bill-mega-col">
+                        <div class="bill-mega-col-title"><span class="icon-lofi"></span> Prise de commande</div>
+                        <ul class="bill-mega-list">
+                            <li><a href="borne.html" class="bill-mega-link"><span class="icon-lofi"></span> Borne + modèles Totem...</a></li>
+                            <li><a href="commande-en-ligne.html" class="bill-mega-link" title="Cmde en ligne (click & co, click & parking, cde à table)"><span class="icon-lofi"></span> Cmde en ligne (click & co...)</a></li>
+                            <li><a href="app-mobile.html" class="bill-mega-link"><span class="icon-lofi"></span> App mobile</a></li>
+                            <li><a href="audio-drive.html" class="bill-mega-link"><span class="icon-lofi"></span> Audio drive</a></li>
                         </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a href="borne.html">Prise de commande</a>
-                        <ul class="dropdown">
-                            <li><a href="borne.html">Borne + Totem</a></li>
-                            <li><a href="commande-en-ligne.html">Commande en ligne</a></li>
-                            <li><a href="app-mobile.html">Application Mobile</a></li>
-                            <li><a href="audio-drive.html">Audio Drive</a></li>
+                    </div>
+
+                    <!-- Colonne 2 -->
+                    <div class="bill-mega-col">
+                        <div class="bill-mega-col-title"><span class="icon-lofi"></span> Encaissement</div>
+                        <ul class="bill-mega-list">
+                            <li><a href="caisse-nf.html" class="bill-mega-link"><span class="icon-lofi"></span> Caisse NF (fixe + mobile)</a></li>
+                            <li><a href="monnayeur.html" class="bill-mega-link"><span class="icon-lofi"></span> Monnayeur</a></li>
+                            <li><a href="bpay.html" class="bill-mega-link"><span class="icon-lofi"></span> BPay</a></li>
                         </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a href="caisse-nf.html">Encaissement</a>
-                        <ul class="dropdown">
-                            <li><a href="caisse-nf.html">Caisse NF525</a></li>
-                            <li><a href="monnayeur.html">Monnayeur automatique</a></li>
-                            <li><a href="bpay.html">BPay</a></li>
+                    </div>
+
+                    <!-- Colonne 3 -->
+                    <div class="bill-mega-col">
+                        <div class="bill-mega-col-title"><span class="icon-lofi"></span> Production & pilotage</div>
+                        <ul class="bill-mega-list">
+                            <li><a href="kds.html" class="bill-mega-link"><span class="icon-lofi"></span> KDS</a></li>
+                            <li><a href="imprimante.html" class="bill-mega-link"><span class="icon-lofi"></span> Imprimante produc...</a></li>
+                            <li><a href="plateformes-livraison.html" class="bill-mega-link"><span class="icon-lofi"></span> Plateformes livraison</a></li>
+                            <li><a href="remise-commande.html" class="bill-mega-link" title="Remise de commande (bipeur écran d'appel, chevalet, SMS)"><span class="icon-lofi"></span> Remise de commande...</a></li>
                         </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a href="kds.html">Production & Pilotage</a>
-                        <ul class="dropdown">
-                            <li><a href="kds.html">Écrans Cuisine (KDS)</a></li>
-                            <li><a href="imprimante.html">Imprimante de Production</a></li>
-                            <li><a href="plateformes-livraison.html">Plateformes de Livraison</a></li>
-                            <li><a href="remise-commande.html">Remise de Commande</a></li>
+                    </div>
+
+                    <!-- Colonne 4 -->
+                    <div class="bill-mega-col">
+                        <div class="bill-mega-col-title"><span class="icon-lofi"></span> Communication &...</div>
+                        <ul class="bill-mega-list">
+                            <li><a href="affichage-dynamique.html" class="bill-mega-link"><span class="icon-lofi"></span> Affichage dynamiq...</a></li>
+                            <li><a href="menuboard.html" class="bill-mega-link"><span class="icon-lofi"></span> Menuboard...</a></li>
+                            <li><a href="ecran-confiance.html" class="bill-mega-link"><span class="icon-lofi"></span> Ecran confiance</a></li>
+                            <li><a href="menu-interactif.html" class="bill-mega-link"><span class="icon-lofi"></span> Menu interactif</a></li>
                         </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a href="qsr.html">Expertises</a>
-                        <ul class="dropdown">
-                            <li><a href="qsr.html">Restauration Rapide & QSR</a></li>
-                            <li><a href="franchises.html">Franchises & Chaînes</a></li>
-                            <li><a href="parcs-loisirs.html">Parcs de Loisirs</a></li>
+                    </div>
+
+                    <!-- Colonne 5 -->
+                    <div class="bill-mega-col">
+                        <div class="bill-mega-col-title"><span class="icon-lofi"></span> Pilotage centralisé</div>
+                        <ul class="bill-mega-list">
+                            <li><a href="backoffice.html" class="bill-mega-link"><span class="icon-lofi"></span> Backoffice unique</a></li>
+                            <li><a href="stock.html" class="bill-mega-link"><span class="icon-lofi"></span> Stock</a></li>
+                            <li><a href="rh.html" class="bill-mega-link"><span class="icon-lofi"></span> RH</a></li>
+                            <li><a href="fidelite.html" class="bill-mega-link"><span class="icon-lofi"></span> Fidélité</a></li>
                         </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a href="blog.html" style="border-bottom: 2px solid #1F2937;">Ressources</a>
-                        <ul class="dropdown">
-                            <li><a href="blog.html">Blog & Actualités</a></li>
-                            <li><a href="centre-aide.html">Centre d'aide</a></li>
-                            <li><a href="integrations.html">Intégrations & API</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </nav>
-            <a href="contact.html" class="btn" style="font-size: 0.8rem; padding: 0.5rem 1rem;">Démo / Contact</a>
-        </div>
-    </header>
+                    </div>
+                    
+                </div>
+            </li>
+
+            <!-- DROPDOWN : Expertises -->
+            <li class="bill-nav-item">
+                <span class="bill-nav-link bill-chevron">Expertises</span>
+                <div class="bill-dropdown">
+                    <a href="qsr.html" class="bill-dropdown-link">Restauration rapide & QSR</a>
+                    <a href="franchises.html" class="bill-dropdown-link">Franchise & chaînes</a>
+                    <a href="parcs-loisirs.html" class="bill-dropdown-link">Parcs de loisirs</a>
+                </div>
+            </li>
+
+            <!-- DROPDOWN : Ressources -->
+            <li class="bill-nav-item">
+                <span class="bill-nav-link bill-chevron">Ressources</span>
+                <div class="bill-dropdown">
+                    <a href="blog.html" class="bill-dropdown-link">Blog</a>
+                    <a href="centre-aide.html" class="bill-dropdown-link">Centre d'aide</a>
+                    <a href="integrations.html" class="bill-dropdown-link">Intégrations</a>
+                </div>
+            </li>
+        </ul>
+        
+        <!-- CTA CONTACT -->
+        <a href="contact.html" class="bill-btn">Démo / Contact</a>
+    </div>
+</header>
+<!-- ==========================================================================
+     FIN DU BLOC HTML NAVBAR
+     ========================================================================== -->
+
 
     <!-- MAIN PRODUCT HERO -->
     <section id="stock-hero">
@@ -417,14 +691,17 @@
             <div class="product-hero-grid">
                 <div class="product-hero-content">
                     <h1>Gestion des stocks & de l’approvisionnement</h1>
-                    <p>Déployez deux modules BackOffice avancés conçus pour simplifier globalement la gestion de vos matières premières[cite: 1]. Gardez en permanence un œil affiné sur vos stocks de produits et vos productions inter-sites en temps réel[cite: 1].</p>
+                    <p>Déployez deux modules BackOffice avancés conçus pour simplifier globalement la gestion de vos
+                        matières premières[cite: 1]. Gardez en permanence un œil affiné sur vos stocks de produits et
+                        vos productions inter-sites en temps réel[cite: 1].</p>
                     <div style="display: flex; gap: 1rem;">
                         <a href="contact.html" class="btn">Optimiser mes approvisionnements</a>
                         <a href="backoffice.html" class="btn btn-secondary">Cockpit Backoffice</a>
                     </div>
                 </div>
                 <div class="img-placeholder product-img-main">
-                    Architecture Logistique — 🖼️ [Dashboard centralisé d'inventaire théorique vs réel et fiches techniques d'ingrédients]
+                    Architecture Logistique — 🖼️ [Dashboard centralisé d'inventaire théorique vs réel et fiches
+                    techniques d'ingrédients]
                 </div>
             </div>
         </div>
@@ -434,31 +711,43 @@
     <section id="stock-features">
         <div class="container">
             <h2 class="section-title">Une logistique matière automatisée et intégrée</h2>
-            <p class="section-subtitle">Dites adieu aux tableurs manuels source d'erreurs et unifiez votre référentiel produit au sein d'une solution unique[cite: 1].</p>
-            
+            <p class="section-subtitle">Dites adieu aux tableurs manuels source d'erreurs et unifiez votre référentiel
+                produit au sein d'une solution unique[cite: 1].</p>
+
             <div class="features-grid">
                 <!-- Bloc 1 : Deux modules -->
                 <div class="feature-card">
                     <h3>Deux modules BackOffice dédiés[cite: 1]</h3>
-                    <p>Bénéficiez d'une architecture modulaire double permettant de scinder idéalement d'un côté la valorisation pure de votre stock (inventaires, pertes, périssabilité) et de l'autre la gestion dynamique de l'approvisionnement (fournisseurs, mercuriales, bons de commande)[cite: 1].</p>
+                    <p>Bénéficiez d'une architecture modulaire double permettant de scinder idéalement d'un côté la
+                        valorisation pure de votre stock (inventaires, pertes, périssabilité) et de l'autre la gestion
+                        dynamique de l'approvisionnement (fournisseurs, mercuriales, bons de commande)[cite: 1].</p>
                 </div>
 
                 <!-- Bloc 2 : Restocking -->
                 <div class="feature-card">
                     <h3>Déclenchement automatique des réassorts[cite: 1]</h3>
-                    <p>Verrouillez vos seuils de sécurité par matière première. Dès qu'un ingrédient atteint son niveau critique en fonction des ventes physiques et digitales enregistrées, le système gère de manière autonome le déclenchement automatique du réassort auprès du fournisseur configuré[cite: 1].</p>
+                    <p>Verrouillez vos seuils de sécurité par matière première. Dès qu'un ingrédient atteint son niveau
+                        critique en fonction des ventes physiques et digitales enregistrées, le système gère de manière
+                        autonome le déclenchement automatique du réassort auprès du fournisseur configuré[cite: 1].</p>
                 </div>
 
                 <!-- Bloc 3 : Production -->
                 <div class="feature-card">
                     <h3>Suivi des productions & fiches techniques[cite: 1]</h3>
-                    <p>Faites le lien direct entre les ventes issues de vos <a href="borne.html" style="text-decoration: underline;">bornes tactiles</a> ou de votre <a href="commande-en-ligne.html" style="text-decoration: underline;">commande en ligne</a> et vos stocks[cite: 1]. Chaque transaction décrémente automatiquement vos ingrédients selon des fiches techniques uniformes définies au siège[cite: 1].</p>
+                    <p>Faites le lien direct entre les ventes issues de vos <a href="borne.html"
+                            style="text-decoration: underline;">bornes tactiles</a> ou de votre <a
+                            href="commande-en-ligne.html" style="text-decoration: underline;">commande en ligne</a> et
+                        vos stocks[cite: 1]. Chaque transaction décrémente automatiquement vos ingrédients selon des
+                        fiches techniques uniformes définies au siège[cite: 1].</p>
                 </div>
 
                 <!-- Bloc 4 : Compare Data -->
                 <div class="feature-card">
                     <h3>Comparaison et analyse des données[cite: 1]</h3>
-                    <p>Comparez facilement de nombreuses données et ratios opérationnels (Food Cost, taux de perte unitaire, écarts d'inventaires théoriques vs physiques)[cite: 1]. Identifiez rapidement les distorsions invisibles inter-sites coûteuses à long terme pour préserver vos marges nettes[cite: 1].</p>
+                    <p>Comparez facilement de nombreuses données et ratios opérationnels (Food Cost, taux de perte
+                        unitaire, écarts d'inventaires théoriques vs physiques)[cite: 1]. Identifiez rapidement les
+                        distorsions invisibles inter-sites coûteuses à long terme pour préserver vos marges nettes[cite:
+                        1].</p>
                 </div>
             </div>
         </div>
@@ -468,23 +757,26 @@
     <section id="stock-ui-blueprint">
         <div class="container">
             <h2 class="section-title">Composant Maquette — Suivi des Inventaires Centraux</h2>
-            <p class="section-subtitle">Visualisez l'organisation logique de l'interface d'administration de vos stocks et seuils de réapprovisionnement.</p>
-            
+            <p class="section-subtitle">Visualisez l'organisation logique de l'interface d'administration de vos stocks
+                et seuils de réapprovisionnement.</p>
+
             <div class="blueprint-wrapper">
                 <div class="blueprint-header">
-                    <span style="font-weight: bold; text-transform: uppercase; font-size: 0.9rem;">📍 BILL BACKOFFICE — Hub Logistique Multi-sites</span>
+                    <span style="font-weight: bold; text-transform: uppercase; font-size: 0.9rem;">📍 BILL BACKOFFICE —
+                        Hub Logistique Multi-sites</span>
                     <span style="font-size: 0.8rem; color: #4B5563;">Statut : Connecté aux points de vente</span>
                 </div>
-                
+
                 <div class="blueprint-sidebar-layout">
                     <!-- Nav mock -->
                     <div class="blueprint-nav-mock">
-                        <div class="blueprint-nav-item-mock" style="background-color: #1F2937; color: #FFFFFF;">📦 État des Stocks</div>
+                        <div class="blueprint-nav-item-mock" style="background-color: #1F2937; color: #FFFFFF;">📦 État
+                            des Stocks</div>
                         <div class="blueprint-nav-item-mock">📋 Bons de Commande</div>
                         <div class="blueprint-nav-item-mock">🚚 Livraisons & Réceptions</div>
                         <div class="blueprint-nav-item-mock">⚙️ Paramètres Seuils</div>
                     </div>
-                    
+
                     <!-- Table mock -->
                     <div>
                         <table class="blueprint-table-mock">
@@ -510,7 +802,8 @@
                                     <td>Tranches Cheddar affiné Premium</td>
                                     <td>82 unités</td>
                                     <td>150 unités</td>
-                                    <td><span class="status-badge-mock" style="background-color: #1F2937; color: #FFFFFF;">⚡ DÉCLENCHÉ</span></td>
+                                    <td><span class="status-badge-mock"
+                                            style="background-color: #1F2937; color: #FFFFFF;">⚡ DÉCLENCHÉ</span></td>
                                 </tr>
                                 <tr>
                                     <td>ING-BUNS-02</td>
@@ -524,7 +817,8 @@
                                     <td>Sac Kraft Emballage Livraison X-Large</td>
                                     <td>45 unités</td>
                                     <td>200 unités</td>
-                                    <td><span class="status-badge-mock" style="background-color: #1F2937; color: #FFFFFF;">⚡ DÉCLENCHÉ</span></td>
+                                    <td><span class="status-badge-mock"
+                                            style="background-color: #1F2937; color: #FFFFFF;">⚡ DÉCLENCHÉ</span></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -584,4 +878,5 @@
     </footer>
 
 </body>
+
 </html>
